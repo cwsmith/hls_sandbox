@@ -6,3 +6,9 @@ testing vivado hls
 ```
 make
 ```
+
+## run
+
+```
+./hello
+```
