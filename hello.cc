@@ -27,7 +27,14 @@ void hello(int& rg_nverts, int& rg_degree,
   #pragma HLS INTERFACE s_axilite port=g_off_i
   #pragma HLS INTERFACE s_axilite port=g_adj_n
   #pragma HLS INTERFACE s_axilite port=g_adj_i
-  printf("hi from rgraph_invert_pipelined rg_nverts %d\n", rg_nverts);
+  struct ints {
+    int n;
+    int* i;
+  } iarr;
+  iarr.n = 5;
+  iarr.i = new int[5];
+  printf("%s rg_nverts %d iarr.n %d\n", __func__, rg_nverts, iarr.n);
+  delete [] iarr.i;
 }
 
 int main() {
