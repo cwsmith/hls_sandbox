@@ -33,7 +33,8 @@ void hello(int& rg_nverts, int& rg_degree,
   iarr.n = 5;
   iarr.i = new int[5];
   ints* g = (ints*) g_off;
-  printf("%s rg_nverts %d iarr.n %d g->n %d\n", __func__, rg_nverts, iarr.n, g->n);
+  printf("%s rg_nverts %d iarr.n %d g->n %d g->i[1] %d\n",
+    __func__, rg_nverts, iarr.n, g->n, g->i[1]);
   delete [] iarr.i;
 }
 
@@ -49,6 +50,8 @@ int main() {
   ints g_off;
   g_off.n = 12;
   g_off.i = new int[12];
+  g_off.i[0] = 42;
+  g_off.i[1] = 43;
   hello(rg_nverts, rg_degree, rg_n, rg_i,
     g_nverts, g_max_deg,
     &g_off,
