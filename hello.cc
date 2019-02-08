@@ -52,8 +52,8 @@ int main() {
     g_nverts, g_max_deg,
     g_off_n, g_off_i,
     g_adj_n, g_adj_i);
-  free(rg_i);
-  free(g_off_i);
-  free(g_adj_i);
+  delete [] rg_i;
+  delete [] g_off_i;
+  delete [] g_adj_i;
   return 0;
 }
