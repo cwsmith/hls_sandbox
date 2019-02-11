@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "ints.h"
+#include "rgraph.h"
 
 void hello(int& rg_nverts, int& rg_degree,
     int& rg_n, int* rg_i,
@@ -36,6 +37,20 @@ void hello(int& rg_nverts, int& rg_degree,
   printf("%s rg_nverts %d iarr.n %d g->n %d g->i[1] %d\n",
     __func__, rg_nverts, iarr.n, g->n, g->i[1]);
   delete [] iarr.i;
+
+#include "rgraph.h"
+  //Create an ints struct for adj in rgraph
+  ints rg_adj;
+  rg_adj.n=rg_n;
+  rg_adj.i = rg_i;
+  //Create rgraph struct with 2 int(s) ane one ints struct from arguments
+  rgraph rg;
+  rg.nverts=rg_nverts;
+  rg.degree=rg_degree;
+  rg.adj=rg_adj;
+  printf("%s Test rgraph: rg_nverts %d rg_degree %d rg_adj[1] %d\n",
+    __func__, rg.nverts, rg.degree, rg.adj.i[1]);
+  
 }
 
 int main() {
@@ -43,6 +58,7 @@ int main() {
   int rg_degree = 4;
   int rg_n = 8;
   int* rg_i = new int[8];
+  rg_i[1]=36;
   int g_nverts = 2;
   int g_max_deg = 6;
   int g_adj_n = 12;
