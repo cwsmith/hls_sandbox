@@ -3,7 +3,7 @@
 
 #include "adj.h"
 #include "ints.h"
-#include <assert.h>
+//#include <assert.h>
 
 struct graph_spec {
   int nverts;
@@ -20,7 +20,7 @@ struct graph {
 struct graph_spec graph_spec_new(int nverts);
 struct graph graph_new(struct graph_spec s);
 void graph_free(struct graph g);
-
+/*
 static inline int graph_nedges(struct graph const g)
 {
   return g.off.i[g.nverts];
@@ -53,5 +53,5 @@ static inline void graph_set(struct graph g, int i, struct adj a)
 void graph_print(struct graph g);
 
 struct adj adj_new_graph(struct graph g);
-
+*/
 #endif
