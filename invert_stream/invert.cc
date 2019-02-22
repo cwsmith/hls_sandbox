@@ -83,18 +83,7 @@ int main() {
   Stream<int> pipe[3];
  
   invert(pipe[0],pipe[1],pipe[2],numPar, chldPerPar, numChld, parToChld, chldToPar, chldDeg);
-  
-  HLSLIB_DATAFLOW_INIT();
-
-  //parToChld as the 1st input stream, 
-  HLSLIB_DATAFLOW_FUNCTION(ReadMem, parToChld, pipe[0]);
-
-  //Start concurrent pipelines (x2)
-  //1st output stream: pairs of par and chld (size 12) push into pipe[1]
-  get_edges(pipe[0], pipe[1], numPar, chldPerPar);
-  //2nd input: pipe[1], update Deg and chldtToPar, output nonsense into pip2[2]
-  invert_edges(pipe[1],pipe[2], numPar, chldPerPar,chldDeg,chldToPar);
-
+ 
   //print results
   for(int i=0; i<numChld; i++) {
     printf("chld %d deg %d par ", i, chldDeg[i]);
