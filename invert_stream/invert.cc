@@ -54,45 +54,16 @@ void invert(Stream<int> &pipe0, Stream<int> &pipe1, Stream<int> &pipe2,
       #pragma HLS INTERFACE s_axilite port=numPar     bundle=control
       #pragma HLS INTERFACE s_axilite port=chldPerPar bundle=control
       #pragma HLS INTERFACE s_axilite port=numChld    bundle=control
-    /*
-     //no idea how to size these
-      Stream<int> deg;
-     Stream<int> edge;
   
-  edge: for(int i=0; i<numPar*chldPerPar; i++) {
-        #pragma HLS PIPELINE
-        const int parent = i / chldPerPar;
-        const int child = parToChld[i];
-        edge.Push(parent);
-        edge.Push(child);
-     }
-   
-     insert: for(int i=0; i<numPar*chldPerPar; i++) {
-        #pragma HLS PIPELINE
-        const int parent = edge.Pop();
-        const int child = edge.Pop();
-        const int idx = chldDeg[child];
-        deg.Push(idx);
-        deg.Push(child);
-        chldToPar[child*MAX_ADJ+idx] = parent;
-    }
-  
-  incdegree: for(int i=0; i<numPar*chldPerPar; i++) {
-        #pragma HLS PIPELINE
-        const int idx = deg.Pop();
-        const int child = deg.Pop();
-        chldDeg[child] = idx+1;
-     //printf("i %d c %d idx %d deg %d\n", i, child, idx, chldDeg[child]);
-     }*/
   HLSLIB_DATAFLOW_INIT();
   //ParToChld As the 1st input stream
-  HLSLIB_DATAFLOW_FUNCTION(ReadMem, parToChld, pipe0);
+  HLSLIB_DATAFLOW_FUNCTION(ReadMem, parToChld,pipe0);
   
   //Start concurrent pipelines (x2?)
   //1st output stream: pairs of par and chld (size 12) push into pipe[1]
-  get_edges(pipe0,pipe1,numPar,chldPerPar);
-  //1st output -> 2nd input: pipe1, update Deg and ChldtoPar(final results),output nonsense into pipe2
-  invert_edges(pipe1,pipe2,numPar,chldPerPar,chldDeg,chldToPar);
+  HLSLIB_DATAFLOW_FUNCTION(get_edges, pipe0,pipe1,numPar,chldPerPar);
+  //1st output->2nd input: pipe1, update Deg and ChldtoPar(final results),output nonsense into pipe2
+  HLSLIB_DATAFLOW_FUNCTION(invert_edges, pipe1,pipe2,numPar,chldPerPar,chldDeg,chldToPar);
 }
 
 
