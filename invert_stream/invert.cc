@@ -13,29 +13,12 @@ void ReadMem(int const *in, Stream<int> &s){
   }
 }
 
-void get_edges(Stream<int> &st_in, Stream<int> &st_out,
-    int numPar, int chldPerPar){
-  //int center = st_in.Pop();
-  getedges: for (int i=0; i<numPar*chldPerPar; i++){
-    #pragma HLS PIPELINE
-    //Read(POp)
-    int child=st_in.Pop();
-    //Compute
-    int parent = i/chldPerPar;
-    //Write(Push)
-    st_out.Push(parent);
-    st_out.Push(child);
-  }
-}
-
 void invert_edges(Stream<int> & st_in, Stream<int> &st_out,
     int numPar, int chldPerPar, int* chldToPar){
   invert_edges: for (int i=0; i<numPar*chldPerPar; i++ ){
     #pragma HLS PIPELINE
-    //Read twice for a par-chld pair
-    const int parent=st_in.Pop();
     const int child=st_in.Pop();
-    //Compute 1: Populate chldToPar array
+    const int parent = i/chldPerPar;
     chldToPar[child*MAX_ADJ]=parent;
     st_out.Push(child);
   }
@@ -61,13 +44,11 @@ void invert(int numPar, int chldPerPar, int numChld,
   #pragma HLS INTERFACE s_axilite port=numChld    bundle=control
 
   Stream<int> childStrm("children");
-  Stream<int> edgeStrm("edges");
   Stream<int> childShiftStrm("childShift");
   HLSLIB_DATAFLOW_INIT();
   //ParToChld As the 1st input stream
   HLSLIB_DATAFLOW_FUNCTION(ReadMem,parToChld,childStrm);
-  HLSLIB_DATAFLOW_FUNCTION(get_edges,childStrm,edgeStrm,numPar,chldPerPar);
-  HLSLIB_DATAFLOW_FUNCTION(invert_edges,edgeStrm,childShiftStrm,numPar,
+  HLSLIB_DATAFLOW_FUNCTION(invert_edges,childStrm,childShiftStrm,numPar,
       chldPerPar,chldToPar);
   HLSLIB_DATAFLOW_FUNCTION(shiftChildren,childShiftStrm,numPar,chldPerPar,
       chldToPar);
