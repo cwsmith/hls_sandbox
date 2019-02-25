@@ -3,11 +3,12 @@ CXX=g++
 CFLAGS=-std=c99 -O2
 CXXFLAGS=-std=c++11 
 LDFLAGS=-lm -lpthread
+VIVADO_HLS_DIR=/opt/Xilinx/Vivado/2018.2
 
 all: synthesis main
 
 synthesis:
-	@VIVADO_HLS_DIR=$(dirname $(dirname $(which vivado_hls)))
+	@echo VIVADO_HLS_DIR $(VIVADO_HLS_DIR)
 	vivado_hls -f Synthesis.tcl
 	cp hls/solution/syn/report/invert_csynth.rpt report.rpt
 	$(CXX) $(CXXFLAGS) -I../hlslib/include -I$(VIVADO_HLS_DIR)/include -c invert.cc -o invert.o
