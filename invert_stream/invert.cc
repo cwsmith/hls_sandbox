@@ -8,7 +8,7 @@ using hlslib::Stream;
 
 void ReadMem(int const *in, Stream<int> &s){
   read: for (int i=0; i<6; ++i){
-    #pragma HLS PIPELINE II=1
+    #pragma HLS PIPELINE
     s.Push(in[i]);
   }
 }
@@ -17,7 +17,7 @@ void get_edges(Stream<int> &st_in, Stream<int> &st_out,
     int numPar, int chldPerPar){
   //int center = st_in.Pop();
   getedges: for (int i=0; i<numPar*chldPerPar; i++){
-    #pragma HLS PIPELINE II=1
+    #pragma HLS PIPELINE
     //Read(POp)
     int child=st_in.Pop();
     //Compute
@@ -31,7 +31,7 @@ void get_edges(Stream<int> &st_in, Stream<int> &st_out,
 void invert_edges(Stream<int> & st_in, Stream<int> &st_out,
     int numPar, int chldPerPar, int* chldToPar){
   invert_edges: for (int i=0; i<numPar*chldPerPar; i++ ){
-    #pragma HLS PIPELINE II=1
+    #pragma HLS PIPELINE
     //Read twice for a par-chld pair
     const int parent=st_in.Pop();
     const int child=st_in.Pop();
