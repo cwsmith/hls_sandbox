@@ -65,6 +65,7 @@ void invert(
   HLSLIB_DATAFLOW_FUNCTION(get_edges, pipe[0],pipe[1],numPar,chldPerPar);
   //1st output->2nd input: pipe1, update Deg and ChldtoPar(final results),output nonsense into pipe2
   HLSLIB_DATAFLOW_FUNCTION(invert_edges, pipe[1],pipe[2],numPar,chldPerPar,chldDeg,chldToPar);
+  HLSLIB_DATAFLOW_FINALIZE();
 }
 
 
