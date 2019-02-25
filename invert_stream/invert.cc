@@ -7,40 +7,39 @@ using hlslib::Stream;
 #define MAX_ADJ 32
 
 void ReadMem(int const *in, Stream<int> &s){
-  for (int i=0; i<6; ++i){
-   #pragma HLS PIPELINE II=1
-   s.Push(in[i]);
- }
+  read: for (int i=0; i<6; ++i){
+    #pragma HLS PIPELINE II=1
+    s.Push(in[i]);
+  }
 }
 
 void get_edges(Stream<int> &st_in, Stream<int> &st_out,
     int numPar, int chldPerPar){
- //int center = st_in.Pop();
- for (int i=0; i<numPar*chldPerPar; i++){
-   #pragma HLS PIPELINE II=1
-   //Read(POp)
-   int child=st_in.Pop();
-   //Compute
-   int parent = i/chldPerPar;
-   //Write(Push)
-   st_out.Push(parent);
-   st_out.Push(child);
-
+  //int center = st_in.Pop();
+  getedges: for (int i=0; i<numPar*chldPerPar; i++){
+    #pragma HLS PIPELINE II=1
+    //Read(POp)
+    int child=st_in.Pop();
+    //Compute
+    int parent = i/chldPerPar;
+    //Write(Push)
+    st_out.Push(parent);
+    st_out.Push(child);
   }
 }
 
 void invert_edges(Stream<int> & st_in,
     int numPar, int chldPerPar, int* chldDeg, int* chldToPar){
- for (int i=0; i<numPar*chldPerPar; i++ ){
-   #pragma HLS PIPELINE II=1
-   //Read twice for a par-chld pair
-   int parent=st_in.Pop();
-   int child=st_in.Pop();
-   //Compute 1: Populate chldToPar array
-   chldToPar[child*MAX_ADJ+chldDeg[child]]=parent;
-   //Compute 2: Update chldDeg
-   chldDeg[child]++;
- }
+  invert_edges: for (int i=0; i<numPar*chldPerPar; i++ ){
+    #pragma HLS PIPELINE II=1
+    //Read twice for a par-chld pair
+    const int parent=st_in.Pop();
+    const int child=st_in.Pop();
+    //Compute 1: Populate chldToPar array
+    chldToPar[child*MAX_ADJ+chldDeg[child]]=parent;
+    //Compute 2: Update chldDeg
+    chldDeg[child]++;
+  }
 }
 
 void invert(int numPar, int chldPerPar, int numChld,
