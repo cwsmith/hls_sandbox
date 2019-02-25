@@ -31,8 +31,6 @@ void get_edges(Stream<int> &st_in, Stream<int> &st_out,
 
 void invert_edges(Stream<int> & st_in,
     int numPar, int chldPerPar, int* chldDeg, int* chldToPar){
- #pragma HLS INTERFACE m_axi     port=chldToPar  bundle=gmem1   offset=slave
- #pragma HLS INTERFACE m_axi     port=chldDeg    bundle=gmem2   offset=slave
  for (int i=0; i<numPar*chldPerPar; i++ ){
    #pragma HLS PIPELINE II=1
    //Read twice for a par-chld pair
