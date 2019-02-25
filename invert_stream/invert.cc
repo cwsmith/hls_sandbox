@@ -29,7 +29,7 @@ void get_edges(Stream<int> &st_in, Stream<int> &st_out,
   }
 }
 
-void invert_edges(Stream<int> & st_in, Stream<int> &st_out,
+void invert_edges(Stream<int> & st_in,
     int numPar, int chldPerPar, int* chldDeg, int* chldToPar){
  #pragma HLS INTERFACE m_axi     port=chldToPar  bundle=gmem1   offset=slave
  #pragma HLS INTERFACE m_axi     port=chldDeg    bundle=gmem2   offset=slave
@@ -42,8 +42,6 @@ void invert_edges(Stream<int> & st_in, Stream<int> &st_out,
    chldToPar[child*MAX_ADJ+chldDeg[child]]=parent;
    //Compute 2: Update chldDeg
    chldDeg[child]++;
-   //Write (1 for finished, totally irrelevant to compute steps)
-   st_out.Push(1);
  }
 }
 
@@ -56,18 +54,39 @@ void invert(int numPar, int chldPerPar, int numChld,
   #pragma HLS INTERFACE s_axilite port=chldPerPar bundle=control
   #pragma HLS INTERFACE s_axilite port=numChld    bundle=control
 
-  Stream<int> pipe[3];
+  Stream<int> childStrm("children");
+  Stream<int> edgeStrm("edges");
   HLSLIB_DATAFLOW_INIT();
   //ParToChld As the 1st input stream
-  HLSLIB_DATAFLOW_FUNCTION(ReadMem, parToChld,pipe[0]);
-
-  //Start concurrent pipelines (x2?)
-  //1st output stream: pairs of par and chld (size 12) push into pipe[1]
-  HLSLIB_DATAFLOW_FUNCTION(get_edges,pipe[0],pipe[1],numPar,chldPerPar);
-  //1st output->2nd input: pipe1, update Deg and ChldtoPar(final results),output nonsense into pipe2
-  HLSLIB_DATAFLOW_FUNCTION(invert_edges,pipe[1],pipe[2],
-      numPar,chldPerPar,chldDeg,chldToPar);
+  HLSLIB_DATAFLOW_FUNCTION(ReadMem,parToChld,childStrm);
+  HLSLIB_DATAFLOW_FUNCTION(get_edges,childStrm,edgeStrm,numPar,chldPerPar);
+  HLSLIB_DATAFLOW_FUNCTION(invert_edges,edgeStrm,numPar,chldPerPar,
+      chldDeg,chldToPar);
   HLSLIB_DATAFLOW_FINALIZE();
+}
+
+void checkSoln(int* chldToPar, int* chldDeg, int numChld, int numPar) {
+  int* cToP = new int[numChld*numPar];
+  cToP[0*numChld+0] = 1;
+  cToP[0*numChld+1] = 1;
+  cToP[0*numChld+2] = 1;
+  cToP[1*numChld+0] = 1;
+  cToP[2*numChld+1] = 1;
+  cToP[2*numChld+2] = 1;
+
+  //print results
+  for(int child=0; child<numChld; child++) {
+    for(int j=0; j<chldDeg[child]; j++) {
+      const int parent = chldToPar[child*MAX_ADJ+j];
+      if( ! cToP[child*numChld+parent] ) {
+        fprintf(stderr, "graph edge child %d - parent %d"
+            "does not exist in reference solution\n",
+            child, parent);
+        exit(EXIT_FAILURE);
+      }
+    }
+  }
+  printf("solution matches\n");
 }
 
 int main() {
@@ -81,15 +100,8 @@ int main() {
     chldDeg[i] = 0;
 
   invert(numPar, chldPerPar, numChld, parToChld, chldToPar, chldDeg);
+  checkSoln(chldToPar, chldDeg, numChld, numPar);
 
-  //print results
-  for(int i=0; i<numChld; i++) {
-    printf("chld %d deg %d par ", i, chldDeg[i]);
-    for(int j=0; j<chldDeg[i]; j++) {
-      printf(" %d ", chldToPar[i*MAX_ADJ+j]);
-    }
-    printf("\n");
-  }
   delete [] chldToPar;
   delete [] chldDeg;
   return 0;
