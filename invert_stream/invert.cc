@@ -6,16 +6,16 @@ using hlslib::Stream;
 
 #define MAX_ADJ 32
 
-void ReadMem(int const *in, Stream<int> &s){
-  read: for (int i=0; i<6; ++i){
+void ReadMem(int const *in, Stream<int> &s, const int N){
+  read: for (int i=0; i<N; ++i){
     #pragma HLS PIPELINE
     s.Push(in[i]);
   }
 }
 
 void invert_edges(Stream<int> & st_in, Stream<int> &st_out,
-    int numPar, int chldPerPar, int* chldToPar){
-  invert_edges: for (int i=0; i<numPar*chldPerPar; i++ ){
+    const int N, const int chldPerPar, int* chldToPar){
+  invert_edges: for (int i=0; i<N; i++ ){
     #pragma HLS PIPELINE
     const int child=st_in.Pop();
     const int parent = i/chldPerPar;
@@ -25,8 +25,8 @@ void invert_edges(Stream<int> & st_in, Stream<int> &st_out,
 }
 
 void shiftChildren(Stream<int> & st_in,
-  int numPar, int chldPerPar, int* chldToPar) {
-  for (int i=0; i<numPar*chldPerPar; i++ ){
+  const int N, int* chldToPar) {
+  for (int i=0; i<N; i++ ){
     const int child=st_in.Pop();
     shiftChildren: for(int j=MAX_ADJ-1; j>0; --j) {
       #pragma HLS UNROLL
@@ -45,13 +45,13 @@ void invert(int numPar, int chldPerPar, int numChld,
 
   Stream<int> childStrm("children");
   Stream<int> childShiftStrm("childShift");
+  const int N = numPar*chldPerPar;
   HLSLIB_DATAFLOW_INIT();
   //ParToChld As the 1st input stream
-  HLSLIB_DATAFLOW_FUNCTION(ReadMem,parToChld,childStrm);
-  HLSLIB_DATAFLOW_FUNCTION(invert_edges,childStrm,childShiftStrm,numPar,
+  HLSLIB_DATAFLOW_FUNCTION(ReadMem,parToChld,childStrm,N);
+  HLSLIB_DATAFLOW_FUNCTION(invert_edges,childStrm,childShiftStrm,N,
       chldPerPar,chldToPar);
-  HLSLIB_DATAFLOW_FUNCTION(shiftChildren,childShiftStrm,numPar,chldPerPar,
-      chldToPar);
+  HLSLIB_DATAFLOW_FUNCTION(shiftChildren,childShiftStrm,N,chldToPar);
   HLSLIB_DATAFLOW_FINALIZE();
 }
 
