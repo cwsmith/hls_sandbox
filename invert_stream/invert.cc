@@ -35,10 +35,11 @@ void invert_edges(Stream<int> & st_in,
     //Read twice for a par-chld pair
     const int parent=st_in.Pop();
     const int child=st_in.Pop();
+    const int d = chldDeg[child];
     //Compute 1: Populate chldToPar array
-    chldToPar[child*MAX_ADJ+chldDeg[child]]=parent;
+    chldToPar[child*MAX_ADJ+d]=parent;
     //Compute 2: Update chldDeg
-    chldDeg[child]++;
+    chldDeg[child] = d+1;
   }
 }
 
