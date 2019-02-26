@@ -61,16 +61,14 @@ void invert(int numPar, int chldPerPar, int numChld,
   Stream<int> chld_s("children");
   Stream<int> chld2_s("children2");
   Stream<Adj_t> chldAdj_s("childAdj");
-  Stream<Adj_t> chldAdj2_s("childAdj");
-  Stream<int> adjShift_s("adjShift");
+  Stream<Adj_t> adjShift_s("adjShift");
   const int N = numPar*chldPerPar;
   HLSLIB_DATAFLOW_INIT();
-  //ParToChld As the 1st input stream
   HLSLIB_DATAFLOW_FUNCTION(readChildren,parToChld,chld_s,chld2_s,N);
   HLSLIB_DATAFLOW_FUNCTION(readAdj,chldToPar,chld_s,chldAdj_s,N);
-  HLSLIB_DATAFLOW_FUNCTION(invert_edges,chldAdj_s,chldAdj2_s,N,
+  HLSLIB_DATAFLOW_FUNCTION(invert_edges,chldAdj_s,adjShift_s,N,
       chldPerPar);
-  HLSLIB_DATAFLOW_FUNCTION(shiftChildren,chld2_s,chldAdj2_s,N,chldToPar);
+  HLSLIB_DATAFLOW_FUNCTION(shiftChildren,chld2_s,adjShift_s,N,chldToPar);
   HLSLIB_DATAFLOW_FINALIZE();
 }
 
