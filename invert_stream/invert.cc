@@ -89,7 +89,6 @@ void checkSoln(Adj_t* chldToPar, int numChld, int numPar) {
   //print results
   for(int child=0; child<numChld; child++) {
     for(int j=0; j<MAX_ADJ; j++) {
-      printf("i %d j %d ", child, j);
       const int parent = chldToPar[child][j];
       if( parent != -1 ) {
         assert(parent>=0 && parent<numPar);
@@ -101,8 +100,6 @@ void checkSoln(Adj_t* chldToPar, int numChld, int numPar) {
               child, parent);
           exit(EXIT_FAILURE);
         }
-      } else {
-        printf("\n");
       }
     }
   }
