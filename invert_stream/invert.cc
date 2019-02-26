@@ -40,11 +40,11 @@ void invert_edges(Stream<Adj_t> & adj_in, Stream<Adj_t> &adj_out,
 
 void shiftChildren(Stream<int> & chld_in, Stream<Adj_t> & adj_in,
   const int N, Adj_t* chldToPar) {
-  for (int i=0; i<N; i++ ){
+  shiftChildren: for (int i=0; i<N; i++ ){
+    #pragma HLS PIPELINE
     const int child = chld_in.Pop();
     const Adj_t adj = adj_in.Pop();
-    shiftChildren: for(int j=MAX_ADJ-1; j>0; --j) {
-      #pragma HLS UNROLL
+    for(int j=MAX_ADJ-1; j>0; --j) {
       chldToPar[child][j] = adj[j-1];
     }
   }
