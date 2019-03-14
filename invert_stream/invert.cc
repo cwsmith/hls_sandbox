@@ -32,7 +32,7 @@ void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int>& cshift_in,
     }
     Adj_t adj = chldToPar[child];
     //shift
-    for(int j=MAX_ADJ-1; j>0; --j) {
+    readAdj_shift: for(int j=MAX_ADJ-1; j>0; --j) {
       adj.Set(j, adj.Get(j-1));
     }
     adj.Set(0,-1);
