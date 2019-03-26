@@ -31,7 +31,11 @@ void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int> & cshift_in,
       const int shiftedChild = cshift_in.Pop();
     }
     Adj_t adj = chldToPar[child];
+<<<<<<< HEAD
     //shif,chldToPar,chld4_st
+=======
+    //shift
+>>>>>>> b392245ea06e7242e92ace2b09d6890d6eec1876
     readAdj_shift: for(int j=MAX_ADJ-1; j>0; --j) {
       adj.Set(j, adj.Get(j-1));
     }
