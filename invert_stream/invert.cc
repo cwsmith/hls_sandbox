@@ -10,16 +10,16 @@ using hlslib::Stream;
 
 using Adj_t = hlslib::DataPack<int, MAX_ADJ>;
 
-void readChildren(int const *in, Stream<int> &c_out, Stream<int> &c2_out, const int N){
+void readChildren(int const *in, Stream<int> &c_out,  const int N){
   readChildren: for (int i=0; i<N; ++i){
     #pragma HLS PIPELINE
     const int chld = in[i];
     c_out.Push(chld);
-    c2_out.Push(chld);
+    //c2_out.Push(chld);
   }
 }
 
-void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int>& cshift_in,
+void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int> & cshift_in,
     Stream<Adj_t>& s_out, Stream<int> &c_out, const int N){
   readAdj: for (int i=0; i<N; ++i){
     #pragma HLS PIPELINE
@@ -31,8 +31,8 @@ void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int>& cshift_in,
       const int shiftedChild = cshift_in.Pop();
     }
     Adj_t adj = chldToPar[child];
-    //shift
-    for(int j=MAX_ADJ-1; j>0; --j) {
+    //shif,chldToPar,chld4_st
+    readAdj_shift: for(int j=MAX_ADJ-1; j>0; --j) {
       adj.Set(j, adj.Get(j-1));
     }
     adj.Set(0,-1);
@@ -42,18 +42,20 @@ void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int>& cshift_in,
   }
 }
 
-void invert_edges(Stream<int> &c_in, Stream<Adj_t> & adj_in, Stream<Adj_t> &adj_out,
-    const int N, const int chldPerPar){
+void invert_edges(Stream<int> &c_in, Stream<Adj_t> & adj_in,
+    const int N, const int chldPerPar, Adj_t*chldToPar, Stream<int> & c_out){
   invert_edges: for (int i=0; i<N; i++ ){
     #pragma HLS PIPELINE
     Adj_t adj = adj_in.Pop();
     const int child = c_in.Pop();
     const int parent = i/chldPerPar;
     adj.Set(0,parent);
-    adj_out.Push(adj);
+    //adj_out.Push(adj);
+    chldToPar[child]=adj;
+    c_out.Push(child);
   }
 }
-
+/*
 void shiftChildren(Stream<int> & chld_in, Stream<Adj_t> & adj_in,
   const int N, Adj_t* chldToPar, Stream<int>& chld_out) {
   shiftChildren: for (int i=0; i<N; i++ ){
@@ -64,32 +66,7 @@ void shiftChildren(Stream<int> & chld_in, Stream<Adj_t> & adj_in,
     chld_out.Push(child);
   }
 }
-
-void invert(int numPar, int chldPerPar, int numChld,
-    int* parToChld, Adj_t* chldToPar) {
-  #pragma HLS INTERFACE m_axi     port=parToChld  bundle=gmem    offset=slave
-  #pragma HLS INTERFACE m_axi     port=chldToPar  bundle=gmem1   offset=slave
-  #pragma HLS INTERFACE s_axilite port=numPar     bundle=control
-  #pragma HLS INTERFACE s_axilite port=chldPerPar bundle=control
-  #pragma HLS INTERFACE s_axilite port=numChld    bundle=control
-
-  Stream<int> chld_s("children");
-  Stream<int> chld2_s("children2");
-  Stream<int> chld3_s("children3");
-  Stream<int> chld4_s("children4");
-  Stream<Adj_t> chldAdj_s("childAdj");
-  Stream<Adj_t> adjShift_s("adjShift");
-  const int N = numPar*chldPerPar;
-  HLSLIB_DATAFLOW_INIT();
-  HLSLIB_DATAFLOW_FUNCTION(readChildren,parToChld,chld_s,chld2_s,N);
-  HLSLIB_DATAFLOW_FUNCTION(readAdj,chldToPar,chld_s,chld4_s,chldAdj_s,chld3_s,N);
-  HLSLIB_DATAFLOW_FUNCTION(invert_edges,chld3_s,chldAdj_s,adjShift_s,N,
-      chldPerPar);
-  HLSLIB_DATAFLOW_FUNCTION(shiftChildren,chld2_s,adjShift_s,N,chldToPar,chld4_s);
-  HLSLIB_DATAFLOW_FINALIZE();
-  chld4_s.Pop(); //clear the final child
-}
-
+*/
 void checkSoln(Adj_t* chldToPar, int* cToP, int numChld, int numPar) {
   //print results
   for(int child=0; child<numChld; child++) {
@@ -110,17 +87,47 @@ void checkSoln(Adj_t* chldToPar, int* cToP, int numChld, int numPar) {
   }
 }
 
+
+void invert(int numPar, int chldPerPar, int numChld,
+    int* parToChld, int*cToP) {
+  #pragma HLS INTERFACE m_axi     port=parToChld  bundle=gmem    offset=slave
+  #pragma HLS INTERFACE s_axilite port=numPar     bundle=control
+  #pragma HLS INTERFACE m_axi     port=cToP  	  bundle=gmem    offset=slave
+  #pragma HLS INTERFACE s_axilite port=chldPerPar bundle=control
+  #pragma HLS INTERFACE s_axilite port=numChld    bundle=control
+
+  Stream<int> chld_s("children");
+  //Stream<int> chld2_s("children2");
+  Stream<int> chld3_s("children3");
+  Stream<int> chld4_s("children4");
+  Stream<Adj_t> chldAdj_s("childAdj");
+  Stream<Adj_t> adjShift_s("adjShift");
+  const int N = numPar*chldPerPar;
+
+  Adj_t chldToPar[1024];
+  Store_output: for(int i=0; i<1024; i++){
+    #pragma HLS PIPELINE
+    chldToPar[i].Fill(-1);
+   }
+
+  HLSLIB_DATAFLOW_INIT();
+  HLSLIB_DATAFLOW_FUNCTION(readChildren,parToChld,chld_s,N);
+  HLSLIB_DATAFLOW_FUNCTION(readAdj,chldToPar,chld_s,chld4_s,chldAdj_s,chld3_s,N);
+  HLSLIB_DATAFLOW_FUNCTION(invert_edges,chld3_s,chldAdj_s,N,
+      chldPerPar,chldToPar,chld4_s);
+  HLSLIB_DATAFLOW_FINALIZE();
+
+  chld4_s.Pop(); //clear the final child
+ 
+  checkSoln(chldToPar, cToP, numChld, numPar);
+}
 void test1() {
   int numPar = 3;
   int chldPerPar = 2;
   int numChld = 3;
   int parToChld[6] = {/*A*/1,0,/*B*/0,2,/*C*/2,0};
 
-  Adj_t* chldToPar = new Adj_t[numChld];
-  for(int i=0; i<numChld; i++)
-    chldToPar[i].Fill(-1);
-
-  int* cToP = new int[numChld*numPar];
+  int* cToP=new int[numChld*numPar];
   for(int i=0; i<numChld*numPar; i++)
     cToP[i] = 0;
   /*0:A,B,C*/
@@ -133,9 +140,7 @@ void test1() {
   cToP[2*numChld+1] = 1;
   cToP[2*numChld+2] = 1;
 
-  invert(numPar, chldPerPar, numChld, parToChld, chldToPar);
-  checkSoln(chldToPar, cToP, numChld, numPar);
-  delete [] chldToPar;
+  invert(numPar, chldPerPar, numChld, parToChld,cToP);
   delete [] cToP;
   printf("done %s\n",__func__);
 }
@@ -146,28 +151,22 @@ void test2() {
   const int numChld = 1;
   int parToChld[numPar] = {/*A*/0,/*B*/0,/*C*/0,/*D*/0,/*E*/0};
 
-  Adj_t* chldToPar = new Adj_t[numChld];
-  for(int i=0; i<numChld; i++)
-    chldToPar[i].Fill(-1);
-
   int* cToP = new int[numChld*numPar];
   for(int i=0; i<numChld*numPar; i++)
     cToP[i] = 0;
 
-  /*0:A*/
+  //0:A
   cToP[0*numChld+0] = 1;
-  /*0:B*/
+  //0:B
   cToP[1*numChld+0] = 1;
-  /*0:C*/
+  //0:C
   cToP[2*numChld+0] = 1;
-  /*0:D*/
+  //0:D
   cToP[3*numChld+0] = 1;
-  /*0:E*/
+  //0:E
   cToP[4*numChld+0] = 1;
 
-  invert(numPar, chldPerPar, numChld, parToChld, chldToPar);
-  checkSoln(chldToPar, cToP, numChld, numPar);
-  delete [] chldToPar;
+  invert(numPar, chldPerPar, numChld, parToChld, cToP);
   delete [] cToP;
   printf("done %s\n",__func__);
 }
