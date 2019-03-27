@@ -15,58 +15,23 @@ void readChildren(int const *in, Stream<int> &c_out,  const int N){
     #pragma HLS PIPELINE
     const int chld = in[i];
     c_out.Push(chld);
-    //c2_out.Push(chld);
+
   }
 }
 
-void readAdj(Adj_t const *chldToPar, Stream<int> &c_in, Stream<int> & cshift_in,
+void readAdj(Adj_t *chldToPar, const int chldPerPar, Stream<int> &c_in,
     Stream<Adj_t>& s_out, Stream<int> &c_out, const int N){
   readAdj: for (int i=0; i<N; ++i){
     #pragma HLS PIPELINE
     const int child = c_in.Pop();
-    if(i>0) {
-      //Avoid reading stale adj arrays from childToPar
-      // by waiting until shiftChildren has finished
-      // its write.
-      const int shiftedChild = cshift_in.Pop();
+   readAdj_shift: for(int j=MAX_ADJ-1; j>0; --j) {
+      chldToPar[child].Set(j, chldToPar[child].Get(j-1));
     }
-    Adj_t adj = chldToPar[child];
-    //shift
-    readAdj_shift: for(int j=MAX_ADJ-1; j>0; --j) {
-      adj.Set(j, adj.Get(j-1));
-    }
-    adj.Set(0,-1);
-
-    s_out.Push(adj);
-    c_out.Push(child);
-  }
-}
-
-void invert_edges(Stream<int> &c_in, Stream<Adj_t> & adj_in,
-    const int N, const int chldPerPar, Adj_t*chldToPar, Stream<int> & c_out){
-  invert_edges: for (int i=0; i<N; i++ ){
-    #pragma HLS PIPELINE
-    Adj_t adj = adj_in.Pop();
-    const int child = c_in.Pop();
     const int parent = i/chldPerPar;
-    adj.Set(0,parent);
-    //adj_out.Push(adj);
-    chldToPar[child]=adj;
-    c_out.Push(child);
+    chldToPar[child].Set(0,parent);
   }
 }
-/*
-void shiftChildren(Stream<int> & chld_in, Stream<Adj_t> & adj_in,
-  const int N, Adj_t* chldToPar, Stream<int>& chld_out) {
-  shiftChildren: for (int i=0; i<N; i++ ){
-    #pragma HLS PIPELINE
-    const int child = chld_in.Pop();
-    const Adj_t adj = adj_in.Pop();
-    chldToPar[child] = adj;
-    chld_out.Push(child);
-  }
-}
-*/
+
 void checkSoln(Adj_t* chldToPar, int* cToP, int numChld, int numPar) {
   //print results
   for(int child=0; child<numChld; child++) {
@@ -97,9 +62,9 @@ void invert(int numPar, int chldPerPar, int numChld,
   #pragma HLS INTERFACE s_axilite port=numChld    bundle=control
 
   Stream<int> chld_s("children");
-  //Stream<int> chld2_s("children2");
+
   Stream<int> chld3_s("children3");
-  Stream<int> chld4_s("children4");
+
   Stream<Adj_t> chldAdj_s("childAdj");
   Stream<Adj_t> adjShift_s("adjShift");
   const int N = numPar*chldPerPar;
@@ -112,13 +77,9 @@ void invert(int numPar, int chldPerPar, int numChld,
 
   HLSLIB_DATAFLOW_INIT();
   HLSLIB_DATAFLOW_FUNCTION(readChildren,parToChld,chld_s,N);
-  HLSLIB_DATAFLOW_FUNCTION(readAdj,chldToPar,chld_s,chld4_s,chldAdj_s,chld3_s,N);
-  HLSLIB_DATAFLOW_FUNCTION(invert_edges,chld3_s,chldAdj_s,N,
-      chldPerPar,chldToPar,chld4_s);
+  HLSLIB_DATAFLOW_FUNCTION(readAdj,chldToPar,chldPerPar,chld_s,chldAdj_s,chld3_s,N);
   HLSLIB_DATAFLOW_FINALIZE();
 
-  chld4_s.Pop(); //clear the final child
- 
   checkSoln(chldToPar, cToP, numChld, numPar);
 }
 void test1() {

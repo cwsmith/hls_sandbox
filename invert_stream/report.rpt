@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'invert'
 ================================================================
-* Date:           Tue Mar 26 19:38:21 2019
+* Date:           Wed Mar 27 15:15:48 2019
 
 * Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
 * Project:        hls
@@ -38,7 +38,7 @@
         |                         |              |  Latency  |  Interval | Pipeline|
         |         Instance        |    Module    | min | max | min | max |   Type  |
         +-------------------------+--------------+-----+-----+-----+-----+---------+
-        |grp_readChildren_fu_309  |readChildren  |    ?|    ?|    ?|    ?|   none  |
+        |grp_readChildren_fu_187  |readChildren  |    ?|    ?|    ?|    ?|   none  |
         +-------------------------+--------------+-----+-----+-----+-----+---------+
 
         * Loop: 
@@ -47,8 +47,7 @@
         |    Loop Name   |  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
         +----------------+------+------+----------+-----------+-----------+------+----------+
         |- Store_output  |  1024|  1024|         1|          1|          1|  1024|    yes   |
-        |- readAdj       |     ?|     ?|         3|          1|          1|     ?|    yes   |
-        |- invert_edges  |     ?|     ?|        37|          1|          1|     ?|    yes   |
+        |- readAdj       |     ?|     ?|        37|          2|          1|     ?|    yes   |
         +----------------+------+------+----------+-----------+-----------+------+----------+
 
 
@@ -61,18 +60,18 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |   LUT  | URAM|
 +-----------------+---------+-------+--------+--------+-----+
 |DSP              |        -|      -|       -|       -|    -|
-|Expression       |        -|      -|       0|     183|    -|
-|FIFO             |       57|      -|    1080|    1170|    -|
+|Expression       |        -|      -|       0|      97|    -|
+|FIFO             |        0|      -|       5|      44|    -|
 |Instance         |        2|      4|    3439|    3061|    -|
 |Memory           |       57|      -|       0|       0|    -|
-|Multiplexer      |        -|      -|       -|     176|    -|
-|Register         |        0|      -|     351|      56|    -|
+|Multiplexer      |        -|      -|       -|     155|    -|
+|Register         |        0|      -|     303|      32|    -|
 +-----------------+---------+-------+--------+--------+-----+
-|Total            |      116|      4|    4870|    4646|    0|
+|Total            |       59|      4|    3747|    3389|    0|
 +-----------------+---------+-------+--------+--------+-----+
 |Available        |      960|   1824|  433920|  216960|   64|
 +-----------------+---------+-------+--------+--------+-----+
-|Utilization (%)  |       12|   ~0  |       1|       2|    0|
+|Utilization (%)  |        6|   ~0  |   ~0   |       1|    0|
 +-----------------+---------+-------+--------+--------+-----+
 
 + Detail: 
@@ -85,7 +84,7 @@
     |invert_gmem_m_axi_U      |invert_gmem_m_axi      |        2|      0|   512|   580|
     |invert_mul_32s_32cud_U5  |invert_mul_32s_32cud   |        0|      4|   165|    49|
     |invert_sdiv_33ns_dEe_U6  |invert_sdiv_33ns_dEe   |        0|      0|  2434|  1854|
-    |grp_readChildren_fu_309  |readChildren           |        0|      0|    78|   178|
+    |grp_readChildren_fu_187  |readChildren           |        0|      0|    78|   178|
     +-------------------------+-----------------------+---------+-------+------+------+
     |Total                    |                       |        2|      4|  3439|  3061|
     +-------------------------+-----------------------+---------+-------+------+------+
@@ -103,123 +102,86 @@
     +--------------------+----------------------+---------+---+----+------+------+------+-------------+
 
     * FIFO: 
-    +-----------------------------+---------+------+------+------+------+---------+
-    |             Name            | BRAM_18K|  FF  |  LUT | Depth| Bits | Size:D*B|
-    +-----------------------------+---------+------+------+------+------+---------+
-    |chld3_s_stream_V_fifo_U      |        0|     5|    44|     1|    32|       32|
-    |chld4_s_stream_V_fifo_U      |        0|     5|    44|     1|    32|       32|
-    |chldAdj_s_stream_V_s_fifo_U  |       57|  1065|  1038|     1|  1024|     1024|
-    |chld_s_stream_V_fifo_U       |        0|     5|    44|     1|    32|       32|
-    +-----------------------------+---------+------+------+------+------+---------+
-    |Total                        |       57|  1080|  1170|     4|  1120|     1120|
-    +-----------------------------+---------+------+------+------+------+---------+
+    +------------------------+---------+---+----+------+-----+---------+
+    |          Name          | BRAM_18K| FF| LUT| Depth| Bits| Size:D*B|
+    +------------------------+---------+---+----+------+-----+---------+
+    |chld_s_stream_V_fifo_U  |        0|  5|  44|     1|   32|       32|
+    +------------------------+---------+---+----+------+-----+---------+
+    |Total                   |        0|  5|  44|     1|   32|       32|
+    +------------------------+---------+---+----+------+-----+---------+
 
     * Expression: 
     +------------------------------------+----------+-------+---+----+------------+------------+
     |            Variable Name           | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +------------------------------------+----------+-------+---+----+------------+------------+
-    |i_2_fu_338_p2                       |     +    |      0|  0|  18|          11|           1|
-    |i_3_fu_358_p2                       |     +    |      0|  0|  38|          31|           1|
-    |i_4_fu_397_p2                       |     +    |      0|  0|  38|          31|           1|
-    |ap_block_pp2_stage0_01001           |    and   |      0|  0|   2|           1|           1|
-    |exitcond_fu_332_p2                  |   icmp   |      0|  0|  13|          11|          12|
-    |tmp_6_i_fu_364_p2                   |   icmp   |      0|  0|  20|          31|           1|
-    |tmp_i1_fu_392_p2                    |   icmp   |      0|  0|  20|          32|          32|
-    |tmp_i_fu_353_p2                     |   icmp   |      0|  0|  20|          32|          32|
-    |ap_block_pp1_stage0_01001           |    or    |      0|  0|   2|           1|           1|
-    |ap_block_state47_pp2_stage0_iter36  |    or    |      0|  0|   2|           1|           1|
-    |ap_block_state9_pp1_stage0_iter2    |    or    |      0|  0|   2|           1|           1|
+    |i_2_fu_216_p2                       |     +    |      0|  0|  18|          11|           1|
+    |i_3_fu_236_p2                       |     +    |      0|  0|  38|          31|           1|
+    |ap_block_pp1_stage1_11001           |    and   |      0|  0|   2|           1|           1|
+    |ap_block_state42_pp1_stage1_iter17  |    and   |      0|  0|   2|           1|           1|
+    |exitcond_fu_210_p2                  |   icmp   |      0|  0|  13|          11|          12|
+    |tmp_i_fu_231_p2                     |   icmp   |      0|  0|  20|          32|          32|
     |ap_enable_pp1                       |    xor   |      0|  0|   2|           1|           2|
-    |ap_enable_pp2                       |    xor   |      0|  0|   2|           1|           2|
     |ap_enable_reg_pp1_iter1             |    xor   |      0|  0|   2|           2|           1|
-    |ap_enable_reg_pp2_iter1             |    xor   |      0|  0|   2|           2|           1|
     +------------------------------------+----------+-------+---+----+------------+------------+
-    |Total                               |          |      0|  0| 183|         189|          90|
+    |Total                               |          |      0|  0|  97|          90|          51|
     +------------------------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
-    +---------------------------+----+-----------+------+-----------+
-    |            Name           | LUT| Input Size| Bits | Total Bits|
-    +---------------------------+----+-----------+------+-----------+
-    |ap_NS_fsm                  |  50|         11|     1|         11|
-    |ap_enable_reg_pp1_iter1    |   9|          2|     1|          2|
-    |ap_enable_reg_pp1_iter2    |   9|          2|     1|          2|
-    |ap_enable_reg_pp2_iter1    |   9|          2|     1|          2|
-    |ap_enable_reg_pp2_iter36   |   9|          2|     1|          2|
-    |chldToPar_data_V_address0  |  21|          4|    10|         40|
-    |chldToPar_data_V_d0        |  15|          3|  1024|       3072|
-    |chld_s_stream_V_write      |   9|          2|     1|          2|
-    |gmem_ARVALID               |   9|          2|     1|          2|
-    |gmem_RREADY                |   9|          2|     1|          2|
-    |i_i1_reg_298               |   9|          2|    31|         62|
-    |i_i_reg_287                |   9|          2|    31|         62|
-    |i_reg_276                  |   9|          2|    11|         22|
-    +---------------------------+----+-----------+------+-----------+
-    |Total                      | 176|         38|  1115|       3283|
-    +---------------------------+----+-----------+------+-----------+
+    +------------------------------+----+-----------+------+-----------+
+    |             Name             | LUT| Input Size| Bits | Total Bits|
+    +------------------------------+----+-----------+------+-----------+
+    |ap_NS_fsm                     |  47|         10|     1|         10|
+    |ap_enable_reg_pp1_iter1       |   9|          2|     1|          2|
+    |ap_enable_reg_pp1_iter18      |   9|          2|     1|          2|
+    |ap_phi_mux_i_i_phi_fu_180_p4  |   9|          2|    31|         62|
+    |chldToPar_data_V_address0     |  21|          4|    10|         40|
+    |chldToPar_data_V_d0           |  15|          3|  1024|       3072|
+    |chld_s_stream_V_write         |   9|          2|     1|          2|
+    |gmem_ARVALID                  |   9|          2|     1|          2|
+    |gmem_RREADY                   |   9|          2|     1|          2|
+    |i_i_reg_176                   |   9|          2|    31|         62|
+    |i_reg_165                     |   9|          2|    11|         22|
+    +------------------------------+----+-----------+------+-----------+
+    |Total                         | 155|         33|  1113|       3278|
+    +------------------------------+----+-----------+------+-----------+
 
     * Register: 
     +--------------------------------------+----+----+-----+-----------+
     |                 Name                 | FF | LUT| Bits| Const Bits|
     +--------------------------------------+----+----+-----+-----------+
-    |N_reg_466                             |  32|   0|   32|          0|
-    |ap_CS_fsm                             |  10|   0|   10|          0|
+    |N_reg_287                             |  32|   0|   32|          0|
+    |ap_CS_fsm                             |   9|   0|    9|          0|
     |ap_enable_reg_pp1_iter0               |   1|   0|    1|          0|
     |ap_enable_reg_pp1_iter1               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter10              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter11              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter12              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter13              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter14              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter15              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter16              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter17              |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter18              |   1|   0|    1|          0|
     |ap_enable_reg_pp1_iter2               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter0               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter1               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter10              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter11              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter12              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter13              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter14              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter15              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter16              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter17              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter18              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter19              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter2               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter20              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter21              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter22              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter23              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter24              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter25              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter26              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter27              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter28              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter29              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter3               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter30              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter31              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter32              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter33              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter34              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter35              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter36              |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter4               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter5               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter6               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter7               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter8               |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter9               |   1|   0|    1|          0|
-    |chldPerPar_read_reg_426               |  32|   0|   32|          0|
-    |grp_readChildren_fu_309_ap_start_reg  |   1|   0|    1|          0|
-    |i_i1_reg_298                          |  31|   0|   31|          0|
-    |i_i_reg_287                           |  31|   0|   31|          0|
-    |i_reg_276                             |  11|   0|   11|          0|
-    |numPar_read_reg_432                   |  32|   0|   32|          0|
-    |parToChld1_reg_437                    |  30|   0|   30|          0|
-    |tmp_2_reg_494                         |  32|   0|   32|          0|
-    |tmp_6_i_reg_490                       |   1|   0|    1|          0|
-    |tmp_6_i_reg_490_pp1_iter1_reg         |   1|   0|    1|          0|
-    |tmp_i1_reg_509                        |   1|   0|    1|          0|
-    |tmp_i_reg_481                         |   1|   0|    1|          0|
-    |tmp_i_reg_481_pp1_iter1_reg           |   1|   0|    1|          0|
-    |tmp_i1_reg_509                        |  64|  56|    1|          0|
+    |ap_enable_reg_pp1_iter3               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter4               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter5               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter6               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter7               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter8               |   1|   0|    1|          0|
+    |ap_enable_reg_pp1_iter9               |   1|   0|    1|          0|
+    |chldPerPar_read_reg_265               |  32|   0|   32|          0|
+    |chldToPar_data_V_ad_1_reg_315         |  10|   0|   10|          0|
+    |grp_readChildren_fu_187_ap_start_reg  |   1|   0|    1|          0|
+    |i_3_reg_310                           |  31|   0|   31|          0|
+    |i_i_reg_176                           |  31|   0|   31|          0|
+    |i_reg_165                             |  11|   0|   11|          0|
+    |numPar_read_reg_271                   |  32|   0|   32|          0|
+    |parToChld1_reg_276                    |  30|   0|   30|          0|
+    |tmp_i_reg_306                         |   1|   0|    1|          0|
+    |tmp_i_reg_306                         |  64|  32|    1|          0|
     +--------------------------------------+----+----+-----+-----------+
-    |Total                                 | 351|  56|  288|          0|
+    |Total                                 | 303|  32|  240|          0|
     +--------------------------------------+----+----+-----+-----------+
 
 
