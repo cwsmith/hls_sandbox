@@ -67,7 +67,7 @@ struct intersect : public sc_module {
     sc_signal< sc_lv<1024> > adj1_data_V;
     sc_signal< sc_lv<1024> > adj2_data_V;
     sc_signal< sc_lv<6> > i_assign_reg_141;
-    sc_signal< sc_lv<6> > i_i_reg_152;
+    sc_signal< sc_lv<6> > i_assign_1_reg_152;
     sc_signal< sc_lv<1024> > adj2_data_V_read_reg_311;
     sc_signal< sc_lv<1024> > adj1_data_V_read_reg_316;
     sc_signal< sc_lv<1> > exitcond_i_fu_170_p2;

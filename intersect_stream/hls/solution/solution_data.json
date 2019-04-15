@@ -20,7 +20,7 @@
     "ClockPeriod": "3.333",
     "IsCombLogic": "0",
     "II": "x",
-    "Latency": "2088",
+    "Latency": "104",
     "Uncertainty": "0.416667"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 3.333 [get_ports ap_clk]"]},
@@ -1234,28 +1234,28 @@
     "Metrics": {
       "readCompare": {
         "Latency": {
-          "LatencyBest": "2019",
-          "LatencyAvg": "2019",
-          "LatencyWorst": "2019",
-          "PipelineII": "2019",
+          "LatencyBest": "35",
+          "LatencyAvg": "35",
+          "LatencyWorst": "35",
+          "PipelineII": "35",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "3.33",
           "Uncertainty": "0.42",
-          "Estimate": "2.693"
+          "Estimate": "2.444"
         },
         "Loops": [{
             "Name": "readAdj2",
             "TripCount": "32",
-            "Latency": "2017",
-            "PipelineII": "63",
-            "PipelineDepth": "65"
+            "Latency": "33",
+            "PipelineII": "1",
+            "PipelineDepth": "3"
           }],
         "Area": {
-          "FF": "205",
-          "LUT": "1752",
+          "FF": "76",
+          "LUT": "759",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
@@ -1263,17 +1263,17 @@
       },
       "intersect": {
         "Latency": {
-          "LatencyBest": "2088",
-          "LatencyAvg": "2088",
-          "LatencyWorst": "2088",
-          "PipelineII": "2089",
+          "LatencyBest": "104",
+          "LatencyAvg": "104",
+          "LatencyWorst": "104",
+          "PipelineII": "105",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "3.33",
           "Uncertainty": "0.42",
-          "Estimate": "2.693"
+          "Estimate": "2.636"
         },
         "Loops": [
           {
@@ -1293,8 +1293,8 @@
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "5412",
-          "LUT": "12645",
+          "FF": "5283",
+          "LUT": "11652",
           "DSP48E": "0",
           "URAM": "0"
         }
@@ -1308,7 +1308,7 @@
   },
   "GenData": {
     "DataVersion": "0.1",
-    "Time": "2019-04-14 22:29:29 EDT",
+    "Time": "2019-04-15 00:18:04 EDT",
     "ToolName": "vivado_hls",
     "ToolVersion": "2018.2"
   }

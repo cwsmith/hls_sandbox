@@ -43,7 +43,7 @@ end;
 architecture behav of intersect is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "intersect,hls_ip_2018_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcku5p-sfvb784-3-e,HLS_INPUT_CLOCK=3.333333,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=2.693333,HLS_SYN_LAT=2088,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=5412,HLS_SYN_LUT=12645,HLS_VERSION=2018_2}";
+    "intersect,hls_ip_2018_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcku5p-sfvb784-3-e,HLS_INPUT_CLOCK=3.333333,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=2.635750,HLS_SYN_LAT=104,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=5283,HLS_SYN_LUT=11652,HLS_VERSION=2018_2}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (5 downto 0) := "000001";
@@ -81,7 +81,7 @@ architecture behav of intersect is
     signal adj1_data_V : STD_LOGIC_VECTOR (1023 downto 0);
     signal adj2_data_V : STD_LOGIC_VECTOR (1023 downto 0);
     signal i_assign_reg_141 : STD_LOGIC_VECTOR (5 downto 0);
-    signal i_i_reg_152 : STD_LOGIC_VECTOR (5 downto 0);
+    signal i_assign_1_reg_152 : STD_LOGIC_VECTOR (5 downto 0);
     signal adj2_data_V_read_reg_311 : STD_LOGIC_VECTOR (1023 downto 0);
     signal adj1_data_V_read_reg_316 : STD_LOGIC_VECTOR (1023 downto 0);
     signal exitcond_i_fu_170_p2 : STD_LOGIC_VECTOR (0 downto 0);
@@ -398,6 +398,17 @@ begin
     end process;
 
 
+    i_assign_1_reg_152_assign_proc : process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((exitcond_i1_fu_299_p2 = ap_const_lv1_0) and (ap_enable_reg_pp1_iter0 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp1_stage0) and (ap_const_boolean_0 = ap_block_pp1_stage0_11001))) then 
+                i_assign_1_reg_152 <= i_2_fu_305_p2;
+            elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (grp_readCompare_fu_163_ap_done = ap_const_logic_1))) then 
+                i_assign_1_reg_152 <= ap_const_lv6_0;
+            end if; 
+        end if;
+    end process;
+
     i_assign_reg_141_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
@@ -405,17 +416,6 @@ begin
                 i_assign_reg_141 <= i_fu_176_p2;
             elsif (((ap_const_logic_1 = ap_CS_fsm_state1) and (ap_start = ap_const_logic_1))) then 
                 i_assign_reg_141 <= ap_const_lv6_0;
-            end if; 
-        end if;
-    end process;
-
-    i_i_reg_152_assign_proc : process (ap_clk)
-    begin
-        if (ap_clk'event and ap_clk = '1') then
-            if (((exitcond_i1_fu_299_p2 = ap_const_lv1_0) and (ap_enable_reg_pp1_iter0 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp1_stage0) and (ap_const_boolean_0 = ap_block_pp1_stage0_11001))) then 
-                i_i_reg_152 <= i_2_fu_305_p2;
-            elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (grp_readCompare_fu_163_ap_done = ap_const_logic_1))) then 
-                i_i_reg_152 <= ap_const_lv6_0;
             end if; 
         end if;
     end process;
@@ -626,10 +626,10 @@ begin
                 ap_rst_n_inv <= not(ap_rst_n);
     end process;
 
-    exitcond_i1_fu_299_p2 <= "1" when (i_i_reg_152 = ap_const_lv6_20) else "0";
+    exitcond_i1_fu_299_p2 <= "1" when (i_assign_1_reg_152 = ap_const_lv6_20) else "0";
     exitcond_i_fu_170_p2 <= "1" when (i_assign_reg_141 = ap_const_lv6_20) else "0";
     grp_readCompare_fu_163_ap_start <= grp_readCompare_fu_163_ap_start_reg;
-    i_2_fu_305_p2 <= std_logic_vector(unsigned(i_i_reg_152) + unsigned(ap_const_lv6_1));
+    i_2_fu_305_p2 <= std_logic_vector(unsigned(i_assign_1_reg_152) + unsigned(ap_const_lv6_1));
     i_fu_176_p2 <= std_logic_vector(unsigned(i_assign_reg_141) + unsigned(ap_const_lv6_1));
     items1_stream_V_din <= p_Result_s_fu_289_p2(32 - 1 downto 0);
 

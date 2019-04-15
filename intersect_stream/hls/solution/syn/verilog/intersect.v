@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="intersect,hls_ip_2018_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcku5p-sfvb784-3-e,HLS_INPUT_CLOCK=3.333333,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=2.693333,HLS_SYN_LAT=2088,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=5412,HLS_SYN_LUT=12645,HLS_VERSION=2018_2}" *)
+(* CORE_GENERATION_INFO="intersect,hls_ip_2018_2,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcku5p-sfvb784-3-e,HLS_INPUT_CLOCK=3.333333,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=2.635750,HLS_SYN_LAT=104,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=5283,HLS_SYN_LUT=11652,HLS_VERSION=2018_2}" *)
 
 module intersect (
         ap_clk,
@@ -82,7 +82,7 @@ wire    ap_CS_fsm_state1;
 wire   [1023:0] adj1_data_V;
 wire   [1023:0] adj2_data_V;
 reg   [5:0] i_assign_reg_141;
-reg   [5:0] i_i_reg_152;
+reg   [5:0] i_assign_1_reg_152;
 reg   [1023:0] adj2_data_V_read_reg_311;
 reg   [1023:0] adj1_data_V_read_reg_316;
 wire   [0:0] exitcond_i_fu_170_p2;
@@ -312,18 +312,18 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (exitcond_i_fu_170_p2 == 1'd0) & (1'b1 == ap_CS_fsm_pp0_stage0) & (ap_enable_reg_pp0_iter0 == 1'b1))) begin
-        i_assign_reg_141 <= i_fu_176_p2;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b1))) begin
-        i_assign_reg_141 <= 6'd0;
+    if (((exitcond_i1_fu_299_p2 == 1'd0) & (ap_enable_reg_pp1_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage0) & (1'b0 == ap_block_pp1_stage0_11001))) begin
+        i_assign_1_reg_152 <= i_2_fu_305_p2;
+    end else if (((1'b1 == ap_CS_fsm_state5) & (grp_readCompare_fu_163_ap_done == 1'b1))) begin
+        i_assign_1_reg_152 <= 6'd0;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((exitcond_i1_fu_299_p2 == 1'd0) & (ap_enable_reg_pp1_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage0) & (1'b0 == ap_block_pp1_stage0_11001))) begin
-        i_i_reg_152 <= i_2_fu_305_p2;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (grp_readCompare_fu_163_ap_done == 1'b1))) begin
-        i_i_reg_152 <= 6'd0;
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (exitcond_i_fu_170_p2 == 1'd0) & (1'b1 == ap_CS_fsm_pp0_stage0) & (ap_enable_reg_pp0_iter0 == 1'b1))) begin
+        i_assign_reg_141 <= i_fu_176_p2;
+    end else if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b1))) begin
+        i_assign_reg_141 <= 6'd0;
     end
 end
 
@@ -547,13 +547,13 @@ always @ (*) begin
     ap_rst_n_inv = ~ap_rst_n;
 end
 
-assign exitcond_i1_fu_299_p2 = ((i_i_reg_152 == 6'd32) ? 1'b1 : 1'b0);
+assign exitcond_i1_fu_299_p2 = ((i_assign_1_reg_152 == 6'd32) ? 1'b1 : 1'b0);
 
 assign exitcond_i_fu_170_p2 = ((i_assign_reg_141 == 6'd32) ? 1'b1 : 1'b0);
 
 assign grp_readCompare_fu_163_ap_start = grp_readCompare_fu_163_ap_start_reg;
 
-assign i_2_fu_305_p2 = (i_i_reg_152 + 6'd1);
+assign i_2_fu_305_p2 = (i_assign_1_reg_152 + 6'd1);
 
 assign i_fu_176_p2 = (i_assign_reg_141 + 6'd1);
 

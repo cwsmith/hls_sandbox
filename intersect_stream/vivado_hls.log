@@ -6,7 +6,7 @@
 
 source /opt/Xilinx/Vivado/2018.2/scripts/vivado_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Sun Apr 14 22:28:42 EDT 2019
+INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Mon Apr 15 00:17:27 EDT 2019
 INFO: [HLS 200-10] On os Ubuntu 16.04.3 LTS
 INFO: [HLS 200-10] In directory '/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream'
 INFO: [HLS 200-10] Opening project '/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream/hls'.
@@ -16,52 +16,48 @@ INFO: [HLS 200-10] Setting target device to 'xcku5p-sfvb784-3-e'
 INFO: [HLS 200-10] Adding design file 'intersect.cc' to the project
 WARNING: [HLS 200-40] Cannot find source file invert.cc; skipping it.
 INFO: [HLS 200-10] Analyzing design file 'intersect.cc' ... 
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 396 ; free virtual = 6636
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 396 ; free virtual = 6636
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 395 ; free virtual = 6636
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 395 ; free virtual = 6636
 INFO: [HLS 200-10] Starting code transformations ...
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'hlslib::DataPack<int, 32>::Fill' (../hlslib/include/hlslib/DataPack.h:103).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'writeResult' (intersect.cc:42).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'writeResult' (intersect.cc:40).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'intersect' (intersect.cc:52).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'writeResult' (intersect.cc:44).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'intersect' (intersect.cc:54).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:78).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:77).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:75).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:74).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:72).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:71).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:69).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:68).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:66).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:65).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:63).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:62).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'intersect' (intersect.cc:60).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'writeResult' (intersect.cc:40).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (intersect.cc:25).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem' (intersect.cc:14).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking.1' into 'hlslib::Stream<int, 1u>::WriteBlocking' (../hlslib/include/hlslib/Stream.h:359).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking' into 'hlslib::Stream<int, 1u>::Push' (../hlslib/include/hlslib/Stream.h:371).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readCompare' (intersect.cc:29).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readCompare' (intersect.cc:32).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readCompare' (intersect.cc:27).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readItem' (intersect.cc:15).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::ReadBlocking' into 'hlslib::Stream<int, 1u>::Pop' (../hlslib/include/hlslib/Stream.h:263).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'writeResult' (intersect.cc:37).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'writeResult' (intersect.cc:39).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'readCompare' (intersect.cc:22).
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 391 ; free virtual = 6631
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 391 ; free virtual = 6632
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readItem' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:15) automatically.
 INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readCompare' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27) automatically.
-INFO: [XFORM 203-602] Inlining function 'readItem' into 'intersect' (intersect.cc:55) automatically.
+INFO: [XFORM 203-602] Inlining function 'readItem' into 'intersect' (intersect.cc:57) automatically.
+INFO: [XFORM 203-602] Inlining function 'writeResult' into 'intersect' (intersect.cc:59) automatically.
 WARNING: [SYNCHK 200-23] ../hlslib/include/hlslib/DataPack.h:81: variable-indexed range selection may cause suboptimal QoR.
-WARNING: [SYNCHK 200-77] The top function 'intersect' (intersect.cc:46) has no outputs. Possible cause(s) are: (1) Output parameters are passed by value; (2) intended outputs (parameters or global variables) are never written; (3) there are infinite loops.
+WARNING: [SYNCHK 200-77] The top function 'intersect' (intersect.cc:48) has no outputs. Possible cause(s) are: (1) Output parameters are passed by value; (2) intended outputs (parameters or global variables) are never written; (3) there are infinite loops.
 INFO: [SYNCHK 200-10] 0 error(s), 2 warning(s).
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 387 ; free virtual = 6627
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'WriteResult' (intersect.cc:35) in function 'writeResult' for pipelining.
-WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'AdjShift' (intersect.cc:38) because its parent loop or function is pipelined.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 387 ; free virtual = 6628
 INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'readAdj2' (intersect.cc:20) in function 'readCompare' for pipelining.
-INFO: [XFORM 203-501] Unrolling loop 'AdjShift' (intersect.cc:38) in function 'writeResult' completely.
 INFO: [XFORM 203-501] Unrolling loop 'Compare' (intersect.cc:24) in function 'readCompare' completely.
 INFO: [XFORM 203-501] Unrolling loop 'DataPack_Fill' (../hlslib/include/hlslib/DataPack.h:101) in function 'intersect' completely.
-INFO: [XFORM 203-602] Inlining function 'readItem' into 'intersect' (intersect.cc:55) automatically.
-INFO: [XFORM 203-602] Inlining function 'writeResult' into 'intersect' (intersect.cc:57) automatically.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 360 ; free virtual = 6600
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 356 ; free virtual = 6596
+INFO: [XFORM 203-602] Inlining function 'readItem' into 'intersect' (intersect.cc:57) automatically.
+INFO: [XFORM 203-602] Inlining function 'writeResult' into 'intersect' (intersect.cc:59) automatically.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 493.922 ; gain = 128.238 ; free physical = 365 ; free virtual = 6605
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 493.922 ; gain = 128.238 ; free physical = 356 ; free virtual = 6596
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'intersect' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -69,33 +65,15 @@ INFO: [HLS 200-42] -- Implementing module 'readCompare'
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'readAdj2'.
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 35, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 51, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 59, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 61, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 62, distance = 1, offset = 1)
-   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:29) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->intersect.cc:27).
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 63, Depth = 65.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 40.7 seconds; current allocated memory: 100.498 MB.
+INFO: [HLS 200-111]  Elapsed time: 34.24 seconds; current allocated memory: 87.927 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.63 seconds; current allocated memory: 102.096 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.13 seconds; current allocated memory: 88.421 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'intersect' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -105,18 +83,18 @@ INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
 INFO: [SCHED 204-61] Pipelining loop 'WriteResult'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.43 seconds; current allocated memory: 102.362 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.22 seconds; current allocated memory: 88.719 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.13 seconds; current allocated memory: 102.655 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 88.996 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'readCompare' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'readCompare'.
-INFO: [HLS 200-111]  Elapsed time: 0.71 seconds; current allocated memory: 106.595 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.28 seconds; current allocated memory: 90.283 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'intersect' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -125,10 +103,10 @@ INFO: [RTGEN 206-500] Setting interface mode on port 'intersect/adj2_data_V' to 
 INFO: [RTGEN 206-500] Setting interface mode on function 'intersect' to 'ap_ctrl_hs'.
 INFO: [RTGEN 206-100] Bundling port 'adj1_data_V' and 'adj2_data_V' to AXI-Lite port control.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'intersect'.
-INFO: [HLS 200-111]  Elapsed time: 2.05 seconds; current allocated memory: 115.237 MB.
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 322 ; free virtual = 6564
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 92.841 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 493.922 ; gain = 128.238 ; free physical = 346 ; free virtual = 6587
 INFO: [SYSC 207-301] Generating SystemC RTL for intersect.
 INFO: [VHDL 208-304] Generating VHDL RTL for intersect.
 INFO: [VLOG 209-307] Generating Verilog RTL for intersect.
-INFO: [HLS 200-112] Total elapsed time: 47.03 seconds; peak allocated memory: 115.237 MB.
-INFO: [Common 17-206] Exiting vivado_hls at Sun Apr 14 22:29:29 2019...
+INFO: [HLS 200-112] Total elapsed time: 37.32 seconds; peak allocated memory: 92.841 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Mon Apr 15 00:18:04 2019...

@@ -35612,21 +35612,23 @@ _ssdm_op_SpecPipeline(-1, 1, 1, 0, "");
       if (item==adj2.Get(j)){
         flag=1;
         i_out.Push(item);
+        break;
       }
-    if (flag==0) i_out.Push(-1);
+
     }
+    if (flag==0) {i_out.Push(-1);}
   }
 }
 
-void writeResult(Adj_t out, Stream<int> &i_in){
+void writeResult(Adj_t &out, Stream<int> &i_in){
   WriteResult: for (int i=0;i<32;i++){
 _ssdm_op_SpecPipeline(-1, 1, 1, 0, "");
  const int item=i_in.Pop();
-    AdjShift: for (int j=32 -1;j>0;--j){
-_ssdm_op_SpecPipeline(-1, 1, 1, 0, "");
- out.Set(j,out.Get(j-1));
-    }
-    if (item!=-1) out.Set(0,item);
+
+
+
+
+    if (item!=-1) {out.Set(i,item);}
   }
 }
 
@@ -35644,25 +35646,26 @@ _ssdm_op_SpecInterface(&adj2, "s_axilite", 0, 0, "", 0, 0, "control", "", "", 0,
   writeResult(adj_out,items2);
                             ;
 
-  printf("First Adj: %d", adj1.Get(0));
+
+  printf("First Adj: %d ", adj1.Get(0));
   for (int i=1;i<32;i++){
     if (adj1.Get(i)!=-1){
       printf("%d ",adj1.Get(i));
     }
   }
-  printf("\nSecond Adj: %d", adj2.Get(0));
+  printf("\nSecond Adj: %d ", adj2.Get(0));
   for (int i=1;i<32;i++){
     if (adj2.Get(i)!=-1){
       printf("%d ",adj2.Get(i));
     }
   }
-  printf("\nIntersect Adj: %d", adj_out.Get(0));
+  printf("\nIntersect Adj: %d ", adj_out.Get(0));
   for (int i=1;i<32;i++){
     if (adj_out.Get(i)!=-1){
-      printf("%d, ",adj_out.Get(i));
+      printf("%d ",adj_out.Get(i));
     }
   }
-  printf("------Done------");
+  printf("\n------Done------\n");
 }
 int main() {
   Adj_t adj1;
@@ -35678,22 +35681,28 @@ int main() {
   Adj_t adj8;
 
   adj1.Fill(-1);
+  adj2.Fill(-1);
   adj2.Set(0,0);
+  adj3.Fill(-1);
   adj3.Set(0,0);
   adj3.Set(1,1);
   adj3.Set(2,2);
   for (int i=0;i<32;i++){
     adj4.Set(i,i);
   }
+  adj5.Fill(-1);
   for (int i=0;i<5;i++){
     adj5.Set(i,i);
   }
+  adj6.Fill(-1);
   for (int i=0;i<3;i++){
     adj6.Set(i,i);
   }
+  adj7.Fill(-1);
   for (int i=0;i<4;i++){
     adj7.Set(i,i);
   }
+  adj8.Fill(-1);
   adj8.Set(0,3);
   adj8.Set(1,1);
   adj8.Set(2,0);

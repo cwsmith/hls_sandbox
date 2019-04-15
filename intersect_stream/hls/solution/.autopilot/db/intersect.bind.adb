@@ -142,7 +142,7 @@
 						<name>items1_stream_V</name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>49</lineNumber>
+						<lineNumber>51</lineNumber>
 						<contextFuncName>intersect</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -157,7 +157,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>49</second>
+										<second>51</second>
 									</item>
 								</second>
 							</item>
@@ -187,7 +187,7 @@
 						<name>items2_stream_V</name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>50</lineNumber>
+						<lineNumber>52</lineNumber>
 						<contextFuncName>intersect</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -202,7 +202,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>50</second>
+										<second>52</second>
 									</item>
 								</second>
 							</item>
@@ -247,7 +247,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -333,7 +333,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -386,7 +386,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -439,7 +439,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -493,7 +493,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -552,7 +552,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -613,7 +613,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -673,7 +673,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -733,7 +733,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -792,7 +792,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -851,7 +851,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -913,7 +913,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -973,7 +973,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1033,7 +1033,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1093,7 +1093,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1154,7 +1154,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1215,7 +1215,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1276,7 +1276,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1336,7 +1336,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1395,7 +1395,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1454,7 +1454,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1514,7 +1514,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1574,7 +1574,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1634,7 +1634,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1700,7 +1700,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1754,7 +1754,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>55</second>
+										<second>57</second>
 									</item>
 									<item>
 										<first>
@@ -1791,7 +1791,7 @@
 						<name></name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>56</lineNumber>
+						<lineNumber>58</lineNumber>
 						<contextFuncName>intersect</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1806,7 +1806,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>56</second>
+										<second>58</second>
 									</item>
 								</second>
 							</item>
@@ -1839,7 +1839,7 @@
 						<name></name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>35</lineNumber>
+						<lineNumber>37</lineNumber>
 						<contextFuncName>writeResult</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1854,14 +1854,14 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>57</second>
+										<second>59</second>
 									</item>
 									<item>
 										<first>
 											<first>intersect.cc</first>
 											<second>writeResult</second>
 										</first>
-										<second>35</second>
+										<second>37</second>
 									</item>
 								</second>
 							</item>
@@ -1888,7 +1888,7 @@
 					<Obj>
 						<type>0</type>
 						<id>54</id>
-						<name>i_i</name>
+						<name>i_assign_1</name>
 						<fileName></fileName>
 						<fileDirectory></fileDirectory>
 						<lineNumber>0</lineNumber>
@@ -1925,7 +1925,7 @@
 						<name>exitcond_i1</name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>35</lineNumber>
+						<lineNumber>37</lineNumber>
 						<contextFuncName>writeResult</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1940,14 +1940,14 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>57</second>
+										<second>59</second>
 									</item>
 									<item>
 										<first>
 											<first>intersect.cc</first>
 											<second>writeResult</second>
 										</first>
-										<second>35</second>
+										<second>37</second>
 									</item>
 								</second>
 							</item>
@@ -1978,7 +1978,7 @@
 						<name>i_2</name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>35</lineNumber>
+						<lineNumber>37</lineNumber>
 						<contextFuncName>writeResult</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1993,14 +1993,14 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>57</second>
+										<second>59</second>
 									</item>
 									<item>
 										<first>
 											<first>intersect.cc</first>
 											<second>writeResult</second>
 										</first>
-										<second>35</second>
+										<second>37</second>
 									</item>
 								</second>
 							</item>
@@ -2031,7 +2031,7 @@
 						<name></name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>35</lineNumber>
+						<lineNumber>37</lineNumber>
 						<contextFuncName>writeResult</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -2046,14 +2046,14 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>57</second>
+										<second>59</second>
 									</item>
 									<item>
 										<first>
 											<first>intersect.cc</first>
 											<second>writeResult</second>
 										</first>
-										<second>35</second>
+										<second>37</second>
 									</item>
 								</second>
 							</item>
@@ -2114,14 +2114,14 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>57</second>
+										<second>59</second>
 									</item>
 									<item>
 										<first>
 											<first>intersect.cc</first>
 											<second>writeResult</second>
 										</first>
-										<second>37</second>
+										<second>39</second>
 									</item>
 								</second>
 							</item>
@@ -2153,7 +2153,7 @@
 						<name></name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>35</lineNumber>
+						<lineNumber>37</lineNumber>
 						<contextFuncName>writeResult</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -2168,14 +2168,14 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>57</second>
+										<second>59</second>
 									</item>
 									<item>
 										<first>
 											<first>intersect.cc</first>
 											<second>writeResult</second>
 										</first>
-										<second>35</second>
+										<second>37</second>
 									</item>
 								</second>
 							</item>
@@ -2205,7 +2205,7 @@
 						<name></name>
 						<fileName>intersect.cc</fileName>
 						<fileDirectory>/home/mengy/smith-hls-sandbox/hls_sandbox/intersect_stream</fileDirectory>
-						<lineNumber>79</lineNumber>
+						<lineNumber>82</lineNumber>
 						<contextFuncName>intersect</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -2220,7 +2220,7 @@
 											<first>intersect.cc</first>
 											<second>intersect</second>
 										</first>
-										<second>79</second>
+										<second>82</second>
 									</item>
 								</second>
 							</item>
@@ -3314,8 +3314,8 @@
 			<mDepth>-1</mDepth>
 			<mMinTripCount>-1</mMinTripCount>
 			<mMaxTripCount>-1</mMaxTripCount>
-			<mMinLatency>2088</mMinLatency>
-			<mMaxLatency>2088</mMaxLatency>
+			<mMinLatency>104</mMinLatency>
+			<mMaxLatency>104</mMaxLatency>
 			<mIsDfPipe>0</mIsDfPipe>
 			<mDfPipe class_id="-1"></mDfPipe>
 		</item>
@@ -3381,8 +3381,8 @@
 			<mDepth>-1</mDepth>
 			<mMinTripCount>-1</mMinTripCount>
 			<mMaxTripCount>-1</mMaxTripCount>
-			<mMinLatency>2020</mMinLatency>
-			<mMaxLatency>2020</mMaxLatency>
+			<mMinLatency>36</mMinLatency>
+			<mMaxLatency>36</mMaxLatency>
 			<mIsDfPipe>0</mIsDfPipe>
 			<mDfPipe class_id="-1"></mDfPipe>
 		</item>
@@ -4650,6 +4650,14 @@
 			</second>
 		</item>
 		<item>
+			<first>i_assign_1_phi_fu_156</first>
+			<second>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>54</item>
+			</second>
+		</item>
+		<item>
 			<first>i_assign_phi_fu_145</first>
 			<second>
 				<count>1</count>
@@ -4663,14 +4671,6 @@
 				<count>1</count>
 				<item_version>0</item_version>
 				<item>21</item>
-			</second>
-		</item>
-		<item>
-			<first>i_i_phi_fu_156</first>
-			<second>
-				<count>1</count>
-				<item_version>0</item_version>
-				<item>54</item>
 			</second>
 		</item>
 		<item>
@@ -5035,19 +5035,19 @@
 			</second>
 		</item>
 		<item>
+			<first>i_assign_1_reg_152</first>
+			<second>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>54</item>
+			</second>
+		</item>
+		<item>
 			<first>i_assign_reg_141</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
 				<item>18</item>
-			</second>
-		</item>
-		<item>
-			<first>i_i_reg_152</first>
-			<second>
-				<count>1</count>
-				<item_version>0</item_version>
-				<item>54</item>
 			</second>
 		</item>
 		<item>
@@ -5115,19 +5115,19 @@
 		<count>2</count>
 		<item_version>0</item_version>
 		<item>
+			<first>i_assign_1_reg_152</first>
+			<second>
+				<count>1</count>
+				<item_version>0</item_version>
+				<item>54</item>
+			</second>
+		</item>
+		<item>
 			<first>i_assign_reg_141</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
 				<item>18</item>
-			</second>
-		</item>
-		<item>
-			<first>i_i_reg_152</first>
-			<second>
-				<count>1</count>
-				<item_version>0</item_version>
-				<item>54</item>
 			</second>
 		</item>
 	</dp_regname_phi>

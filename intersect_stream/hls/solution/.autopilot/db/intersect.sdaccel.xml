@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'intersect'" level="0">
-<item name = "Date">Sun Apr 14 22:29:27 2019
+<item name = "Date">Mon Apr 15 00:18:03 2019
 </item>
 <item name = "Version">2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)</item>
 <item name = "Project">hls</item>
@@ -15,21 +15,21 @@
 <section name = "" level="1">
 <item name = "Target clock period (ns)">3.33</item>
 <item name = "Clock uncertainty (ns)">0.42</item>
-<item name = "Estimated clock period (ns)">2.693</item>
+<item name = "Estimated clock period (ns)">2.636</item>
 </section>
 </item>
 <item name = "Latency (clock cycles)">
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">2088, 2088, 2088, 2088, none</column>
+<column name="">104, 104, 104, 104, none</column>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="0">
 <keys size="7">Instance, Module, min, max, min, max, Type</keys>
-<column name="grp_readCompare_fu_163">readCompare, 2019, 2019, 2019, 2019, none</column>
+<column name="grp_readCompare_fu_163">readCompare, 35, 35, 35, 35, none</column>
 </table>
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
@@ -50,7 +50,7 @@
 <column name="DSP">-, -, -, -, -</column>
 <column name="Expression">-, -, 0, 6565, -</column>
 <column name="FIFO">0, -, 10, 88, -</column>
-<column name="Instance">0, -, 2295, 5888, -</column>
+<column name="Instance">0, -, 2166, 4895, -</column>
 <column name="Memory">-, -, -, -, -</column>
 <column name="Multiplexer">-, -, -, 104, -</column>
 <column name="Register">-, -, 3107, -, -</column>
@@ -63,7 +63,7 @@
 <item name = "Instance"><table name="" hasTotal="1">
 <keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
 <column name="intersect_control_s_axi_U">intersect_control_s_axi, 0, 0, 2090, 4136</column>
-<column name="grp_readCompare_fu_163">readCompare, 0, 0, 205, 1752</column>
+<column name="grp_readCompare_fu_163">readCompare, 0, 0, 76, 759</column>
 </table>
 </item>
 <item name = "DSP48"><table name="" hasTotal="0">
@@ -113,8 +113,8 @@
 <column name="ap_NS_fsm">38, 7, 1, 7</column>
 <column name="ap_enable_reg_pp0_iter1">15, 3, 1, 3</column>
 <column name="ap_enable_reg_pp1_iter1">15, 3, 1, 3</column>
+<column name="i_assign_1_reg_152">9, 2, 6, 12</column>
 <column name="i_assign_reg_141">9, 2, 6, 12</column>
-<column name="i_i_reg_152">9, 2, 6, 12</column>
 <column name="items1_stream_V_read">9, 2, 1, 2</column>
 <column name="items2_stream_V_write">9, 2, 1, 2</column>
 </table>
@@ -131,8 +131,8 @@
 <column name="exitcond_i1_reg_353">1, 0, 1, 0</column>
 <column name="exitcond_i_reg_334">1, 0, 1, 0</column>
 <column name="grp_readCompare_fu_163_ap_start_reg">1, 0, 1, 0</column>
+<column name="i_assign_1_reg_152">6, 0, 6, 0</column>
 <column name="i_assign_reg_141">6, 0, 6, 0</column>
-<column name="i_i_reg_152">6, 0, 6, 0</column>
 <column name="tmp_12_reg_343">10, 0, 11, 1</column>
 <column name="tmp_15_reg_348">1024, 0, 1024, 0</column>
 </table>
@@ -175,12 +175,12 @@
 <item name = "Max Delay">2.64</item>
 <item name = "Critical Path Table"><table name="Critical Path Table" hasTotal="0">
 <keys size="15">Name, Operator, Delay, Accumulated Delay, Store Source, Resource, Core, Interface, Type, Port, Array, Scope, Pointer, Callee, Phi Node</keys>
-<column name="'i'">phi, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, &apos;i&apos;, intersect.cc:12-&gt;intersect.cc:55</column>
-<column name="'tmp', intersect.cc:12->intersect.cc:55">trunc, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, -</column>
-<column name="'Lo', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:55">bitconcatenate, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, -</column>
-<column name="'tmp_2', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:55">icmp, 0.87, 0.87, -, -, -, -, -, -, -, -, -, -, -</column>
-<column name="'tmp_10', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:55">select, 0.00, 0.87, -, -, -, -, -, -, -, -, -, -, -</column>
-<column name="'tmp_15', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:55">lshr, 1.76, 2.64, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'i'">phi, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, &apos;i&apos;, intersect.cc:12-&gt;intersect.cc:57</column>
+<column name="'tmp', intersect.cc:12->intersect.cc:57">trunc, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'Lo', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:57">bitconcatenate, 0.00, 0.00, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_2', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:57">icmp, 0.87, 0.87, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_10', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:57">select, 0.00, 0.87, -, -, -, -, -, -, -, -, -, -, -</column>
+<column name="'tmp_15', ../hlslib/include/hlslib/DataPack.h:81->intersect.cc:14->intersect.cc:57">lshr, 1.76, 2.64, -, -, -, -, -, -, -, -, -, -, -</column>
 </table>
 </item>
 </section>
