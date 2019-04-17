@@ -1,0 +1,22 @@
+<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">
+    <config>
+        <schedule model="unite"/>
+    </config>
+    <name>
+        <value string="solution"/>
+    </name>
+    <project>
+        <value string="hls"/>
+    </project>
+    <targetInfo>
+        <TargetInfo value="xcku5p:-sfvb784:-3-e"/>
+    </targetInfo>
+    <libraryList>
+        <library value="xilinx/kintexuplus/kintexuplus" name="DefaultPlatform"/>
+        <library value="xilinx/kintexuplus/kintexuplus_fpv7" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock name="default" default="false" period="300MHz"/>
+    </clockList>
+</AutoPilot:solution>
+
