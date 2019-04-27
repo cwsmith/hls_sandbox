@@ -6,7 +6,7 @@
 
 source /opt/Xilinx/Vivado/2018.2/scripts/vivado_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Tue Apr 16 23:57:39 EDT 2019
+INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Sat Apr 27 17:35:35 EDT 2019
 INFO: [HLS 200-10] On os Ubuntu 16.04.3 LTS
 INFO: [HLS 200-10] In directory '/home/mengy/smith-hls-sandbox/hls_sandbox/unite_stream'
 INFO: [HLS 200-10] Opening project '/home/mengy/smith-hls-sandbox/hls_sandbox/unite_stream/hls'.
@@ -15,52 +15,67 @@ INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.33333ns.
 INFO: [HLS 200-10] Setting target device to 'xcku5p-sfvb784-3-e'
 INFO: [HLS 200-10] Adding design file 'unite.cc' to the project
 INFO: [HLS 200-10] Analyzing design file 'unite.cc' ... 
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 375 ; free virtual = 6633
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 375 ; free virtual = 6633
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 719 ; free virtual = 6636
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 719 ; free virtual = 6636
 INFO: [HLS 200-10] Starting code transformations ...
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'hlslib::DataPack<int, 32>::Fill' (../hlslib/include/hlslib/DataPack.h:103).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readCompare' (unite.cc:38).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readCompare' (unite.cc:36).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readItem' (unite.cc:15).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'unite' (unite.cc:68).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:90).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:89).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:84).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:83).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:78).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:77).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:58).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:57).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:55).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:54).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'int_in_adj' (unite.cc:47).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'unite' (unite.cc:117).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readCompare' (unite.cc:54).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readCompare' (unite.cc:52).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readItem' (unite.cc:25).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readItem' (unite.cc:23).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'unite' (unite.cc:87).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::ReadBlocking' into 'hlslib::Stream<int, 1u>::Pop' (../hlslib/include/hlslib/Stream.h:263).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'unite' (unite.cc:94).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'readCompare' (unite.cc:35).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'readItem' (unite.cc:12).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:121).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:121).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:117).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:110).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:109).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:104).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:103).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:98).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'unite' (unite.cc:97).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:76).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:75).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:73).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'check_sol' (unite.cc:72).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'int_in_adj' (unite.cc:65).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (unite.cc:52).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (unite.cc:46).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (unite.cc:40).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (unite.cc:36).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (unite.cc:29).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readCompare' (unite.cc:26).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem' (unite.cc:13).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem' (unite.cc:23).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem' (unite.cc:17).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem' (unite.cc:14).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking.1' into 'hlslib::Stream<int, 1u>::WriteBlocking' (../hlslib/include/hlslib/Stream.h:359).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking' into 'hlslib::Stream<int, 1u>::Push' (../hlslib/include/hlslib/Stream.h:371).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readItem' (unite.cc:17).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::ReadBlocking' into 'hlslib::Stream<int, 1u>::Pop' (../hlslib/include/hlslib/Stream.h:263).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'readCompare' (unite.cc:25).
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 370 ; free virtual = 6629
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readCompare' (unite.cc:57).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readItem' (unite.cc:27).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.953 ; gain = 0.270 ; free physical = 713 ; free virtual = 6631
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readItem' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->unite.cc:17) automatically.
-INFO: [XFORM 203-602] Inlining function 'int_in_adj' into 'check_sol' (unite.cc:55) automatically.
-INFO: [XFORM 203-602] Inlining function 'readItem' into 'unite' (unite.cc:71) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readItem' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->unite.cc:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readCompare' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->unite.cc:57) automatically.
+INFO: [XFORM 203-602] Inlining function 'int_in_adj' into 'check_sol' (unite.cc:73) automatically.
 WARNING: [SYNCHK 200-23] ../hlslib/include/hlslib/DataPack.h:95: variable-indexed range selection may cause suboptimal QoR.
-WARNING: [SYNCHK 200-77] The top function 'unite' (unite.cc:63) has no outputs. Possible cause(s) are: (1) Output parameters are passed by value; (2) intended outputs (parameters or global variables) are never written; (3) there are infinite loops.
-INFO: [SYNCHK 200-10] 0 error(s), 2 warning(s).
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 366 ; free virtual = 6625
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'readAdj2' (unite.cc:23) in function 'readCompare' for pipelining.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 365.961 ; gain = 0.277 ; free physical = 709 ; free virtual = 6627
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'readAdj1' (unite.cc:11) in function 'readItem' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'ShiftOut' (unite.cc:21) because its parent loop or function is pipelined.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'readAdj2' (unite.cc:33) in function 'readCompare' for pipelining.
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'ShiftOut' (unite.cc:50) because its parent loop or function is pipelined.
 INFO: [XFORM 203-501] Unrolling loop 'DataPack_Fill' (../hlslib/include/hlslib/DataPack.h:101) in function 'unite' completely.
-INFO: [XFORM 203-501] Unrolling loop 'Compare' (unite.cc:28) in function 'readCompare' completely.
-INFO: [XFORM 203-501] Unrolling loop 'ShiftOut' (unite.cc:35) in function 'readCompare' completely.
-INFO: [XFORM 203-602] Inlining function 'readItem' into 'unite' (unite.cc:71) automatically.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (unite.cc:11:38) to (unite.cc:11:32) in function 'unite'... converting 3 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (unite.cc:23:36) to (unite.cc:23:31) in function 'readCompare'... converting 35 basic blocks.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 493.926 ; gain = 128.242 ; free physical = 343 ; free virtual = 6601
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 493.926 ; gain = 128.242 ; free physical = 341 ; free virtual = 6599
+INFO: [XFORM 203-501] Unrolling loop 'ShiftOut' (unite.cc:21) in function 'readItem' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Compare' (unite.cc:39) in function 'readCompare' completely.
+INFO: [XFORM 203-501] Unrolling loop 'ShiftOut' (unite.cc:50) in function 'readCompare' completely.
+INFO: [XFORM 203-602] Inlining function 'readItem' into 'unite' (unite.cc:90) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (unite.cc:13:1) to (unite.cc:11:32) in function 'unite'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (unite.cc:33:36) to (unite.cc:33:31) in function 'readCompare'... converting 36 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'readCompare' (unite.cc:32)...32 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 685 ; free virtual = 6603
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 682 ; free virtual = 6600
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'unite' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -68,15 +83,15 @@ INFO: [HLS 200-42] -- Implementing module 'readCompare'
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'readAdj2'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 33.56 seconds; current allocated memory: 86.227 MB.
+INFO: [HLS 200-111]  Elapsed time: 34.45 seconds; current allocated memory: 88.853 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.03 seconds; current allocated memory: 86.310 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 89.481 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'unite' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -84,30 +99,31 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'readAdj1'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 86.482 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.43 seconds; current allocated memory: 89.952 MB.
+INFO: [HLS 200-434] Only 1 loops out of a total 2 loops have been pipelined in this design.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.06 seconds; current allocated memory: 86.695 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.21 seconds; current allocated memory: 90.421 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'readCompare' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'readCompare'.
-INFO: [HLS 200-111]  Elapsed time: 0.1 seconds; current allocated memory: 86.935 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.54 seconds; current allocated memory: 91.619 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'unite' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'unite/adj1_data_V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'unite/adj1_data_V' to 's_axilite & ap_ovld'.
 INFO: [RTGEN 206-500] Setting interface mode on port 'unite/adj2_data_V' to 's_axilite & ap_none'.
 INFO: [RTGEN 206-500] Setting interface mode on function 'unite' to 'ap_ctrl_hs'.
 INFO: [RTGEN 206-100] Bundling port 'adj1_data_V' and 'adj2_data_V' to AXI-Lite port control.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'unite'.
-INFO: [HLS 200-111]  Elapsed time: 0.13 seconds; current allocated memory: 87.648 MB.
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 493.926 ; gain = 128.242 ; free physical = 333 ; free virtual = 6590
+INFO: [HLS 200-111]  Elapsed time: 0.98 seconds; current allocated memory: 94.961 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 665 ; free virtual = 6584
 INFO: [SYSC 207-301] Generating SystemC RTL for unite.
 INFO: [VHDL 208-304] Generating VHDL RTL for unite.
 INFO: [VLOG 209-307] Generating Verilog RTL for unite.
-INFO: [HLS 200-112] Total elapsed time: 35.51 seconds; peak allocated memory: 87.648 MB.
-INFO: [Common 17-206] Exiting vivado_hls at Tue Apr 16 23:58:14 2019...
+INFO: [HLS 200-112] Total elapsed time: 39.63 seconds; peak allocated memory: 94.961 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Sat Apr 27 17:36:14 2019...
