@@ -8,138 +8,118 @@ using hlslib::Stream;
 #define MAX_ADJ 32
 using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
 
-void readItem(Adj_t adj, Adj_t &out, Stream<int> &i_out){
-  unite_readAdj1: for(int i=0; i<MAX_ADJ; i++) {
+void readItem(Adj_t adj, Adj_t &out, Stream<int> &i_out, Stream<int> &i_in){
+  readAdj1: for(int i=0; i<MAX_ADJ; i++) {
+    if (i!=0) int item_d = i_in.Pop();
     #pragma HLS PIPELINE
     int item=adj.Get(i);
-    if (item==-1){
-      out.Set(i,item);
+    if (item!=-1){
+      ShiftOut: for (int j=MAX_ADJ-1;j>0;j--){
+        #pragma HLS PIPELINE
+        out.Set(j,out.Get(j-1));
+      }
+      out.Set(0, item);
     }
     i_out.Push(item);
   continue;
   }
 }
 
-void readCompare(Adj_t adj2, Adj_t &out, Stream<int> &i_in){
-  unite_readAdj2: for (int i=0;i<MAX_ADJ;i++){
+void readCompare(Adj_t adj2,Adj_t adj1, Adj_t &out, Stream<int> &i_in, Stream<int> &i_out){
+  readAdj2: for (int i=0;i<MAX_ADJ;i++){
     #pragma HLS PIPELINE
     const int item=i_in.Pop();
     int item2=adj2.Get(i);
     int flag=0;
-    unite_Compare: for (int j=1;j<MAX_ADJ;j++){
-      if (item2!=-1 and item2==out.Get(j)) {
-        flag=1;
-        break;
+    if (item2!=-1){
+      Compare: for (int j=0;j<MAX_ADJ;j++){
+        #pragma HLS PIPELINE
+        if (item2!=-1 and item2==adj1.Get(j)) {
+          flag=1;
+          break;
+        }
+      }
+      if (flag==0){
+        if (out.Get(MAX_ADJ-1)!=-1){
+          fprintf(stderr,"Union output overloaded\n");
+          exit(EXIT_FAILURE);
+        }
+        ShiftOut: for (int j=MAX_ADJ-1;j>0;j--){
+          #pragma HLS PIPELINE
+          out.Set(j,out.Get(j-1));
+        }
+        out.Set(0,item2);
       }
     }
-    if (flag==0){
-      unite_ShiftOut: for (int j=MAX_ADJ-1;j>0;j--){
-        out.Set(j,out.Get(j-1));
-      }
-      out.Set(0,item2);
-    }
+    i_out.Push(item);
   }
 }
 
-//Helper function to check solution
-int int_in_adj(const int a, Adj_t adj){
-  int flag=0;
-  for (int i=0; i<MAX_ADJ;i++){
-    if (a==adj.Get(i)) flag=1;
-  }
-  return flag;
-}
-
-void check_sol(Adj_t adj1, Adj_t adj2, Adj_t adj_out){
-  for (int i=0; i<MAX_ADJ; i++){
-    if (adj1.Get(i)!=-1){
-        if (int_in_adj(adj1.Get(i),adj_out)==0) printf("\nSolution check: Nop");
-    } 
-    if (adj2.Get(i)!=-1){
-        if (int_in_adj(adj2.Get(i),adj_out)==0) printf("\nSolution check: Nop"); 
-    }  
-  }
-  printf("\nSolution check: Correct :D");
-}
 void unite(Adj_t& adj1, Adj_t adj2){
   #pragma HLS INTERFACE s_axilite	port=adj1	bundle=control
   #pragma HLS INTERFACE s_axilite	port=adj2	bundle=control
   Stream<int> items1("1_in_2_out");
+  Stream<int> delay("2_in_1_out");
   Adj_t adj_out;
   adj_out.Fill(-1);
 
   HLSLIB_DATAFLOW_INIT();
-  HLSLIB_DATAFLOW_FUNCTION(readItem,adj1,adj_out,items1);
-  HLSLIB_DATAFLOW_FUNCTION(readCompare,adj2,adj_out,items1);
+  HLSLIB_DATAFLOW_FUNCTION(readItem,adj1,adj_out,items1,delay);
+  HLSLIB_DATAFLOW_FUNCTION(readCompare,adj2,adj1,adj_out,items1,delay);
   HLSLIB_DATAFLOW_FINALIZE();
  
-  printf("First Adj: ");
-  for (int i=0;i<MAX_ADJ;i++){
-    if (adj1.Get(i)!=-1){
-      printf("%d ",adj1.Get(i));
-    }
+  delay.Pop();
+
+  //Assign out back to adj1
+  for (int i=0; i<MAX_ADJ;i++){
+    adj1.Set(i,adj_out.Get(i));
   }
-  printf("\nSecond Adj: ");
+  printf("\nUnion Adj1: ");
   for (int i=0;i<MAX_ADJ;i++){
-    if (adj2.Get(i)!=-1){
-      printf("%d ",adj2.Get(i));
-    }
+    if (adj1.Get(i)!=-1) printf("%d ",adj1.Get(i));
   }
-  printf("\nUnion Adj: ");
-  for (int i=0;i<MAX_ADJ;i++){
-    if (adj_out.Get(i)!=-1){
-      printf("%d ",adj_out.Get(i));
-    }
-  }
-  check_sol(adj1,adj2,adj_out);
   printf("\n------Done------\n");
-  
-  adj1=adj_out;
 }
 
-void Read_g_adjs(int N, Adj_t* g, Stream<Adj_t>& adjs1){
-  transit_read_g: for (int i=0;i<N;i++){
-    #pragma HLS PIPELINE
-    adjs1.Push(g[i]);
-  }
-}
-
-void Read_unite_rg_adjs(int N,Adj_t* rg, Stream<Adj_t>& adjs1, Stream<Adj_t>& adjs2){
+void g_rg_t(int N,Adj_t* rg, Adj_t* g, Adj_t* out){
+  #pragma HLS INTERFACE s_axilite port=N	bundle=control
+  #pragma HLS INTERFACE m_axi port=rg	bundle=gmem	offset=slave
+  #pragma HLS INTERFACE m_axi port=g	bundle=gmem	offset=slave
+  #pragma HLS INTERFACE m_axi port=out	bundle=gmem	offset=slave
   transit_loop_rg: for (int i=0;i<N;i++){
     #pragma HLS PIPELINE
-    Adj_t g_adj = adjs1.Pop();
+    printf("Reading uniting rg adjs %d \n",i);
+    Adj_t g_adj = g[i];
     Adj_t adj_out;
     adj_out.Fill(-1);
     transit_unite_rg:for (int j=0; j<MAX_ADJ; j++){
       #pragma HLS PIPELINE
-      if (g_adj[j]!=-1){
-        unite(adj_out,rg[g_adj[j]]);
+      if (g_adj.Get(j)!=-1){
+        unite(adj_out,rg[g_adj.Get(j)]);
       }
       else continue;
     }
-    adjs2.Push(adj_out);
+    printf("adj_out: ");
+    for (int j=0; j<MAX_ADJ;j++) {
+      if (adj_out.Get(j)!=0)
+      printf("%d ",adj_out.Get(j));
+    }
+    //adjs2.Push(adj_out);
+    out[i]=adj_out;
+
   }
 }
 
-void Write_g_adjs(int N,Adj_t* output_g, Stream<Adj_t>& adjs2){
-  transit_write_g:for (int i=0;i<N;i++){
-    #pragma HLS PIPELINE
-    Adj_t adj_out=adjs2.Pop();
-    output_g[i]=adj_out;
-  }
-}
-
-void g_rg_t(int numPar_g, int numPar_rg){
-  #pragma HLS INTERFACE s_axilite port=numPar_g	bundle=control
-  #pragma HLS INTERFACE s_axilite port=numPar_rg bundle=control
+int main() {
   //rg:
-  //int numPar_rg=3;
+  //rg:
+  int numPar_rg=3;
   Adj_t rg[1024];
   Adj_t adj1; //[0,1,2]
   Adj_t adj2; //[0,2,3]
   Adj_t adj3; //[2,3,4]
 
-  //int numPar_g=5;
+  int numPar_g=5;
   Adj_t g[1024];
   Adj_t adj4; //[0,1]
   Adj_t adj5; //[0]
@@ -148,7 +128,7 @@ void g_rg_t(int numPar_g, int numPar_rg){
   Adj_t adj8; //[2]
 
   adj1.Fill(-1);adj1.Set(0,0);adj1.Set(1,1);adj1.Set(2,2);
-  adj2.Fill(-1);adj1.Set(0,0);adj1.Set(1,2);adj1.Set(2,3);
+  adj2.Fill(-1);adj2.Set(0,0);adj2.Set(1,2);adj2.Set(2,3);
   adj3.Fill(-1);adj3.Set(0,2);adj3.Set(1,3);adj3.Set(2,4);
 
   adj4.Fill(-1);adj4.Set(0,0);adj4.Set(1,1);
@@ -160,30 +140,43 @@ void g_rg_t(int numPar_g, int numPar_rg){
   rg[0]=adj1;rg[1]=adj2;rg[2]=adj3;
   g[0]=adj4;g[1]=adj5;g[2]=adj6;g[3]=adj7;g[4]=adj8;
   
-  Stream<Adj_t> adjs1("1_in_2_out");
-  Stream<Adj_t> adjs2("2_in_3_out");
+  //print input g
+  printf("This is g:\n");
+  for (int i=0; i<5; i++){
+    for (int j=0;j<MAX_ADJ;j++){
+      if (g[i].Get(j)!=-1) printf("%d ", g[i].Get(j));
+    }
+    printf("\n");
+  }
+
+  //print input rg
+  printf("This is rg:\n");
+  for (int i=0; i<3; i++){
+    for (int j=0;j<MAX_ADJ;j++){
+      if (rg[i].Get(j)!=-1) printf("%d ", rg[i].Get(j));
+    }
+    printf("\n");
+  }
+
   const int N=numPar_g;
   Adj_t output_g[1024];
   Store_output: for (int i=0; i<1024; i++){
     #pragma HLS PIPELINE
     output_g[i].Fill(-1);
   }
-  HLSLIB_DATAFLOW_INIT();
-  HLSLIB_DATAFLOW_FUNCTION(Read_g_adjs,N,g,adjs1);
-  HLSLIB_DATAFLOW_FUNCTION(Read_unite_rg_adjs,N,rg,adjs1,adjs2);
-  HLSLIB_DATAFLOW_FUNCTION(Write_g_adjs,N,output_g,adjs2);
-  HLSLIB_DATAFLOW_FINALIZE();
-
-}
-
-int main() {
-  //rg:
-
-  g_rg_t(5,3);
-//  unite(adj1,adj2);
-//  unite(adj3,adj4);
-//  unite(adj5,adj6);
-//  unite(adj7,adj8);
+  
+  g_rg_t(N,rg,g,output_g);
+  
+  //print output graph
+  printf("This is output graph:\n");
+  for (int i=0; i<numPar_g; i++){
+    for (int j=0; j<MAX_ADJ; j++){
+      if (output_g[i].Get(j)!=-1)
+      printf("%d ", output_g[i].Get(j));
+    } 
+    printf("\n");
+  }
+  //g_rg_t(5,3,g,rg);
 
   return 0;
 }
