@@ -7,47 +7,26 @@ using hlslib::Stream;
 #define MAX_ADJ 32
 using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
 
-void readItem0(Adj_t adj, Adj_t &cnt,  Stream<int> &i_out){
-  readAdj1: for(int i=0; i<MAX_ADJ; i++) {
-  //  if (i!=0) int item_d = i_in.Pop();
+void readItem0(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
+  readAdj0: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
-    //int item_p=i_in.Pop();
-    int item=adj.Get(i);
-    if (item!=-1){
-      cnt.Set(item, cnt.Get(item)+1);
-    }
+    int item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
     i_out.Push(item);
-  //continue;
   }
 }
 
-void readItem(Adj_t adj, Adj_t &cnt, Stream<int> &i_in, Stream<int> &i_out){
-  readAdj1: for(int i=0; i<MAX_ADJ; i++) {
-  //  if (i!=0) int item_d = i_in.Pop();
+void readItem(int num, Adj_t &cnt, Stream<int> &i_in){
+  readAdj1: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
-    int item_p=i_in.Pop();
-    int item=adj.Get(i);
+    int item=i_in.Pop();
     if (item!=-1){
       cnt.Set(item, (cnt.Get(item))+1);
     }
-    i_out.Push(item);
-  //continue;
+    //i_out.Push(item);
   }
 }
-void writeResult(Adj_t cnt, Adj_t& out, Stream<int> & i_in){
-  write: for (int i=0; i<MAX_ADJ;i++){
-    #pragma HLS PIPELINE
-    int item=i_in.Pop();
-    if (cnt.Get(i)>0){
-        ShiftOut: for (int j=MAX_ADJ-1;j>0;j--){
-          #pragma HLS UNROLL
-          out.Set(j,out.Get(j-1));
-        }
-      out.Set(0,i);
-    }
-  }
-}
-void writeResultf(Adj_t cnt, Adj_t& out){
+
+void writeResult(Adj_t cnt, Adj_t& out){
   write: for (int i=0; i<MAX_ADJ;i++){
     #pragma HLS PIPELINE
     if (cnt.Get(i)>0){
@@ -65,6 +44,7 @@ void unite(int num, Adj_t* u_adjs){
   #pragma HLS INTERFACE m_axi port=u_adjs bundle=gmem0 offset=slave
   #pragma HLS INTERFACE s_axilite port=u_adjs
   #pragma HLS INTERFACE s_axilite port=return
+  using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
   Adj_t adj_out;
   adj_out.Fill(-1);
   Adj_t count;
@@ -77,17 +57,15 @@ void unite(int num, Adj_t* u_adjs){
   Stream<int> pipe[4];
   
   HLSLIB_DATAFLOW_INIT();
-  //HLSLIB_DATAFLOW_FUNCTION(firstRead,u_adjs[0],pipe[0]);
-  HLSLIB_DATAFLOW_FUNCTION(readItem0,adj0,count,pipe[0]);
+  //HLSLIB_DATAFLOW_FUNCTION(readItem0,adj0,count,pipe[0]);
   /*pipelining: for (int a=1;a<3;a++){
     #pragma HLS UNROLL
     HLSLIB_DATAFLOW_FUNCTION(readItem,u_adjs[a],count,pipe[a-1],pipe[a]);
   }*/
-  HLSLIB_DATAFLOW_FUNCTION(readItem,adj1,count,pipe[0],pipe[1]);
-  HLSLIB_DATAFLOW_FUNCTION(readItem,adj2,count,pipe[1],pipe[2]);
-  HLSLIB_DATAFLOW_FUNCTION(writeResult,count,adj_out,pipe[2]);
+  HLSLIB_DATAFLOW_FUNCTION(readItem0,num,u_adjs,count,pipe[0]);
+  HLSLIB_DATAFLOW_FUNCTION(readItem,num,count,pipe[0]);
   HLSLIB_DATAFLOW_FINALIZE();
-  writeResultf(count,adj_out);
+  writeResult(count,adj_out);
  
   printf("\n------Adjs------: \n");
   for (int j=0;j<num;j++){
@@ -112,7 +90,7 @@ int main() {
   Adj_t adj1; //[Empty:-1,-1,-1...,-1]
   Adj_t adj2; //[0]
 
-  Adj_t adj3; //[0,1,5]
+  Adj_t adj3; //[2,3,4]
   Adj_t adj4; //[0,1,2,...,31]
 
   Adj_t adj5; //[0,1,2]
@@ -128,7 +106,7 @@ int main() {
   
   adj2.Fill(-1);adj2.Set(0,0);
   
-  adj3.Fill(-1);adj3.Set(0,0);adj3.Set(1,1);adj3.Set(2,5);
+  adj3.Fill(-1);adj3.Set(0,2);adj3.Set(1,3);adj3.Set(2,4);
 
   for (int i=0;i<MAX_ADJ;i++) adj4.Set(i,i);
   
@@ -151,7 +129,7 @@ int main() {
   Adj_t adjs[3];
   adjs[0]=adj5;
   adjs[1]=adj6;
-  adjs[2]=adj1;
+  adjs[2]=adj3;
 
   unite(3,adjs);
   return 0;
