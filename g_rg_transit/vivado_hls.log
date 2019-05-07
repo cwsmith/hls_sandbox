@@ -6,7 +6,7 @@
 
 source /opt/Xilinx/Vivado/2018.2/scripts/vivado_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Mon May 06 23:05:58 EDT 2019
+INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Tue May 07 10:35:07 EDT 2019
 INFO: [HLS 200-10] On os Ubuntu 16.04.3 LTS
 INFO: [HLS 200-10] In directory '/home/mengy/smith-hls-sandbox/hls_sandbox/g_rg_transit'
 INFO: [HLS 200-10] Opening project '/home/mengy/smith-hls-sandbox/hls_sandbox/g_rg_transit/hls'.
@@ -15,13 +15,13 @@ INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.33333ns.
 INFO: [HLS 200-10] Setting target device to 'xcku5p-sfvb784-3-e'
 INFO: [HLS 200-10] Adding design file 'g_rg_t.cc' to the project
 INFO: [HLS 200-10] Analyzing design file 'g_rg_t.cc' ... 
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 408 ; free virtual = 4704
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 408 ; free virtual = 4704
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 355 ; free virtual = 4661
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 355 ; free virtual = 4661
 INFO: [HLS 200-10] Starting code transformations ...
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'hlslib::DataPack<int, 32>::Fill' (../hlslib/include/hlslib/DataPack.h:103).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'writeResult' (g_rg_t.cc:37).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'writeResult' (g_rg_t.cc:35).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'readItem' (g_rg_t.cc:24).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Set' into 'storeItems' (g_rg_t.cc:24).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'g_rg_t' (g_rg_t.cc:76).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'g_rg_t' (g_rg_t.cc:72).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Fill' into 'unite' (g_rg_t.cc:48).
@@ -31,62 +31,62 @@ INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'g
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'g_rg_t' (g_rg_t.cc:80).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'writeResult' (g_rg_t.cc:35).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'writeResult' (g_rg_t.cc:32).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem' (g_rg_t.cc:24).
-INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItem0' (g_rg_t.cc:14).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'storeItems' (g_rg_t.cc:24).
+INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 32>::Get' into 'readItems' (g_rg_t.cc:14).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking.1' into 'hlslib::Stream<int, 1u>::WriteBlocking' (../hlslib/include/hlslib/Stream.h:359).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking' into 'hlslib::Stream<int, 1u>::Push' (../hlslib/include/hlslib/Stream.h:371).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readItem0' (g_rg_t.cc:15).
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readItems' (g_rg_t.cc:15).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::ReadBlocking' into 'hlslib::Stream<int, 1u>::Pop' (../hlslib/include/hlslib/Stream.h:263).
-INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'readItem' (g_rg_t.cc:22).
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 403 ; free virtual = 4700
+INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'storeItems' (g_rg_t.cc:22).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 350 ; free virtual = 4657
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readItem0' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:15) automatically.
-INFO: [XFORM 203-602] Inlining function 'readItem' into 'unite' (g_rg_t.cc:54) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readItems' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'storeItems' into 'unite' (g_rg_t.cc:54) automatically.
 INFO: [XFORM 203-602] Inlining function 'writeResult' into 'unite' (g_rg_t.cc:56) automatically.
 WARNING: [SYNCHK 200-23] ../hlslib/include/hlslib/DataPack.h:95: variable-indexed range selection may cause suboptimal QoR.
 INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 399 ; free virtual = 4695
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 345 ; free virtual = 4652
 INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'writeResult' (g_rg_t.cc:29).
 WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'write' (g_rg_t.cc:30) because its parent loop or function is pipelined.
 INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'unite' (g_rg_t.cc:41).
-INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'readItem0' (g_rg_t.cc:11).
-INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'readItem' (g_rg_t.cc:19).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'storeItems' (g_rg_t.cc:19).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'readItems' (g_rg_t.cc:11).
 INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'transit_loop_rg' (g_rg_t.cc:67) in function 'g_rg_t' for pipelining.
 INFO: [XFORM 203-501] Unrolling loop 'write' (g_rg_t.cc:30) in function 'writeResult' completely.
 INFO: [XFORM 203-501] Unrolling loop 'ShiftOut' (g_rg_t.cc:33) in function 'writeResult' completely.
 INFO: [XFORM 203-501] Unrolling loop 'DataPack_Fill' (../hlslib/include/hlslib/DataPack.h:101) in function 'unite' completely.
-WARNING: [XFORM 203-503] Cannot unroll loop 'readAdj0' (g_rg_t.cc:12) in function 'readItem0': cannot completely unroll a loop with a variable trip count.
-WARNING: [XFORM 203-503] Cannot unroll loop 'readAdj1' (g_rg_t.cc:20) in function 'readItem': cannot completely unroll a loop with a variable trip count.
+WARNING: [XFORM 203-503] Cannot unroll loop 'readAdj1' (g_rg_t.cc:20) in function 'storeItems': cannot completely unroll a loop with a variable trip count.
+WARNING: [XFORM 203-503] Cannot unroll loop 'readAdj0' (g_rg_t.cc:12) in function 'readItems': cannot completely unroll a loop with a variable trip count.
 INFO: [XFORM 203-501] Unrolling loop 'DataPack_Fill' (../hlslib/include/hlslib/DataPack.h:101) in function 'g_rg_t' completely.
 INFO: [XFORM 203-501] Unrolling loop 'init_adjs' (g_rg_t.cc:74) in function 'g_rg_t' completely.
 INFO: [XFORM 203-501] Unrolling loop 'count_adjs' (g_rg_t.cc:78) in function 'g_rg_t' completely.
 INFO: [XFORM 203-501] Unrolling loop 'shift_build_adjs' (g_rg_t.cc:85) in function 'g_rg_t' completely.
 WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-1.4.1' (g_rg_t.cc:88) in function 'g_rg_t' completely: variable loop bound.
-INFO: [XFORM 203-602] Inlining function 'readItem' into 'unite' (g_rg_t.cc:54) automatically.
+INFO: [XFORM 203-602] Inlining function 'storeItems' into 'unite' (g_rg_t.cc:54) automatically.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../hlslib/include/hlslib/DataPack.h:72:5) to (g_rg_t.cc:40:1) in function 'writeResult'... converting 63 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (g_rg_t.cc:20:42) to (g_rg_t.cc:20:36) in function 'unite'... converting 3 basic blocks.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:01 ; elapsed = 00:01:02 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 354 ; free virtual = 4651
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 493.684 ; gain = 128.000 ; free physical = 301 ; free virtual = 4608
 WARNING: [XFORM 203-542] Cannot flatten a loop nest 'transit_loop_rg' (g_rg_t.cc:67:41) in function 'g_rg_t' : 
 
 more than one sub loop.
 INFO: [XFORM 203-811] Inferring bus burst write of length 128 on port 'gmem' (../hlslib/include/hlslib/DataPack.h:95:5).
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:23 ; elapsed = 00:01:24 . Memory (MB): peak = 557.684 ; gain = 192.000 ; free physical = 286 ; free virtual = 4583
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 557.684 ; gain = 192.000 ; free physical = 232 ; free virtual = 4540
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'g_rg_t' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'readItem0' 
+INFO: [HLS 200-42] -- Implementing module 'readItems' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Function contains subloop(s) not being unrolled.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 87.69 seconds; current allocated memory: 218.182 MB.
+INFO: [HLS 200-111]  Elapsed time: 88.04 seconds; current allocated memory: 218.173 MB.
 INFO: [HLS 200-434] Only 0 loops out of a total 1 loops have been pipelined in this design.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 218.480 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.14 seconds; current allocated memory: 218.471 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'writeResult' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -94,55 +94,55 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining function 'writeResult'.
 INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 219.414 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.3 seconds; current allocated memory: 219.406 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.18 seconds; current allocated memory: 220.132 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 220.124 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'unite' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Function contains subloop(s) not being unrolled.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.35 seconds; current allocated memory: 220.417 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 220.409 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.24 seconds; current allocated memory: 220.723 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.23 seconds; current allocated memory: 220.715 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'g_rg_t' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Loop contains subloop(s) not being unrolled or flattened.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 21.6 seconds; current allocated memory: 231.299 MB.
+INFO: [HLS 200-111]  Elapsed time: 18.67 seconds; current allocated memory: 231.292 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 13.97 seconds; current allocated memory: 244.146 MB.
+INFO: [HLS 200-111]  Elapsed time: 14.12 seconds; current allocated memory: 244.137 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'readItem0' 
+INFO: [HLS 200-10] -- Generating RTL for module 'readItems' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-100] Finished creating RTL model for 'readItem0'.
-INFO: [HLS 200-111]  Elapsed time: 4.38 seconds; current allocated memory: 245.284 MB.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'readItems'.
+INFO: [HLS 200-111]  Elapsed time: 4.27 seconds; current allocated memory: 245.276 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'writeResult' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-104] Estimated max fanout for 'writeResult' is 9328 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
 INFO: [RTGEN 206-100] Finished creating RTL model for 'writeResult'.
-INFO: [HLS 200-111]  Elapsed time: 5.35 seconds; current allocated memory: 247.505 MB.
+INFO: [HLS 200-111]  Elapsed time: 5.32 seconds; current allocated memory: 247.497 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'unite' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'unite'.
-INFO: [HLS 200-111]  Elapsed time: 1.03 seconds; current allocated memory: 251.015 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.99 seconds; current allocated memory: 251.006 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'g_rg_t' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -156,10 +156,10 @@ INFO: [RTGEN 206-500] Setting interface mode on function 'g_rg_t' to 'ap_ctrl_hs
 INFO: [RTGEN 206-100] Bundling port 'rg_data_V', 'g_data_V', 'out_data_V' and 'adjs_data_V' to AXI-Lite port AXILiteS.
 INFO: [RTGEN 206-100] Bundling port 'N' to AXI-Lite port control.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'g_rg_t'.
-INFO: [HLS 200-111]  Elapsed time: 10.5 seconds; current allocated memory: 275.205 MB.
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:02:34 ; elapsed = 00:02:40 . Memory (MB): peak = 701.695 ; gain = 336.012 ; free physical = 105 ; free virtual = 4408
+INFO: [HLS 200-111]  Elapsed time: 10.58 seconds; current allocated memory: 275.198 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:02:31 ; elapsed = 00:02:37 . Memory (MB): peak = 701.695 ; gain = 336.012 ; free physical = 117 ; free virtual = 4378
 INFO: [SYSC 207-301] Generating SystemC RTL for g_rg_t.
 INFO: [VHDL 208-304] Generating VHDL RTL for g_rg_t.
 INFO: [VLOG 209-307] Generating Verilog RTL for g_rg_t.
-INFO: [HLS 200-112] Total elapsed time: 160.08 seconds; peak allocated memory: 275.205 MB.
-INFO: [Common 17-206] Exiting vivado_hls at Mon May  6 23:08:38 2019...
+INFO: [HLS 200-112] Total elapsed time: 157.59 seconds; peak allocated memory: 275.198 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Tue May  7 10:37:45 2019...

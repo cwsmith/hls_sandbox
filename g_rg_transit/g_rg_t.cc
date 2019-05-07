@@ -8,7 +8,7 @@ using hlslib::Stream;
 #define MAX_ADJ 32
 using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
 
-void readItem0(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
+void readItems(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
   readAdj0: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
     int item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
@@ -16,7 +16,7 @@ void readItem0(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
   }
 }
 
-void readItem(int num, Adj_t &cnt, Stream<int> &i_in){
+void storeItems(int num, Adj_t &cnt, Stream<int> &i_in){
   readAdj1: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
     int item=i_in.Pop();
@@ -50,8 +50,8 @@ void unite(int num, Adj_t* u_adjs, Adj_t & adj_out){
   Stream<int> pipe;
   
   HLSLIB_DATAFLOW_INIT();
-  HLSLIB_DATAFLOW_FUNCTION(readItem0,num,u_adjs,count,pipe);
-  HLSLIB_DATAFLOW_FUNCTION(readItem,num,count,pipe);
+  HLSLIB_DATAFLOW_FUNCTION(readItems,num,u_adjs,count,pipe);
+  HLSLIB_DATAFLOW_FUNCTION(storeItems,num,count,pipe);
   HLSLIB_DATAFLOW_FINALIZE();
   writeResult(count,adj_out);
  
