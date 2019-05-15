@@ -1,0 +1,265 @@
+
+
+================================================================
+== Vivado HLS Report for 'readItem0'
+================================================================
+* Date:           Mon May  6 23:07:26 2019
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        hls
+* Solution:       solution
+* Product family: kintexuplus
+* Target device:  xcku5p-sfvb784-3-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   3.33|     2.917|        0.42|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-------+-----+-------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    | min |  max  | min |  max  |   Type  |
+    +-----+-------+-----+-------+---------+
+    |    1|  11265|    1|  11265|   none  |
+    +-----+-------+-----+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +------------+-----+-------+----------+-----------+-----------+----------+----------+
+        |            |   Latency   | Iteration|  Initiation Interval  |   Trip   |          |
+        |  Loop Name | min |  max  |  Latency |  achieved |   target  |   Count  | Pipelined|
+        +------------+-----+-------+----------+-----------+-----------+----------+----------+
+        |- readAdj0  |    0|  11264|        11|          -|          -| 0 ~ 1024 |    no    |
+        +------------+-----+-------+----------+-----------+-----------+----------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 12
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond)
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	2  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.60>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%adjs_data_V_offset_s = call i25 @_ssdm_op_Read.ap_auto.i25(i25 %adjs_data_V_offset)"   --->   Operation 13 'read' 'adjs_data_V_offset_s' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%num_read = call i6 @_ssdm_op_Read.ap_auto.i6(i6 %num)"   --->   Operation 14 'read' 'num_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %i_out_stream_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str33, i32 0, i32 0, [1 x i8]* @p_str34, [1 x i8]* @p_str35, [1 x i8]* @p_str36, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str37, [1 x i8]* @p_str38)"   --->   Operation 15 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i1024* %adjs_data_V, [6 x i8]* @p_str7, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [6 x i8]* @p_str8, [6 x i8]* @p_str9, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1)"   --->   Operation 16 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%tmp = call i11 @_ssdm_op_BitConcatenate.i11.i6.i5(i6 %num_read, i5 0)" [g_rg_t.cc:12]   --->   Operation 17 'bitconcatenate' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%sext_cast = zext i25 %adjs_data_V_offset_s to i26" [g_rg_t.cc:12]   --->   Operation 18 'zext' 'sext_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.60ns)   --->   "br label %1" [g_rg_t.cc:12]   --->   Operation 19 'br' <Predicate = true> <Delay = 0.60>
+
+State 2 <SV = 1> <Delay = 1.19>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%i = phi i11 [ 0, %0 ], [ %i_1, %2 ]"   --->   Operation 20 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 1024, i64 0)"   --->   Operation 21 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.88ns)   --->   "%exitcond = icmp eq i11 %i, %tmp" [g_rg_t.cc:12]   --->   Operation 22 'icmp' 'exitcond' <Predicate = true> <Delay = 0.88> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.87> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 23 [1/1] (0.75ns)   --->   "%i_1 = add i11 %i, 1" [g_rg_t.cc:12]   --->   Operation 23 'add' 'i_1' <Predicate = true> <Delay = 0.75> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.75> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %3, label %2" [g_rg_t.cc:12]   --->   Operation 24 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%tmp_78 = call i6 @_ssdm_op_PartSelect.i6.i11.i32.i32(i11 %i, i32 5, i32 10)" [g_rg_t.cc:12]   --->   Operation 25 'partselect' 'tmp_78' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%tmp_8_cast = zext i6 %tmp_78 to i26" [g_rg_t.cc:12]   --->   Operation 26 'zext' 'tmp_8_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%tmp_79 = trunc i11 %i to i5" [g_rg_t.cc:12]   --->   Operation 27 'trunc' 'tmp_79' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 28 [1/1] (0.86ns)   --->   "%sum = add i26 %sext_cast, %tmp_8_cast" [g_rg_t.cc:12]   --->   Operation 28 'add' 'sum' <Predicate = (!exitcond)> <Delay = 0.86> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.75> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "ret void" [g_rg_t.cc:17]   --->   Operation 29 'ret' <Predicate = (exitcond)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.91>
+ST_3 : Operation 30 [1/1] (0.00ns)   --->   "%sum_cast = zext i26 %sum to i64" [g_rg_t.cc:12]   --->   Operation 30 'zext' 'sum_cast' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%adjs_data_V_addr = getelementptr i1024* %adjs_data_V, i64 %sum_cast" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 31 'getelementptr' 'adjs_data_V_addr' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 32 [7/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 32 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 4 <SV = 3> <Delay = 2.91>
+ST_4 : Operation 33 [6/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 33 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 5 <SV = 4> <Delay = 2.91>
+ST_5 : Operation 34 [5/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 34 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 6 <SV = 5> <Delay = 2.91>
+ST_6 : Operation 35 [4/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 35 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 7 <SV = 6> <Delay = 2.91>
+ST_7 : Operation 36 [3/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 36 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 8 <SV = 7> <Delay = 2.91>
+ST_8 : Operation 37 [2/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 37 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 9 <SV = 8> <Delay = 2.91>
+ST_9 : Operation 38 [1/7] (2.91ns)   --->   "%p_Val2_req = call i1 @_ssdm_op_ReadReq.m_axi.i1024P(i1024* %adjs_data_V_addr, i32 1)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 38 'readreq' 'p_Val2_req' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 10 <SV = 9> <Delay = 2.91>
+ST_10 : Operation 39 [1/1] (0.00ns)   --->   "%Lo_assign = call i10 @_ssdm_op_BitConcatenate.i10.i5.i5(i5 %tmp_79, i5 0)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 39 'bitconcatenate' 'Lo_assign' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 40 [1/1] (0.00ns)   --->   "%Hi_assign = or i10 %Lo_assign, 31" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 40 'or' 'Hi_assign' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 41 [1/1] (2.91ns)   --->   "%p_Val2_s = call i1024 @_ssdm_op_Read.m_axi.i1024P(i1024* %adjs_data_V_addr)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 41 'read' 'p_Val2_s' <Predicate = true> <Delay = 2.91> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_10 : Operation 42 [1/1] (0.87ns)   --->   "%tmp_80 = icmp ugt i10 %Lo_assign, %Hi_assign" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 42 'icmp' 'tmp_80' <Predicate = true> <Delay = 0.87> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.87> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+
+State 11 <SV = 10> <Delay = 2.64>
+ST_11 : Operation 43 [1/1] (0.00ns)   --->   "%tmp_81 = zext i10 %Lo_assign to i11" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 43 'zext' 'tmp_81' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 44 [1/1] (0.00ns)   --->   "%tmp_82 = zext i10 %Hi_assign to i11" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 44 'zext' 'tmp_82' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 45 [1/1] (0.00ns) (grouped into LUT with out node tmp_93)   --->   "%tmp_83 = call i1024 @llvm.part.select.i1024(i1024 %p_Val2_s, i32 1023, i32 0)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 45 'partselect' 'tmp_83' <Predicate = (tmp_80)> <Delay = 0.00>
+ST_11 : Operation 46 [1/1] (0.73ns)   --->   "%tmp_84 = sub i11 %tmp_81, %tmp_82" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 46 'sub' 'tmp_84' <Predicate = (tmp_80)> <Delay = 0.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.75> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 47 [1/1] (0.00ns) (grouped into LUT with out node tmp_93)   --->   "%tmp_85 = xor i11 %tmp_81, 1023" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 47 'xor' 'tmp_85' <Predicate = (tmp_80)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.31> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 48 [1/1] (0.73ns)   --->   "%tmp_86 = sub i11 %tmp_82, %tmp_81" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 48 'sub' 'tmp_86' <Predicate = (!tmp_80)> <Delay = 0.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.75> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 49 [1/1] (0.00ns) (grouped into LUT with out node tmp_90)   --->   "%tmp_87 = select i1 %tmp_80, i11 %tmp_84, i11 %tmp_86" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 49 'select' 'tmp_87' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.31> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_11 : Operation 50 [1/1] (0.00ns) (grouped into LUT with out node tmp_93)   --->   "%tmp_88 = select i1 %tmp_80, i1024 %tmp_83, i1024 %p_Val2_s" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 50 'select' 'tmp_88' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.31> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_11 : Operation 51 [1/1] (0.00ns) (grouped into LUT with out node tmp_93)   --->   "%tmp_89 = select i1 %tmp_80, i11 %tmp_85, i11 %tmp_81" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 51 'select' 'tmp_89' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.31> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_11 : Operation 52 [1/1] (0.75ns) (out node of the LUT)   --->   "%tmp_90 = sub i11 1023, %tmp_87" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 52 'sub' 'tmp_90' <Predicate = true> <Delay = 0.75> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 0.75> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 53 [1/1] (0.00ns) (grouped into LUT with out node tmp_93)   --->   "%tmp_91 = zext i11 %tmp_89 to i1024" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 53 'zext' 'tmp_91' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 54 [1/1] (0.00ns) (grouped into LUT with out node p_Result_s)   --->   "%tmp_92 = zext i11 %tmp_90 to i1024" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 54 'zext' 'tmp_92' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 55 [1/1] (1.76ns) (out node of the LUT)   --->   "%tmp_93 = lshr i1024 %tmp_88, %tmp_91" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 55 'lshr' 'tmp_93' <Predicate = true> <Delay = 1.76> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 0.88> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 56 [1/1] (0.00ns) (grouped into LUT with out node p_Result_s)   --->   "%tmp_94 = lshr i1024 -1, %tmp_92" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 56 'lshr' 'tmp_94' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 0.88> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 57 [1/1] (0.88ns) (out node of the LUT)   --->   "%p_Result_s = and i1024 %tmp_93, %tmp_94" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 57 'and' 'p_Result_s' <Predicate = true> <Delay = 0.88> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.31> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 58 [1/1] (0.00ns)   --->   "%temp_V = trunc i1024 %p_Result_s to i32" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14]   --->   Operation 58 'trunc' 'temp_V' <Predicate = true> <Delay = 0.00>
+
+State 12 <SV = 11> <Delay = 1.45>
+ST_12 : Operation 59 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([9 x i8]* @p_str) nounwind" [g_rg_t.cc:12]   --->   Operation 59 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 60 [1/1] (0.00ns)   --->   "%tmp_s = call i32 (...)* @_ssdm_op_SpecRegionBegin([9 x i8]* @p_str)" [g_rg_t.cc:12]   --->   Operation 60 'specregionbegin' 'tmp_s' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 61 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str1) nounwind" [g_rg_t.cc:13]   --->   Operation 61 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 62 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %temp_V)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:15]   --->   Operation 62 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_12 : Operation 63 [1/1] (0.00ns)   --->   "%empty_12 = call i32 (...)* @_ssdm_op_SpecRegionEnd([9 x i8]* @p_str, i32 %tmp_s)" [g_rg_t.cc:16]   --->   Operation 63 'specregionend' 'empty_12' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 64 [1/1] (0.00ns)   --->   "br label %1" [g_rg_t.cc:12]   --->   Operation 64 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.417ns.
+
+ <State 1>: 0.605ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', g_rg_t.cc:12) [13]  (0.605 ns)
+
+ <State 2>: 1.19ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond', g_rg_t.cc:12) [15]  (0.881 ns)
+	blocking operation 0.313 ns on control path)
+
+ <State 3>: 2.92ns
+The critical path consists of the following:
+	'getelementptr' operation ('adjs_data_V_addr', ../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [29]  (0 ns)
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 4>: 2.92ns
+The critical path consists of the following:
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 5>: 2.92ns
+The critical path consists of the following:
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 6>: 2.92ns
+The critical path consists of the following:
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 7>: 2.92ns
+The critical path consists of the following:
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 8>: 2.92ns
+The critical path consists of the following:
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 9>: 2.92ns
+The critical path consists of the following:
+	bus request on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [30]  (2.92 ns)
+
+ <State 10>: 2.92ns
+The critical path consists of the following:
+	bus read on port 'adjs_data_V' (../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [31]  (2.92 ns)
+
+ <State 11>: 2.65ns
+The critical path consists of the following:
+	'select' operation ('tmp_89', ../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [41]  (0 ns)
+	'lshr' operation ('tmp_93', ../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [45]  (1.76 ns)
+	'and' operation ('__Result__', ../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:14) [47]  (0.883 ns)
+
+ <State 12>: 1.46ns
+The critical path consists of the following:
+	fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:15) [49]  (1.46 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;g_rg_t.cc&apos; ..."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Linking Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 418 ; free virtual = 4677"/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Checking Pragmas Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 418 ; free virtual = 4677"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1467" tag="" content="Starting code transformations ..."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Set&apos; into &apos;hlslib::DataPack&lt;int, 32&gt;::Fill&apos; (../hlslib/include/hlslib/DataPack.h:103)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Set&apos; into &apos;writeResult&apos; (g_rg_t.cc:43)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Set&apos; into &apos;writeResult&apos; (g_rg_t.cc:41)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Set&apos; into &apos;storeItems&apos; (g_rg_t.cc:29)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Fill&apos; into &apos;g_rg_t&apos; (g_rg_t.cc:82)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Fill&apos; into &apos;g_rg_t&apos; (g_rg_t.cc:78)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Fill&apos; into &apos;unite&apos; (g_rg_t.cc:54)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Fill&apos; into &apos;unite&apos; (g_rg_t.cc:52)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;g_rg_t&apos; (g_rg_t.cc:98)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;g_rg_t&apos; (g_rg_t.cc:93)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;g_rg_t&apos; (g_rg_t.cc:86)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;writeResult&apos; (g_rg_t.cc:41)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;writeResult&apos; (g_rg_t.cc:38)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;storeItems&apos; (g_rg_t.cc:29)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::DataPack&lt;int, 32&gt;::Get&apos; into &apos;readItems&apos; (g_rg_t.cc:17)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::Stream&lt;int, 1u&gt;::WriteBlocking.1&apos; into &apos;hlslib::Stream&lt;int, 1u&gt;::WriteBlocking&apos; (../hlslib/include/hlslib/Stream.h:359)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::Stream&lt;int, 1u&gt;::WriteBlocking&apos; into &apos;hlslib::Stream&lt;int, 1u&gt;::Push&apos; (../hlslib/include/hlslib/Stream.h:371)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::Stream&lt;int, 1u&gt;::Push&apos; into &apos;readItems&apos; (g_rg_t.cc:18)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::Stream&lt;int, 1u&gt;::ReadBlocking&apos; into &apos;hlslib::Stream&lt;int, 1u&gt;::Pop&apos; (../hlslib/include/hlslib/Stream.h:263)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hlslib::Stream&lt;int, 1u&gt;::Pop&apos; into &apos;storeItems&apos; (g_rg_t.cc:27)."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Standard Transforms Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 413 ; free virtual = 4671"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1472" tag="" content="Checking synthesizability ..."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;std::numeric_limits&lt;int&gt;::max&apos; into &apos;readItems&apos; (../hlslib/include/hlslib/Stream.h:359-&gt;../hlslib/include/hlslib/Stream.h:371-&gt;g_rg_t.cc:18) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;storeItems&apos; into &apos;unite&apos; (g_rg_t.cc:60) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;writeResult&apos; into &apos;unite&apos; (g_rg_t.cc:62) automatically."/>
+	<Message severity="WARNING" prefix="[SYNCHK 200-23]" key="SYNCHK_VAR_INDEX_RANGE_359" tag="" content="../hlslib/include/hlslib/DataPack.h:95: variable-indexed range selection may cause suboptimal QoR."/>
+	<Message severity="INFO" prefix="[SYNCHK 200-10]" key="SYNCHK_SYNCHK_SUMMARY_377" tag="" content="0 error(s), 1 warning(s)."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Checking Synthesizability Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 409 ; free virtual = 4667"/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_250" tag="" content="Unrolling all loops for pipelining in function &apos;writeResult&apos; (g_rg_t.cc:35)."/>
+	<Message severity="WARNING" prefix="[XFORM 203-505]" key="XFORM_UNROLL_DEAD_PIPELINE_247" tag="" content="Ignored pipeline directive for loop &apos;write&apos; (g_rg_t.cc:36) because its parent loop or function is pipelined."/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_250" tag="" content="Unrolling all loops for pipelining in function &apos;unite&apos; (g_rg_t.cc:47)."/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_250" tag="" content="Unrolling all loops for pipelining in function &apos;storeItems&apos; (g_rg_t.cc:23)."/>
+	<Message severity="WARNING" prefix="[XFORM 203-505]" key="XFORM_UNROLL_DEAD_PIPELINE_247" tag="" content="Ignored pipeline directive for loop &apos;readAdj1&apos; (g_rg_t.cc:24) because its parent loop or function is pipelined."/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_250" tag="" content="Unrolling all loops for pipelining in function &apos;readItems&apos; (g_rg_t.cc:12)."/>
+	<Message severity="WARNING" prefix="[XFORM 203-505]" key="XFORM_UNROLL_DEAD_PIPELINE_247" tag="" content="Ignored pipeline directive for loop &apos;readAdj0&apos; (g_rg_t.cc:13) because its parent loop or function is pipelined."/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_246" tag="" content="Unrolling all sub-loops inside loop &apos;transit_loop_rg&apos; (g_rg_t.cc:73) in function &apos;g_rg_t&apos; for pipelining."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;write&apos; (g_rg_t.cc:36) in function &apos;writeResult&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;ShiftOut&apos; (g_rg_t.cc:39) in function &apos;writeResult&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;DataPack_Fill&apos; (../hlslib/include/hlslib/DataPack.h:101) in function &apos;unite&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;readAdj1&apos; (g_rg_t.cc:24) in function &apos;storeItems&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;readAdj0&apos; (g_rg_t.cc:13) in function &apos;readItems&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;DataPack_Fill&apos; (../hlslib/include/hlslib/DataPack.h:101) in function &apos;g_rg_t&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;init_adjs&apos; (g_rg_t.cc:80) in function &apos;g_rg_t&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;count_adjs&apos; (g_rg_t.cc:84) in function &apos;g_rg_t&apos; completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-501]" key="XFORM_UNROLL_STATUS_325" tag="" content="Unrolling loop &apos;shift_build_adjs&apos; (g_rg_t.cc:91) in function &apos;g_rg_t&apos; completely."/>
+	<Message severity="WARNING" prefix="[XFORM 203-503]" key="XFORM_UNROLL_INVALID_314" tag="SDX_LOOP" content="Cannot unroll loop &apos;Loop-1.4.1&apos; (g_rg_t.cc:94) in function &apos;g_rg_t&apos; completely: variable loop bound."/>
+</Messages>

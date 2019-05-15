@@ -1,0 +1,638 @@
+
+
+================================================================
+== Vivado HLS Report for 'readItem'
+================================================================
+* Date:           Wed May  1 14:16:21 2019
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        hls
+* Solution:       solution
+* Product family: kintexuplus
+* Target device:  xcku5p-sfvb784-3-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   3.33|     2.744|        0.42|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+----------+
+    |  Latency  |  Interval | Pipeline |
+    | min | max | min | max |   Type   |
+    +-----+-----+-----+-----+----------+
+    |   31|   31|   32|   32| function |
+    +-----+-----+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 32, depth = 32
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 32
+* Pipeline : 1
+  Pipeline-0 : II = 32, D = 32, States = { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / true
+32 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.45>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%adj_data_V_read = call i1024 @_ssdm_op_Read.ap_auto.i1024(i1024 %adj_data_V)"   --->   Operation 33 'read' 'adj_data_V_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%tmp = trunc i1024 %adj_data_V_read to i32" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 34 'trunc' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 35 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%tmp_2 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 32, i32 63)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 36 'partselect' 'tmp_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%tmp_4 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 64, i32 95)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 37 'partselect' 'tmp_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%tmp_6 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 96, i32 127)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 38 'partselect' 'tmp_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%tmp_7 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 128, i32 159)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 39 'partselect' 'tmp_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%tmp_9 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 160, i32 191)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 40 'partselect' 'tmp_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%tmp_11 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 192, i32 223)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 41 'partselect' 'tmp_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%tmp_13 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 224, i32 255)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 42 'partselect' 'tmp_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "%tmp_15 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 256, i32 287)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 43 'partselect' 'tmp_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%tmp_17 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 288, i32 319)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 44 'partselect' 'tmp_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "%tmp_19 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 320, i32 351)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 45 'partselect' 'tmp_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%tmp_21 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 352, i32 383)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 46 'partselect' 'tmp_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 47 [1/1] (0.00ns)   --->   "%tmp_23 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 384, i32 415)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 47 'partselect' 'tmp_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%tmp_25 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 416, i32 447)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 48 'partselect' 'tmp_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%tmp_27 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 448, i32 479)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 49 'partselect' 'tmp_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%tmp_29 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 480, i32 511)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 50 'partselect' 'tmp_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%tmp_31 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 512, i32 543)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 51 'partselect' 'tmp_31' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%tmp_33 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 544, i32 575)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 52 'partselect' 'tmp_33' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%tmp_35 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 576, i32 607)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 53 'partselect' 'tmp_35' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%tmp_37 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 608, i32 639)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 54 'partselect' 'tmp_37' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%tmp_39 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 640, i32 671)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 55 'partselect' 'tmp_39' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%tmp_41 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 672, i32 703)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 56 'partselect' 'tmp_41' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 57 [1/1] (0.00ns)   --->   "%tmp_43 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 704, i32 735)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 57 'partselect' 'tmp_43' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 58 [1/1] (0.00ns)   --->   "%tmp_45 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 736, i32 767)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 58 'partselect' 'tmp_45' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 59 [1/1] (0.00ns)   --->   "%tmp_47 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 768, i32 799)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 59 'partselect' 'tmp_47' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "%tmp_49 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 800, i32 831)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 60 'partselect' 'tmp_49' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 61 [1/1] (0.00ns)   --->   "%tmp_51 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 832, i32 863)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 61 'partselect' 'tmp_51' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 62 [1/1] (0.00ns)   --->   "%tmp_53 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 864, i32 895)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 62 'partselect' 'tmp_53' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 63 [1/1] (0.00ns)   --->   "%tmp_55 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 896, i32 927)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 63 'partselect' 'tmp_55' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 64 [1/1] (0.00ns)   --->   "%tmp_57 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 928, i32 959)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 64 'partselect' 'tmp_57' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 65 [1/1] (0.00ns)   --->   "%tmp_59 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 960, i32 991)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 65 'partselect' 'tmp_59' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_61 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %adj_data_V_read, i32 992, i32 1023)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:15]   --->   Operation 66 'partselect' 'tmp_61' <Predicate = true> <Delay = 0.00>
+
+State 2 <SV = 1> <Delay = 1.45>
+ST_2 : Operation 67 [1/1] (1.45ns)   --->   "%empty = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 67 'read' 'empty' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_2 : Operation 68 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_2)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 68 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 3 <SV = 2> <Delay = 1.45>
+ST_3 : Operation 69 [1/1] (1.45ns)   --->   "%empty_10 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 69 'read' 'empty_10' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_3 : Operation 70 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_4)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 70 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 4 <SV = 3> <Delay = 1.45>
+ST_4 : Operation 71 [1/1] (1.45ns)   --->   "%empty_12 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 71 'read' 'empty_12' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_4 : Operation 72 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_6)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 72 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 5 <SV = 4> <Delay = 1.45>
+ST_5 : Operation 73 [1/1] (1.45ns)   --->   "%empty_14 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 73 'read' 'empty_14' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_5 : Operation 74 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_7)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 74 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 6 <SV = 5> <Delay = 1.45>
+ST_6 : Operation 75 [1/1] (1.45ns)   --->   "%empty_16 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 75 'read' 'empty_16' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_6 : Operation 76 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_9)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 76 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 7 <SV = 6> <Delay = 1.45>
+ST_7 : Operation 77 [1/1] (1.45ns)   --->   "%empty_18 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 77 'read' 'empty_18' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_7 : Operation 78 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_11)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 78 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 8 <SV = 7> <Delay = 1.45>
+ST_8 : Operation 79 [1/1] (1.45ns)   --->   "%empty_20 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 79 'read' 'empty_20' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_8 : Operation 80 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_13)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 80 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 9 <SV = 8> <Delay = 1.45>
+ST_9 : Operation 81 [1/1] (1.45ns)   --->   "%empty_22 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 81 'read' 'empty_22' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_9 : Operation 82 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_15)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 82 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 10 <SV = 9> <Delay = 1.45>
+ST_10 : Operation 83 [1/1] (1.45ns)   --->   "%empty_24 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 83 'read' 'empty_24' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_10 : Operation 84 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_17)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 84 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 11 <SV = 10> <Delay = 1.45>
+ST_11 : Operation 85 [1/1] (1.45ns)   --->   "%empty_26 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 85 'read' 'empty_26' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_11 : Operation 86 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_19)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 86 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 12 <SV = 11> <Delay = 1.45>
+ST_12 : Operation 87 [1/1] (1.45ns)   --->   "%empty_28 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 87 'read' 'empty_28' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_12 : Operation 88 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_21)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 88 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 13 <SV = 12> <Delay = 1.45>
+ST_13 : Operation 89 [1/1] (1.45ns)   --->   "%empty_30 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 89 'read' 'empty_30' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_13 : Operation 90 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_23)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 90 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 14 <SV = 13> <Delay = 1.45>
+ST_14 : Operation 91 [1/1] (1.45ns)   --->   "%empty_32 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 91 'read' 'empty_32' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_14 : Operation 92 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_25)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 92 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 15 <SV = 14> <Delay = 1.45>
+ST_15 : Operation 93 [1/1] (1.45ns)   --->   "%empty_34 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 93 'read' 'empty_34' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_15 : Operation 94 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_27)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 94 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 16 <SV = 15> <Delay = 1.45>
+ST_16 : Operation 95 [1/1] (1.45ns)   --->   "%empty_36 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 95 'read' 'empty_36' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_16 : Operation 96 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_29)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 96 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 17 <SV = 16> <Delay = 1.45>
+ST_17 : Operation 97 [1/1] (1.45ns)   --->   "%empty_38 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 97 'read' 'empty_38' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_17 : Operation 98 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_31)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 98 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 18 <SV = 17> <Delay = 1.45>
+ST_18 : Operation 99 [1/1] (1.45ns)   --->   "%empty_40 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 99 'read' 'empty_40' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_18 : Operation 100 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_33)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 100 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 19 <SV = 18> <Delay = 1.45>
+ST_19 : Operation 101 [1/1] (1.45ns)   --->   "%empty_42 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 101 'read' 'empty_42' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_19 : Operation 102 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_35)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 102 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 20 <SV = 19> <Delay = 1.45>
+ST_20 : Operation 103 [1/1] (1.45ns)   --->   "%empty_44 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 103 'read' 'empty_44' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_20 : Operation 104 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_37)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 104 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 21 <SV = 20> <Delay = 1.45>
+ST_21 : Operation 105 [1/1] (1.45ns)   --->   "%empty_46 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 105 'read' 'empty_46' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_21 : Operation 106 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_39)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 106 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 22 <SV = 21> <Delay = 1.45>
+ST_22 : Operation 107 [1/1] (1.45ns)   --->   "%empty_48 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 107 'read' 'empty_48' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_22 : Operation 108 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_41)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 108 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 23 <SV = 22> <Delay = 1.45>
+ST_23 : Operation 109 [1/1] (1.45ns)   --->   "%empty_50 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 109 'read' 'empty_50' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_23 : Operation 110 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_43)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 110 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 24 <SV = 23> <Delay = 1.45>
+ST_24 : Operation 111 [1/1] (0.98ns)   --->   "%tmp_s = icmp eq i32 %tmp, -1" [g_rg_t.cc:16]   --->   Operation 111 'icmp' 'tmp_s' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 112 [1/1] (0.98ns)   --->   "%tmp_1 = icmp eq i32 %tmp_2, -1" [g_rg_t.cc:16]   --->   Operation 112 'icmp' 'tmp_1' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 113 [1/1] (1.45ns)   --->   "%empty_52 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 113 'read' 'empty_52' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_24 : Operation 114 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_45)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 114 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 25 <SV = 24> <Delay = 2.74>
+ST_25 : Operation 115 [1/1] (0.00ns)   --->   "%p_Result_6 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 -1, i32 %tmp)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 115 'bitconcatenate' 'p_Result_6' <Predicate = (!tmp_s)> <Delay = 0.00>
+ST_25 : Operation 116 [1/1] (0.68ns)   --->   "%out_data_V_2 = select i1 %tmp_s, i1024 -1, i1024 %p_Result_6" [g_rg_t.cc:16]   --->   Operation 116 'select' 'out_data_V_2' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_25 : Operation 117 [1/1] (0.00ns)   --->   "%tmp_1_9 = trunc i1024 %out_data_V_2 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 117 'trunc' 'tmp_1_9' <Predicate = (!tmp_1)> <Delay = 0.00>
+ST_25 : Operation 118 [1/1] (0.00ns)   --->   "%p_Result_6_1 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_1_9, i32 %tmp_2)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 118 'bitconcatenate' 'p_Result_6_1' <Predicate = (!tmp_1)> <Delay = 0.00>
+ST_25 : Operation 119 [1/1] (0.68ns)   --->   "%out_data_V_2_1 = select i1 %tmp_1, i1024 %out_data_V_2, i1024 %p_Result_6_1" [g_rg_t.cc:16]   --->   Operation 119 'select' 'out_data_V_2_1' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_25 : Operation 120 [1/1] (0.98ns)   --->   "%tmp_2_11 = icmp eq i32 %tmp_4, -1" [g_rg_t.cc:16]   --->   Operation 120 'icmp' 'tmp_2_11' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 121 [1/1] (0.00ns)   --->   "%tmp_3 = trunc i1024 %out_data_V_2_1 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 121 'trunc' 'tmp_3' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 122 [1/1] (0.00ns)   --->   "%p_Result_6_2 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_3, i32 %tmp_4)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 122 'bitconcatenate' 'p_Result_6_2' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 123 [1/1] (0.68ns)   --->   "%out_data_V_2_2 = select i1 %tmp_2_11, i1024 %out_data_V_2_1, i1024 %p_Result_6_2" [g_rg_t.cc:16]   --->   Operation 123 'select' 'out_data_V_2_2' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_25 : Operation 124 [1/1] (0.98ns)   --->   "%tmp_3_13 = icmp eq i32 %tmp_6, -1" [g_rg_t.cc:16]   --->   Operation 124 'icmp' 'tmp_3_13' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 125 [1/1] (0.00ns)   --->   "%tmp_5 = trunc i1024 %out_data_V_2_2 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 125 'trunc' 'tmp_5' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 126 [1/1] (0.00ns)   --->   "%p_Result_6_3 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_5, i32 %tmp_6)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 126 'bitconcatenate' 'p_Result_6_3' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 127 [1/1] (0.68ns)   --->   "%out_data_V_2_3 = select i1 %tmp_3_13, i1024 %out_data_V_2_2, i1024 %p_Result_6_3" [g_rg_t.cc:16]   --->   Operation 127 'select' 'out_data_V_2_3' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_25 : Operation 128 [1/1] (0.98ns)   --->   "%tmp_4_15 = icmp eq i32 %tmp_7, -1" [g_rg_t.cc:16]   --->   Operation 128 'icmp' 'tmp_4_15' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 129 [1/1] (0.00ns)   --->   "%tmp_8 = trunc i1024 %out_data_V_2_3 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 129 'trunc' 'tmp_8' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 130 [1/1] (0.98ns)   --->   "%tmp_5_17 = icmp eq i32 %tmp_9, -1" [g_rg_t.cc:16]   --->   Operation 130 'icmp' 'tmp_5_17' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 131 [1/1] (1.45ns)   --->   "%empty_54 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 131 'read' 'empty_54' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_25 : Operation 132 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_47)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 132 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 26 <SV = 25> <Delay = 2.74>
+ST_26 : Operation 133 [1/1] (0.00ns)   --->   "%p_Result_6_4 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_8, i32 %tmp_7)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 133 'bitconcatenate' 'p_Result_6_4' <Predicate = (!tmp_4_15)> <Delay = 0.00>
+ST_26 : Operation 134 [1/1] (0.68ns)   --->   "%out_data_V_2_4 = select i1 %tmp_4_15, i1024 %out_data_V_2_3, i1024 %p_Result_6_4" [g_rg_t.cc:16]   --->   Operation 134 'select' 'out_data_V_2_4' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_26 : Operation 135 [1/1] (0.00ns)   --->   "%tmp_10 = trunc i1024 %out_data_V_2_4 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 135 'trunc' 'tmp_10' <Predicate = (!tmp_5_17)> <Delay = 0.00>
+ST_26 : Operation 136 [1/1] (0.00ns)   --->   "%p_Result_6_5 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_10, i32 %tmp_9)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 136 'bitconcatenate' 'p_Result_6_5' <Predicate = (!tmp_5_17)> <Delay = 0.00>
+ST_26 : Operation 137 [1/1] (0.68ns)   --->   "%out_data_V_2_5 = select i1 %tmp_5_17, i1024 %out_data_V_2_4, i1024 %p_Result_6_5" [g_rg_t.cc:16]   --->   Operation 137 'select' 'out_data_V_2_5' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_26 : Operation 138 [1/1] (0.98ns)   --->   "%tmp_6_19 = icmp eq i32 %tmp_11, -1" [g_rg_t.cc:16]   --->   Operation 138 'icmp' 'tmp_6_19' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 139 [1/1] (0.00ns)   --->   "%tmp_12 = trunc i1024 %out_data_V_2_5 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 139 'trunc' 'tmp_12' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 140 [1/1] (0.00ns)   --->   "%p_Result_6_6 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_12, i32 %tmp_11)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 140 'bitconcatenate' 'p_Result_6_6' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 141 [1/1] (0.68ns)   --->   "%out_data_V_2_6 = select i1 %tmp_6_19, i1024 %out_data_V_2_5, i1024 %p_Result_6_6" [g_rg_t.cc:16]   --->   Operation 141 'select' 'out_data_V_2_6' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_26 : Operation 142 [1/1] (0.98ns)   --->   "%tmp_7_21 = icmp eq i32 %tmp_13, -1" [g_rg_t.cc:16]   --->   Operation 142 'icmp' 'tmp_7_21' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 143 [1/1] (0.00ns)   --->   "%tmp_14 = trunc i1024 %out_data_V_2_6 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 143 'trunc' 'tmp_14' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 144 [1/1] (0.00ns)   --->   "%p_Result_6_7 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_14, i32 %tmp_13)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 144 'bitconcatenate' 'p_Result_6_7' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 145 [1/1] (0.68ns)   --->   "%out_data_V_2_7 = select i1 %tmp_7_21, i1024 %out_data_V_2_6, i1024 %p_Result_6_7" [g_rg_t.cc:16]   --->   Operation 145 'select' 'out_data_V_2_7' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_26 : Operation 146 [1/1] (0.98ns)   --->   "%tmp_8_23 = icmp eq i32 %tmp_15, -1" [g_rg_t.cc:16]   --->   Operation 146 'icmp' 'tmp_8_23' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 147 [1/1] (0.00ns)   --->   "%tmp_16 = trunc i1024 %out_data_V_2_7 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 147 'trunc' 'tmp_16' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 148 [1/1] (0.98ns)   --->   "%tmp_9_25 = icmp eq i32 %tmp_17, -1" [g_rg_t.cc:16]   --->   Operation 148 'icmp' 'tmp_9_25' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 149 [1/1] (1.45ns)   --->   "%empty_56 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 149 'read' 'empty_56' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_26 : Operation 150 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_49)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 150 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 27 <SV = 26> <Delay = 2.74>
+ST_27 : Operation 151 [1/1] (0.00ns)   --->   "%p_Result_6_8 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_16, i32 %tmp_15)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 151 'bitconcatenate' 'p_Result_6_8' <Predicate = (!tmp_8_23)> <Delay = 0.00>
+ST_27 : Operation 152 [1/1] (0.68ns)   --->   "%out_data_V_2_8 = select i1 %tmp_8_23, i1024 %out_data_V_2_7, i1024 %p_Result_6_8" [g_rg_t.cc:16]   --->   Operation 152 'select' 'out_data_V_2_8' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_27 : Operation 153 [1/1] (0.00ns)   --->   "%tmp_18 = trunc i1024 %out_data_V_2_8 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 153 'trunc' 'tmp_18' <Predicate = (!tmp_9_25)> <Delay = 0.00>
+ST_27 : Operation 154 [1/1] (0.00ns)   --->   "%p_Result_6_9 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_18, i32 %tmp_17)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 154 'bitconcatenate' 'p_Result_6_9' <Predicate = (!tmp_9_25)> <Delay = 0.00>
+ST_27 : Operation 155 [1/1] (0.68ns)   --->   "%out_data_V_2_9 = select i1 %tmp_9_25, i1024 %out_data_V_2_8, i1024 %p_Result_6_9" [g_rg_t.cc:16]   --->   Operation 155 'select' 'out_data_V_2_9' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_27 : Operation 156 [1/1] (0.98ns)   --->   "%tmp_s_27 = icmp eq i32 %tmp_19, -1" [g_rg_t.cc:16]   --->   Operation 156 'icmp' 'tmp_s_27' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 157 [1/1] (0.00ns)   --->   "%tmp_20 = trunc i1024 %out_data_V_2_9 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 157 'trunc' 'tmp_20' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 158 [1/1] (0.00ns)   --->   "%p_Result_6_s = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_20, i32 %tmp_19)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 158 'bitconcatenate' 'p_Result_6_s' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 159 [1/1] (0.68ns)   --->   "%out_data_V_2_s = select i1 %tmp_s_27, i1024 %out_data_V_2_9, i1024 %p_Result_6_s" [g_rg_t.cc:16]   --->   Operation 159 'select' 'out_data_V_2_s' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_27 : Operation 160 [1/1] (0.98ns)   --->   "%tmp_10_29 = icmp eq i32 %tmp_21, -1" [g_rg_t.cc:16]   --->   Operation 160 'icmp' 'tmp_10_29' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 161 [1/1] (0.00ns)   --->   "%tmp_22 = trunc i1024 %out_data_V_2_s to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 161 'trunc' 'tmp_22' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 162 [1/1] (0.00ns)   --->   "%p_Result_6_10 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_22, i32 %tmp_21)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 162 'bitconcatenate' 'p_Result_6_10' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 163 [1/1] (0.68ns)   --->   "%out_data_V_2_10 = select i1 %tmp_10_29, i1024 %out_data_V_2_s, i1024 %p_Result_6_10" [g_rg_t.cc:16]   --->   Operation 163 'select' 'out_data_V_2_10' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_27 : Operation 164 [1/1] (0.98ns)   --->   "%tmp_11_31 = icmp eq i32 %tmp_23, -1" [g_rg_t.cc:16]   --->   Operation 164 'icmp' 'tmp_11_31' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 165 [1/1] (0.00ns)   --->   "%tmp_24 = trunc i1024 %out_data_V_2_10 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 165 'trunc' 'tmp_24' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 166 [1/1] (0.98ns)   --->   "%tmp_12_33 = icmp eq i32 %tmp_25, -1" [g_rg_t.cc:16]   --->   Operation 166 'icmp' 'tmp_12_33' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 167 [1/1] (1.45ns)   --->   "%empty_58 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 167 'read' 'empty_58' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_27 : Operation 168 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_51)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 168 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 28 <SV = 27> <Delay = 2.74>
+ST_28 : Operation 169 [1/1] (0.00ns)   --->   "%p_Result_6_11 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_24, i32 %tmp_23)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 169 'bitconcatenate' 'p_Result_6_11' <Predicate = (!tmp_11_31)> <Delay = 0.00>
+ST_28 : Operation 170 [1/1] (0.68ns)   --->   "%out_data_V_2_11 = select i1 %tmp_11_31, i1024 %out_data_V_2_10, i1024 %p_Result_6_11" [g_rg_t.cc:16]   --->   Operation 170 'select' 'out_data_V_2_11' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_28 : Operation 171 [1/1] (0.00ns)   --->   "%tmp_26 = trunc i1024 %out_data_V_2_11 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 171 'trunc' 'tmp_26' <Predicate = (!tmp_12_33)> <Delay = 0.00>
+ST_28 : Operation 172 [1/1] (0.00ns)   --->   "%p_Result_6_12 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_26, i32 %tmp_25)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 172 'bitconcatenate' 'p_Result_6_12' <Predicate = (!tmp_12_33)> <Delay = 0.00>
+ST_28 : Operation 173 [1/1] (0.68ns)   --->   "%out_data_V_2_12 = select i1 %tmp_12_33, i1024 %out_data_V_2_11, i1024 %p_Result_6_12" [g_rg_t.cc:16]   --->   Operation 173 'select' 'out_data_V_2_12' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_28 : Operation 174 [1/1] (0.98ns)   --->   "%tmp_13_35 = icmp eq i32 %tmp_27, -1" [g_rg_t.cc:16]   --->   Operation 174 'icmp' 'tmp_13_35' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 175 [1/1] (0.00ns)   --->   "%tmp_28 = trunc i1024 %out_data_V_2_12 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 175 'trunc' 'tmp_28' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 176 [1/1] (0.00ns)   --->   "%p_Result_6_13 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_28, i32 %tmp_27)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 176 'bitconcatenate' 'p_Result_6_13' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 177 [1/1] (0.68ns)   --->   "%out_data_V_2_13 = select i1 %tmp_13_35, i1024 %out_data_V_2_12, i1024 %p_Result_6_13" [g_rg_t.cc:16]   --->   Operation 177 'select' 'out_data_V_2_13' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_28 : Operation 178 [1/1] (0.98ns)   --->   "%tmp_14_37 = icmp eq i32 %tmp_29, -1" [g_rg_t.cc:16]   --->   Operation 178 'icmp' 'tmp_14_37' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 179 [1/1] (0.00ns)   --->   "%tmp_30 = trunc i1024 %out_data_V_2_13 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 179 'trunc' 'tmp_30' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 180 [1/1] (0.00ns)   --->   "%p_Result_6_14 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_30, i32 %tmp_29)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 180 'bitconcatenate' 'p_Result_6_14' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 181 [1/1] (0.68ns)   --->   "%out_data_V_2_14 = select i1 %tmp_14_37, i1024 %out_data_V_2_13, i1024 %p_Result_6_14" [g_rg_t.cc:16]   --->   Operation 181 'select' 'out_data_V_2_14' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_28 : Operation 182 [1/1] (0.98ns)   --->   "%tmp_15_39 = icmp eq i32 %tmp_31, -1" [g_rg_t.cc:16]   --->   Operation 182 'icmp' 'tmp_15_39' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 183 [1/1] (0.00ns)   --->   "%tmp_32 = trunc i1024 %out_data_V_2_14 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 183 'trunc' 'tmp_32' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 184 [1/1] (0.98ns)   --->   "%tmp_16_41 = icmp eq i32 %tmp_33, -1" [g_rg_t.cc:16]   --->   Operation 184 'icmp' 'tmp_16_41' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 185 [1/1] (1.45ns)   --->   "%empty_60 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 185 'read' 'empty_60' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_28 : Operation 186 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_53)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 186 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 29 <SV = 28> <Delay = 2.74>
+ST_29 : Operation 187 [1/1] (0.00ns)   --->   "%p_Result_6_15 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_32, i32 %tmp_31)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 187 'bitconcatenate' 'p_Result_6_15' <Predicate = (!tmp_15_39)> <Delay = 0.00>
+ST_29 : Operation 188 [1/1] (0.68ns)   --->   "%out_data_V_2_15 = select i1 %tmp_15_39, i1024 %out_data_V_2_14, i1024 %p_Result_6_15" [g_rg_t.cc:16]   --->   Operation 188 'select' 'out_data_V_2_15' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_29 : Operation 189 [1/1] (0.00ns)   --->   "%tmp_34 = trunc i1024 %out_data_V_2_15 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 189 'trunc' 'tmp_34' <Predicate = (!tmp_16_41)> <Delay = 0.00>
+ST_29 : Operation 190 [1/1] (0.00ns)   --->   "%p_Result_6_16 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_34, i32 %tmp_33)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 190 'bitconcatenate' 'p_Result_6_16' <Predicate = (!tmp_16_41)> <Delay = 0.00>
+ST_29 : Operation 191 [1/1] (0.68ns)   --->   "%out_data_V_2_16 = select i1 %tmp_16_41, i1024 %out_data_V_2_15, i1024 %p_Result_6_16" [g_rg_t.cc:16]   --->   Operation 191 'select' 'out_data_V_2_16' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_29 : Operation 192 [1/1] (0.98ns)   --->   "%tmp_17_43 = icmp eq i32 %tmp_35, -1" [g_rg_t.cc:16]   --->   Operation 192 'icmp' 'tmp_17_43' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_29 : Operation 193 [1/1] (0.00ns)   --->   "%tmp_36 = trunc i1024 %out_data_V_2_16 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 193 'trunc' 'tmp_36' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 194 [1/1] (0.00ns)   --->   "%p_Result_6_17 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_36, i32 %tmp_35)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 194 'bitconcatenate' 'p_Result_6_17' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 195 [1/1] (0.68ns)   --->   "%out_data_V_2_17 = select i1 %tmp_17_43, i1024 %out_data_V_2_16, i1024 %p_Result_6_17" [g_rg_t.cc:16]   --->   Operation 195 'select' 'out_data_V_2_17' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_29 : Operation 196 [1/1] (0.98ns)   --->   "%tmp_18_45 = icmp eq i32 %tmp_37, -1" [g_rg_t.cc:16]   --->   Operation 196 'icmp' 'tmp_18_45' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_29 : Operation 197 [1/1] (0.00ns)   --->   "%tmp_38 = trunc i1024 %out_data_V_2_17 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 197 'trunc' 'tmp_38' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 198 [1/1] (0.00ns)   --->   "%p_Result_6_18 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_38, i32 %tmp_37)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 198 'bitconcatenate' 'p_Result_6_18' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 199 [1/1] (0.68ns)   --->   "%out_data_V_2_18 = select i1 %tmp_18_45, i1024 %out_data_V_2_17, i1024 %p_Result_6_18" [g_rg_t.cc:16]   --->   Operation 199 'select' 'out_data_V_2_18' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_29 : Operation 200 [1/1] (0.98ns)   --->   "%tmp_19_47 = icmp eq i32 %tmp_39, -1" [g_rg_t.cc:16]   --->   Operation 200 'icmp' 'tmp_19_47' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_29 : Operation 201 [1/1] (0.00ns)   --->   "%tmp_40 = trunc i1024 %out_data_V_2_18 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 201 'trunc' 'tmp_40' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 202 [1/1] (0.98ns)   --->   "%tmp_20_49 = icmp eq i32 %tmp_41, -1" [g_rg_t.cc:16]   --->   Operation 202 'icmp' 'tmp_20_49' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_29 : Operation 203 [1/1] (1.45ns)   --->   "%empty_62 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 203 'read' 'empty_62' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_29 : Operation 204 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_55)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 204 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 30 <SV = 29> <Delay = 2.74>
+ST_30 : Operation 205 [1/1] (0.00ns)   --->   "%p_Result_6_19 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_40, i32 %tmp_39)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 205 'bitconcatenate' 'p_Result_6_19' <Predicate = (!tmp_19_47)> <Delay = 0.00>
+ST_30 : Operation 206 [1/1] (0.68ns)   --->   "%out_data_V_2_19 = select i1 %tmp_19_47, i1024 %out_data_V_2_18, i1024 %p_Result_6_19" [g_rg_t.cc:16]   --->   Operation 206 'select' 'out_data_V_2_19' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_30 : Operation 207 [1/1] (0.00ns)   --->   "%tmp_42 = trunc i1024 %out_data_V_2_19 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 207 'trunc' 'tmp_42' <Predicate = (!tmp_20_49)> <Delay = 0.00>
+ST_30 : Operation 208 [1/1] (0.00ns)   --->   "%p_Result_6_20 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_42, i32 %tmp_41)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 208 'bitconcatenate' 'p_Result_6_20' <Predicate = (!tmp_20_49)> <Delay = 0.00>
+ST_30 : Operation 209 [1/1] (0.68ns)   --->   "%out_data_V_2_20 = select i1 %tmp_20_49, i1024 %out_data_V_2_19, i1024 %p_Result_6_20" [g_rg_t.cc:16]   --->   Operation 209 'select' 'out_data_V_2_20' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_30 : Operation 210 [1/1] (0.98ns)   --->   "%tmp_21_51 = icmp eq i32 %tmp_43, -1" [g_rg_t.cc:16]   --->   Operation 210 'icmp' 'tmp_21_51' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_30 : Operation 211 [1/1] (0.00ns)   --->   "%tmp_44 = trunc i1024 %out_data_V_2_20 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 211 'trunc' 'tmp_44' <Predicate = true> <Delay = 0.00>
+ST_30 : Operation 212 [1/1] (0.00ns)   --->   "%p_Result_6_21 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_44, i32 %tmp_43)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 212 'bitconcatenate' 'p_Result_6_21' <Predicate = true> <Delay = 0.00>
+ST_30 : Operation 213 [1/1] (0.68ns)   --->   "%out_data_V_2_21 = select i1 %tmp_21_51, i1024 %out_data_V_2_20, i1024 %p_Result_6_21" [g_rg_t.cc:16]   --->   Operation 213 'select' 'out_data_V_2_21' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_30 : Operation 214 [1/1] (0.98ns)   --->   "%tmp_22_53 = icmp eq i32 %tmp_45, -1" [g_rg_t.cc:16]   --->   Operation 214 'icmp' 'tmp_22_53' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_30 : Operation 215 [1/1] (0.00ns)   --->   "%tmp_46 = trunc i1024 %out_data_V_2_21 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 215 'trunc' 'tmp_46' <Predicate = true> <Delay = 0.00>
+ST_30 : Operation 216 [1/1] (0.00ns)   --->   "%p_Result_6_22 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_46, i32 %tmp_45)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 216 'bitconcatenate' 'p_Result_6_22' <Predicate = true> <Delay = 0.00>
+ST_30 : Operation 217 [1/1] (0.68ns)   --->   "%out_data_V_2_22 = select i1 %tmp_22_53, i1024 %out_data_V_2_21, i1024 %p_Result_6_22" [g_rg_t.cc:16]   --->   Operation 217 'select' 'out_data_V_2_22' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_30 : Operation 218 [1/1] (0.98ns)   --->   "%tmp_23_55 = icmp eq i32 %tmp_47, -1" [g_rg_t.cc:16]   --->   Operation 218 'icmp' 'tmp_23_55' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_30 : Operation 219 [1/1] (0.00ns)   --->   "%tmp_48 = trunc i1024 %out_data_V_2_22 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 219 'trunc' 'tmp_48' <Predicate = true> <Delay = 0.00>
+ST_30 : Operation 220 [1/1] (0.98ns)   --->   "%tmp_24_57 = icmp eq i32 %tmp_49, -1" [g_rg_t.cc:16]   --->   Operation 220 'icmp' 'tmp_24_57' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_30 : Operation 221 [1/1] (1.45ns)   --->   "%empty_64 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 221 'read' 'empty_64' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_30 : Operation 222 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_57)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 222 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 31 <SV = 30> <Delay = 2.74>
+ST_31 : Operation 223 [1/1] (0.00ns)   --->   "%p_Result_6_23 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_48, i32 %tmp_47)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 223 'bitconcatenate' 'p_Result_6_23' <Predicate = (!tmp_23_55)> <Delay = 0.00>
+ST_31 : Operation 224 [1/1] (0.68ns)   --->   "%out_data_V_2_23 = select i1 %tmp_23_55, i1024 %out_data_V_2_22, i1024 %p_Result_6_23" [g_rg_t.cc:16]   --->   Operation 224 'select' 'out_data_V_2_23' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_31 : Operation 225 [1/1] (0.00ns)   --->   "%tmp_50 = trunc i1024 %out_data_V_2_23 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 225 'trunc' 'tmp_50' <Predicate = (!tmp_24_57)> <Delay = 0.00>
+ST_31 : Operation 226 [1/1] (0.00ns)   --->   "%p_Result_6_24 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_50, i32 %tmp_49)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 226 'bitconcatenate' 'p_Result_6_24' <Predicate = (!tmp_24_57)> <Delay = 0.00>
+ST_31 : Operation 227 [1/1] (0.68ns)   --->   "%out_data_V_2_24 = select i1 %tmp_24_57, i1024 %out_data_V_2_23, i1024 %p_Result_6_24" [g_rg_t.cc:16]   --->   Operation 227 'select' 'out_data_V_2_24' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_31 : Operation 228 [1/1] (0.98ns)   --->   "%tmp_25_59 = icmp eq i32 %tmp_51, -1" [g_rg_t.cc:16]   --->   Operation 228 'icmp' 'tmp_25_59' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 229 [1/1] (0.00ns)   --->   "%tmp_52 = trunc i1024 %out_data_V_2_24 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 229 'trunc' 'tmp_52' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 230 [1/1] (0.00ns)   --->   "%p_Result_6_25 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_52, i32 %tmp_51)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 230 'bitconcatenate' 'p_Result_6_25' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 231 [1/1] (0.68ns)   --->   "%out_data_V_2_25 = select i1 %tmp_25_59, i1024 %out_data_V_2_24, i1024 %p_Result_6_25" [g_rg_t.cc:16]   --->   Operation 231 'select' 'out_data_V_2_25' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_31 : Operation 232 [1/1] (0.98ns)   --->   "%tmp_26_61 = icmp eq i32 %tmp_53, -1" [g_rg_t.cc:16]   --->   Operation 232 'icmp' 'tmp_26_61' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 233 [1/1] (0.00ns)   --->   "%tmp_54 = trunc i1024 %out_data_V_2_25 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 233 'trunc' 'tmp_54' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 234 [1/1] (0.00ns)   --->   "%p_Result_6_26 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_54, i32 %tmp_53)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 234 'bitconcatenate' 'p_Result_6_26' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 235 [1/1] (0.68ns)   --->   "%out_data_V_2_26 = select i1 %tmp_26_61, i1024 %out_data_V_2_25, i1024 %p_Result_6_26" [g_rg_t.cc:16]   --->   Operation 235 'select' 'out_data_V_2_26' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_31 : Operation 236 [1/1] (0.98ns)   --->   "%tmp_27_63 = icmp eq i32 %tmp_55, -1" [g_rg_t.cc:16]   --->   Operation 236 'icmp' 'tmp_27_63' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 237 [1/1] (0.00ns)   --->   "%tmp_56 = trunc i1024 %out_data_V_2_26 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 237 'trunc' 'tmp_56' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 238 [1/1] (0.98ns)   --->   "%tmp_28_65 = icmp eq i32 %tmp_57, -1" [g_rg_t.cc:16]   --->   Operation 238 'icmp' 'tmp_28_65' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 239 [1/1] (1.45ns)   --->   "%empty_66 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 239 'read' 'empty_66' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_31 : Operation 240 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_59)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 240 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+
+State 32 <SV = 31> <Delay = 2.74>
+ST_32 : Operation 241 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %i_in_stream_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 241 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 242 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %i_out_stream_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 242 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 243 [1/1] (0.00ns)   --->   "%p_Result_6_27 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_56, i32 %tmp_55)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 243 'bitconcatenate' 'p_Result_6_27' <Predicate = (!tmp_27_63)> <Delay = 0.00>
+ST_32 : Operation 244 [1/1] (0.68ns)   --->   "%out_data_V_2_27 = select i1 %tmp_27_63, i1024 %out_data_V_2_26, i1024 %p_Result_6_27" [g_rg_t.cc:16]   --->   Operation 244 'select' 'out_data_V_2_27' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_32 : Operation 245 [1/1] (0.00ns)   --->   "%tmp_58 = trunc i1024 %out_data_V_2_27 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 245 'trunc' 'tmp_58' <Predicate = (!tmp_28_65)> <Delay = 0.00>
+ST_32 : Operation 246 [1/1] (0.00ns)   --->   "%p_Result_6_28 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_58, i32 %tmp_57)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 246 'bitconcatenate' 'p_Result_6_28' <Predicate = (!tmp_28_65)> <Delay = 0.00>
+ST_32 : Operation 247 [1/1] (0.68ns)   --->   "%out_data_V_2_28 = select i1 %tmp_28_65, i1024 %out_data_V_2_27, i1024 %p_Result_6_28" [g_rg_t.cc:16]   --->   Operation 247 'select' 'out_data_V_2_28' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_32 : Operation 248 [1/1] (0.98ns)   --->   "%tmp_29_67 = icmp eq i32 %tmp_59, -1" [g_rg_t.cc:16]   --->   Operation 248 'icmp' 'tmp_29_67' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_32 : Operation 249 [1/1] (0.00ns)   --->   "%tmp_60 = trunc i1024 %out_data_V_2_28 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 249 'trunc' 'tmp_60' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 250 [1/1] (0.00ns)   --->   "%p_Result_6_29 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_60, i32 %tmp_59)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 250 'bitconcatenate' 'p_Result_6_29' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 251 [1/1] (0.68ns)   --->   "%out_data_V_2_29 = select i1 %tmp_29_67, i1024 %out_data_V_2_28, i1024 %p_Result_6_29" [g_rg_t.cc:16]   --->   Operation 251 'select' 'out_data_V_2_29' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_32 : Operation 252 [1/1] (1.45ns)   --->   "%empty_68 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %i_in_stream_V)" [../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13]   --->   Operation 252 'read' 'empty_68' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_32 : Operation 253 [1/1] (0.98ns)   --->   "%tmp_30_69 = icmp eq i32 %tmp_61, -1" [g_rg_t.cc:16]   --->   Operation 253 'icmp' 'tmp_30_69' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_32 : Operation 254 [1/1] (0.00ns)   --->   "%tmp_62 = trunc i1024 %out_data_V_2_29 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 254 'trunc' 'tmp_62' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 255 [1/1] (0.00ns)   --->   "%p_Result_6_30 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_62, i32 %tmp_61)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:21]   --->   Operation 255 'bitconcatenate' 'p_Result_6_30' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 256 [1/1] (0.68ns)   --->   "%out_data_V_2_30 = select i1 %tmp_30_69, i1024 %out_data_V_2_29, i1024 %p_Result_6_30" [g_rg_t.cc:16]   --->   Operation 256 'select' 'out_data_V_2_30' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_32 : Operation 257 [1/1] (1.45ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %i_out_stream_V, i32 %tmp_61)" [../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23]   --->   Operation 257 'write' <Predicate = true> <Delay = 1.45> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 1.60> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1> <FIFO>
+ST_32 : Operation 258 [1/1] (0.00ns)   --->   "ret i1024 %out_data_V_2_30" [g_rg_t.cc:26]   --->   Operation 258 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.417ns.
+
+ <State 1>: 1.46ns
+The critical path consists of the following:
+	wire read on port 'adj_data_V' [6]  (0 ns)
+	fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:23) [11]  (1.46 ns)
+
+ <State 2>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [12]  (1.46 ns)
+
+ <State 3>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [19]  (1.46 ns)
+
+ <State 4>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [26]  (1.46 ns)
+
+ <State 5>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [33]  (1.46 ns)
+
+ <State 6>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [40]  (1.46 ns)
+
+ <State 7>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [47]  (1.46 ns)
+
+ <State 8>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [54]  (1.46 ns)
+
+ <State 9>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [61]  (1.46 ns)
+
+ <State 10>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [68]  (1.46 ns)
+
+ <State 11>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [75]  (1.46 ns)
+
+ <State 12>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [82]  (1.46 ns)
+
+ <State 13>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [89]  (1.46 ns)
+
+ <State 14>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [96]  (1.46 ns)
+
+ <State 15>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [103]  (1.46 ns)
+
+ <State 16>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [110]  (1.46 ns)
+
+ <State 17>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [117]  (1.46 ns)
+
+ <State 18>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [124]  (1.46 ns)
+
+ <State 19>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [131]  (1.46 ns)
+
+ <State 20>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [138]  (1.46 ns)
+
+ <State 21>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [145]  (1.46 ns)
+
+ <State 22>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [152]  (1.46 ns)
+
+ <State 23>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [159]  (1.46 ns)
+
+ <State 24>: 1.46ns
+The critical path consists of the following:
+	fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:13) [166]  (1.46 ns)
+
+ <State 25>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2', g_rg_t.cc:16) [10]  (0.686 ns)
+	'select' operation ('out_data_V_2_1', g_rg_t.cc:16) [17]  (0.686 ns)
+	'select' operation ('out_data_V_2_2', g_rg_t.cc:16) [24]  (0.686 ns)
+	'select' operation ('out_data_V_2_3', g_rg_t.cc:16) [31]  (0.686 ns)
+
+ <State 26>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_4', g_rg_t.cc:16) [38]  (0.686 ns)
+	'select' operation ('out_data_V_2_5', g_rg_t.cc:16) [45]  (0.686 ns)
+	'select' operation ('out_data_V_2_6', g_rg_t.cc:16) [52]  (0.686 ns)
+	'select' operation ('out_data_V_2_7', g_rg_t.cc:16) [59]  (0.686 ns)
+
+ <State 27>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_8', g_rg_t.cc:16) [66]  (0.686 ns)
+	'select' operation ('out_data_V_2_9', g_rg_t.cc:16) [73]  (0.686 ns)
+	'select' operation ('out_data_V_2_s', g_rg_t.cc:16) [80]  (0.686 ns)
+	'select' operation ('out_data_V_2_10', g_rg_t.cc:16) [87]  (0.686 ns)
+
+ <State 28>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_11', g_rg_t.cc:16) [94]  (0.686 ns)
+	'select' operation ('out_data_V_2_12', g_rg_t.cc:16) [101]  (0.686 ns)
+	'select' operation ('out_data_V_2_13', g_rg_t.cc:16) [108]  (0.686 ns)
+	'select' operation ('out_data_V_2_14', g_rg_t.cc:16) [115]  (0.686 ns)
+
+ <State 29>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_15', g_rg_t.cc:16) [122]  (0.686 ns)
+	'select' operation ('out_data_V_2_16', g_rg_t.cc:16) [129]  (0.686 ns)
+	'select' operation ('out_data_V_2_17', g_rg_t.cc:16) [136]  (0.686 ns)
+	'select' operation ('out_data_V_2_18', g_rg_t.cc:16) [143]  (0.686 ns)
+
+ <State 30>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_19', g_rg_t.cc:16) [150]  (0.686 ns)
+	'select' operation ('out_data_V_2_20', g_rg_t.cc:16) [157]  (0.686 ns)
+	'select' operation ('out_data_V_2_21', g_rg_t.cc:16) [164]  (0.686 ns)
+	'select' operation ('out_data_V_2_22', g_rg_t.cc:16) [171]  (0.686 ns)
+
+ <State 31>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_23', g_rg_t.cc:16) [178]  (0.686 ns)
+	'select' operation ('out_data_V_2_24', g_rg_t.cc:16) [185]  (0.686 ns)
+	'select' operation ('out_data_V_2_25', g_rg_t.cc:16) [192]  (0.686 ns)
+	'select' operation ('out_data_V_2_26', g_rg_t.cc:16) [199]  (0.686 ns)
+
+ <State 32>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_27', g_rg_t.cc:16) [206]  (0.686 ns)
+	'select' operation ('out_data_V_2_28', g_rg_t.cc:16) [213]  (0.686 ns)
+	'select' operation ('out_data_V_2_29', g_rg_t.cc:16) [220]  (0.686 ns)
+	'select' operation ('out_data_V_2_30', g_rg_t.cc:16) [227]  (0.686 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

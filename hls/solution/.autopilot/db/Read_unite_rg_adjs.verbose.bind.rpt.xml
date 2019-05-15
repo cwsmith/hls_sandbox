@@ -1,0 +1,78 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'Read_unite_rg_adjs'" level="0">
+<item name = "Date">Wed May  1 11:49:07 2019
+</item>
+<item name = "Version">2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)</item>
+<item name = "Project">hls</item>
+<item name = "Solution">solution</item>
+<item name = "Product family">kintexuplus</item>
+<item name = "Target device">xcku5p-sfvb784-3-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">3.33, 2.917, 0.42</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_unite_fu_826">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_835">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_843">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_851">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_859">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_867">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_875">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_883">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_891">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_899">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_907">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_915">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_923">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_931">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_939">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_947">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_955">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_963">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_971">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_979">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_987">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_995">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1003">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1011">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1019">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1027">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1035">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1043">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1051">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1059">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1067">unite, 64, 64, 65, 65, function</column>
+<column name="grp_unite_fu_1075">unite, 64, 64, 65, 65, function</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- transit_loop_rg">?, ?, 2051, 65, 1, ?, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

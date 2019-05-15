@@ -1,0 +1,358 @@
+
+
+================================================================
+== Vivado HLS Report for 'writeResult'
+================================================================
+* Date:           Tue May  7 10:36:36 2019
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        hls
+* Solution:       solution
+* Product family: kintexuplus
+* Target device:  xcku5p-sfvb784-3-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   3.33|     2.744|        0.42|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+----------+
+    |  Latency  |  Interval | Pipeline |
+    | min | max | min | max |   Type   |
+    +-----+-----+-----+-----+----------+
+    |    7|    7|    1|    1| function |
+    +-----+-----+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 1
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 8
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 8
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 8, States = { 1 2 3 4 5 6 7 8 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.71>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%cnt_data_V_read = call i1024 @_ssdm_op_Read.ap_auto.i1024(i1024 %cnt_data_V)"   --->   Operation 9 'read' 'cnt_data_V_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%tmp_1 = trunc i1024 %cnt_data_V_read to i32" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 10 'trunc' 'tmp_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.98ns)   --->   "%tmp = icmp sgt i32 %tmp_1, 0" [g_rg_t.cc:32]   --->   Operation 11 'icmp' 'tmp' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 12 [1/1] (0.00ns) (grouped into LUT with out node out_data_V_2_1)   --->   "%p_cast_cast = select i1 %tmp, i1024 -4294967296, i1024 -1" [g_rg_t.cc:32]   --->   Operation 12 'select' 'p_cast_cast' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%p_Result_4_1 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 32, i32 63)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 13 'partselect' 'p_Result_4_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.98ns)   --->   "%tmp_s = icmp sgt i32 %p_Result_4_1, 0" [g_rg_t.cc:32]   --->   Operation 14 'icmp' 'tmp_s' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 15 [1/1] (0.00ns) (grouped into LUT with out node out_data_V_2_1)   --->   "%tmp_13 = select i1 %tmp, i33 -4294967296, i33 -1" [g_rg_t.cc:32]   --->   Operation 15 'select' 'tmp_13' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 16 [1/1] (0.00ns) (grouped into LUT with out node out_data_V_2_1)   --->   "%tmp_32 = call i65 @_ssdm_op_BitConcatenate.i65.i33.i32(i33 %tmp_13, i32 1)" [g_rg_t.cc:32]   --->   Operation 16 'bitconcatenate' 'tmp_32' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns) (grouped into LUT with out node out_data_V_2_1)   --->   "%p_Result_1_1 = sext i65 %tmp_32 to i1024" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 17 'sext' 'p_Result_1_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.35ns) (out node of the LUT)   --->   "%out_data_V_2_1 = select i1 %tmp_s, i1024 %p_Result_1_1, i1024 %p_cast_cast" [g_rg_t.cc:32]   --->   Operation 18 'select' 'out_data_V_2_1' <Predicate = true> <Delay = 0.35> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%p_Result_4_2 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 64, i32 95)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 19 'partselect' 'p_Result_4_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.98ns)   --->   "%tmp_2 = icmp sgt i32 %p_Result_4_2, 0" [g_rg_t.cc:32]   --->   Operation 20 'icmp' 'tmp_2' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%tmp_33 = trunc i1024 %out_data_V_2_1 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 21 'trunc' 'tmp_33' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%p_Result_1_2 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_33, i32 2)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 22 'bitconcatenate' 'p_Result_1_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.68ns)   --->   "%out_data_V_2_2 = select i1 %tmp_2, i1024 %p_Result_1_2, i1024 %out_data_V_2_1" [g_rg_t.cc:32]   --->   Operation 23 'select' 'out_data_V_2_2' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%p_Result_4_3 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 96, i32 127)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 24 'partselect' 'p_Result_4_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.98ns)   --->   "%tmp_3 = icmp sgt i32 %p_Result_4_3, 0" [g_rg_t.cc:32]   --->   Operation 25 'icmp' 'tmp_3' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%tmp_34 = trunc i1024 %out_data_V_2_2 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 26 'trunc' 'tmp_34' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%p_Result_1_3 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_34, i32 3)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 27 'bitconcatenate' 'p_Result_1_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.68ns)   --->   "%out_data_V_2_3 = select i1 %tmp_3, i1024 %p_Result_1_3, i1024 %out_data_V_2_2" [g_rg_t.cc:32]   --->   Operation 28 'select' 'out_data_V_2_3' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%p_Result_4_4 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 128, i32 159)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 29 'partselect' 'p_Result_4_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.98ns)   --->   "%tmp_4 = icmp sgt i32 %p_Result_4_4, 0" [g_rg_t.cc:32]   --->   Operation 30 'icmp' 'tmp_4' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%tmp_35 = trunc i1024 %out_data_V_2_3 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 31 'trunc' 'tmp_35' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%p_Result_4_5 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 160, i32 191)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 32 'partselect' 'p_Result_4_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.98ns)   --->   "%tmp_5 = icmp sgt i32 %p_Result_4_5, 0" [g_rg_t.cc:32]   --->   Operation 33 'icmp' 'tmp_5' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%p_Result_4_6 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 192, i32 223)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 34 'partselect' 'p_Result_4_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (0.98ns)   --->   "%tmp_6 = icmp sgt i32 %p_Result_4_6, 0" [g_rg_t.cc:32]   --->   Operation 35 'icmp' 'tmp_6' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%p_Result_4_7 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 224, i32 255)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 36 'partselect' 'p_Result_4_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.98ns)   --->   "%tmp_7 = icmp sgt i32 %p_Result_4_7, 0" [g_rg_t.cc:32]   --->   Operation 37 'icmp' 'tmp_7' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%p_Result_4_8 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 256, i32 287)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 38 'partselect' 'p_Result_4_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 39 [1/1] (0.98ns)   --->   "%tmp_8 = icmp sgt i32 %p_Result_4_8, 0" [g_rg_t.cc:32]   --->   Operation 39 'icmp' 'tmp_8' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%p_Result_4_9 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 288, i32 319)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 40 'partselect' 'p_Result_4_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (0.98ns)   --->   "%tmp_9 = icmp sgt i32 %p_Result_4_9, 0" [g_rg_t.cc:32]   --->   Operation 41 'icmp' 'tmp_9' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%p_Result_4_s = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 320, i32 351)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 42 'partselect' 'p_Result_4_s' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (0.98ns)   --->   "%tmp_10 = icmp sgt i32 %p_Result_4_s, 0" [g_rg_t.cc:32]   --->   Operation 43 'icmp' 'tmp_10' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%p_Result_4_10 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 352, i32 383)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 44 'partselect' 'p_Result_4_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (0.98ns)   --->   "%tmp_11 = icmp sgt i32 %p_Result_4_10, 0" [g_rg_t.cc:32]   --->   Operation 45 'icmp' 'tmp_11' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%p_Result_4_11 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 384, i32 415)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 46 'partselect' 'p_Result_4_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 47 [1/1] (0.98ns)   --->   "%tmp_12 = icmp sgt i32 %p_Result_4_11, 0" [g_rg_t.cc:32]   --->   Operation 47 'icmp' 'tmp_12' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%p_Result_4_12 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 416, i32 447)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 48 'partselect' 'p_Result_4_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (0.98ns)   --->   "%tmp_42 = icmp sgt i32 %p_Result_4_12, 0" [g_rg_t.cc:32]   --->   Operation 49 'icmp' 'tmp_42' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%p_Result_4_13 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 448, i32 479)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 50 'partselect' 'p_Result_4_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 51 [1/1] (0.98ns)   --->   "%tmp_14 = icmp sgt i32 %p_Result_4_13, 0" [g_rg_t.cc:32]   --->   Operation 51 'icmp' 'tmp_14' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%p_Result_4_14 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 480, i32 511)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 52 'partselect' 'p_Result_4_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 53 [1/1] (0.98ns)   --->   "%tmp_15 = icmp sgt i32 %p_Result_4_14, 0" [g_rg_t.cc:32]   --->   Operation 53 'icmp' 'tmp_15' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%p_Result_4_15 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 512, i32 543)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 54 'partselect' 'p_Result_4_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 55 [1/1] (0.98ns)   --->   "%tmp_16 = icmp sgt i32 %p_Result_4_15, 0" [g_rg_t.cc:32]   --->   Operation 55 'icmp' 'tmp_16' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%p_Result_4_16 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 544, i32 575)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 56 'partselect' 'p_Result_4_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 57 [1/1] (0.98ns)   --->   "%tmp_17 = icmp sgt i32 %p_Result_4_16, 0" [g_rg_t.cc:32]   --->   Operation 57 'icmp' 'tmp_17' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 58 [1/1] (0.00ns)   --->   "%p_Result_4_17 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 576, i32 607)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 58 'partselect' 'p_Result_4_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 59 [1/1] (0.98ns)   --->   "%tmp_18 = icmp sgt i32 %p_Result_4_17, 0" [g_rg_t.cc:32]   --->   Operation 59 'icmp' 'tmp_18' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "%p_Result_4_18 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 608, i32 639)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 60 'partselect' 'p_Result_4_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 61 [1/1] (0.98ns)   --->   "%tmp_19 = icmp sgt i32 %p_Result_4_18, 0" [g_rg_t.cc:32]   --->   Operation 61 'icmp' 'tmp_19' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 62 [1/1] (0.00ns)   --->   "%p_Result_4_19 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 640, i32 671)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 62 'partselect' 'p_Result_4_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 63 [1/1] (0.98ns)   --->   "%tmp_20 = icmp sgt i32 %p_Result_4_19, 0" [g_rg_t.cc:32]   --->   Operation 63 'icmp' 'tmp_20' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 64 [1/1] (0.00ns)   --->   "%p_Result_4_20 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 672, i32 703)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 64 'partselect' 'p_Result_4_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 65 [1/1] (0.98ns)   --->   "%tmp_21 = icmp sgt i32 %p_Result_4_20, 0" [g_rg_t.cc:32]   --->   Operation 65 'icmp' 'tmp_21' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 66 [1/1] (0.00ns)   --->   "%p_Result_4_21 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 704, i32 735)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 66 'partselect' 'p_Result_4_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 67 [1/1] (0.98ns)   --->   "%tmp_22 = icmp sgt i32 %p_Result_4_21, 0" [g_rg_t.cc:32]   --->   Operation 67 'icmp' 'tmp_22' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 68 [1/1] (0.00ns)   --->   "%p_Result_4_22 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 736, i32 767)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 68 'partselect' 'p_Result_4_22' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 69 [1/1] (0.98ns)   --->   "%tmp_23 = icmp sgt i32 %p_Result_4_22, 0" [g_rg_t.cc:32]   --->   Operation 69 'icmp' 'tmp_23' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 70 [1/1] (0.00ns)   --->   "%p_Result_4_23 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 768, i32 799)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 70 'partselect' 'p_Result_4_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 71 [1/1] (0.98ns)   --->   "%tmp_24 = icmp sgt i32 %p_Result_4_23, 0" [g_rg_t.cc:32]   --->   Operation 71 'icmp' 'tmp_24' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 72 [1/1] (0.00ns)   --->   "%p_Result_4_24 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 800, i32 831)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 72 'partselect' 'p_Result_4_24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 73 [1/1] (0.98ns)   --->   "%tmp_25 = icmp sgt i32 %p_Result_4_24, 0" [g_rg_t.cc:32]   --->   Operation 73 'icmp' 'tmp_25' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 74 [1/1] (0.00ns)   --->   "%p_Result_4_25 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 832, i32 863)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 74 'partselect' 'p_Result_4_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 75 [1/1] (0.98ns)   --->   "%tmp_26 = icmp sgt i32 %p_Result_4_25, 0" [g_rg_t.cc:32]   --->   Operation 75 'icmp' 'tmp_26' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 76 [1/1] (0.00ns)   --->   "%p_Result_4_26 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 864, i32 895)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 76 'partselect' 'p_Result_4_26' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 77 [1/1] (0.98ns)   --->   "%tmp_27 = icmp sgt i32 %p_Result_4_26, 0" [g_rg_t.cc:32]   --->   Operation 77 'icmp' 'tmp_27' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 78 [1/1] (0.00ns)   --->   "%p_Result_4_27 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 896, i32 927)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 78 'partselect' 'p_Result_4_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 79 [1/1] (0.98ns)   --->   "%tmp_28 = icmp sgt i32 %p_Result_4_27, 0" [g_rg_t.cc:32]   --->   Operation 79 'icmp' 'tmp_28' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 80 [1/1] (0.00ns)   --->   "%p_Result_4_28 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 928, i32 959)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 80 'partselect' 'p_Result_4_28' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 81 [1/1] (0.98ns)   --->   "%tmp_29 = icmp sgt i32 %p_Result_4_28, 0" [g_rg_t.cc:32]   --->   Operation 81 'icmp' 'tmp_29' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 82 [1/1] (0.00ns)   --->   "%p_Result_4_29 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 960, i32 991)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 82 'partselect' 'p_Result_4_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 83 [1/1] (0.98ns)   --->   "%tmp_30 = icmp sgt i32 %p_Result_4_29, 0" [g_rg_t.cc:32]   --->   Operation 83 'icmp' 'tmp_30' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 84 [1/1] (0.00ns)   --->   "%p_Result_4_30 = call i32 @_ssdm_op_PartSelect.i32.i1024.i32.i32(i1024 %cnt_data_V_read, i32 992, i32 1023)" [../hlslib/include/hlslib/DataPack.h:81->g_rg_t.cc:32]   --->   Operation 84 'partselect' 'p_Result_4_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 85 [1/1] (0.98ns)   --->   "%tmp_31 = icmp sgt i32 %p_Result_4_30, 0" [g_rg_t.cc:32]   --->   Operation 85 'icmp' 'tmp_31' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.98> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+
+State 2 <SV = 1> <Delay = 2.74>
+ST_2 : Operation 86 [1/1] (0.00ns)   --->   "%p_Result_1_4 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_35, i32 4)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 86 'bitconcatenate' 'p_Result_1_4' <Predicate = (tmp_4)> <Delay = 0.00>
+ST_2 : Operation 87 [1/1] (0.68ns)   --->   "%out_data_V_2_4 = select i1 %tmp_4, i1024 %p_Result_1_4, i1024 %out_data_V_2_3" [g_rg_t.cc:32]   --->   Operation 87 'select' 'out_data_V_2_4' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 88 [1/1] (0.00ns)   --->   "%tmp_36 = trunc i1024 %out_data_V_2_4 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 88 'trunc' 'tmp_36' <Predicate = (tmp_5)> <Delay = 0.00>
+ST_2 : Operation 89 [1/1] (0.00ns)   --->   "%p_Result_1_5 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_36, i32 5)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 89 'bitconcatenate' 'p_Result_1_5' <Predicate = (tmp_5)> <Delay = 0.00>
+ST_2 : Operation 90 [1/1] (0.68ns)   --->   "%out_data_V_2_5 = select i1 %tmp_5, i1024 %p_Result_1_5, i1024 %out_data_V_2_4" [g_rg_t.cc:32]   --->   Operation 90 'select' 'out_data_V_2_5' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 91 [1/1] (0.00ns)   --->   "%tmp_37 = trunc i1024 %out_data_V_2_5 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 91 'trunc' 'tmp_37' <Predicate = (tmp_6)> <Delay = 0.00>
+ST_2 : Operation 92 [1/1] (0.00ns)   --->   "%p_Result_1_6 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_37, i32 6)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 92 'bitconcatenate' 'p_Result_1_6' <Predicate = (tmp_6)> <Delay = 0.00>
+ST_2 : Operation 93 [1/1] (0.68ns)   --->   "%out_data_V_2_6 = select i1 %tmp_6, i1024 %p_Result_1_6, i1024 %out_data_V_2_5" [g_rg_t.cc:32]   --->   Operation 93 'select' 'out_data_V_2_6' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 94 [1/1] (0.00ns)   --->   "%tmp_38 = trunc i1024 %out_data_V_2_6 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 94 'trunc' 'tmp_38' <Predicate = (tmp_7)> <Delay = 0.00>
+ST_2 : Operation 95 [1/1] (0.00ns)   --->   "%p_Result_1_7 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_38, i32 7)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 95 'bitconcatenate' 'p_Result_1_7' <Predicate = (tmp_7)> <Delay = 0.00>
+ST_2 : Operation 96 [1/1] (0.68ns)   --->   "%out_data_V_2_7 = select i1 %tmp_7, i1024 %p_Result_1_7, i1024 %out_data_V_2_6" [g_rg_t.cc:32]   --->   Operation 96 'select' 'out_data_V_2_7' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 97 [1/1] (0.00ns)   --->   "%tmp_39 = trunc i1024 %out_data_V_2_7 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 97 'trunc' 'tmp_39' <Predicate = (tmp_8)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.74>
+ST_3 : Operation 98 [1/1] (0.00ns)   --->   "%p_Result_1_8 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_39, i32 8)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 98 'bitconcatenate' 'p_Result_1_8' <Predicate = (tmp_8)> <Delay = 0.00>
+ST_3 : Operation 99 [1/1] (0.68ns)   --->   "%out_data_V_2_8 = select i1 %tmp_8, i1024 %p_Result_1_8, i1024 %out_data_V_2_7" [g_rg_t.cc:32]   --->   Operation 99 'select' 'out_data_V_2_8' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_3 : Operation 100 [1/1] (0.00ns)   --->   "%tmp_40 = trunc i1024 %out_data_V_2_8 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 100 'trunc' 'tmp_40' <Predicate = (tmp_9)> <Delay = 0.00>
+ST_3 : Operation 101 [1/1] (0.00ns)   --->   "%p_Result_1_9 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_40, i32 9)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 101 'bitconcatenate' 'p_Result_1_9' <Predicate = (tmp_9)> <Delay = 0.00>
+ST_3 : Operation 102 [1/1] (0.68ns)   --->   "%out_data_V_2_9 = select i1 %tmp_9, i1024 %p_Result_1_9, i1024 %out_data_V_2_8" [g_rg_t.cc:32]   --->   Operation 102 'select' 'out_data_V_2_9' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_3 : Operation 103 [1/1] (0.00ns)   --->   "%tmp_41 = trunc i1024 %out_data_V_2_9 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 103 'trunc' 'tmp_41' <Predicate = (tmp_10)> <Delay = 0.00>
+ST_3 : Operation 104 [1/1] (0.00ns)   --->   "%p_Result_1_s = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_41, i32 10)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 104 'bitconcatenate' 'p_Result_1_s' <Predicate = (tmp_10)> <Delay = 0.00>
+ST_3 : Operation 105 [1/1] (0.68ns)   --->   "%out_data_V_2_s = select i1 %tmp_10, i1024 %p_Result_1_s, i1024 %out_data_V_2_9" [g_rg_t.cc:32]   --->   Operation 105 'select' 'out_data_V_2_s' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_3 : Operation 106 [1/1] (0.00ns)   --->   "%tmp_43 = trunc i1024 %out_data_V_2_s to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 106 'trunc' 'tmp_43' <Predicate = (tmp_11)> <Delay = 0.00>
+ST_3 : Operation 107 [1/1] (0.00ns)   --->   "%p_Result_1_10 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_43, i32 11)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 107 'bitconcatenate' 'p_Result_1_10' <Predicate = (tmp_11)> <Delay = 0.00>
+ST_3 : Operation 108 [1/1] (0.68ns)   --->   "%out_data_V_2_10 = select i1 %tmp_11, i1024 %p_Result_1_10, i1024 %out_data_V_2_s" [g_rg_t.cc:32]   --->   Operation 108 'select' 'out_data_V_2_10' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_3 : Operation 109 [1/1] (0.00ns)   --->   "%tmp_44 = trunc i1024 %out_data_V_2_10 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 109 'trunc' 'tmp_44' <Predicate = (tmp_12)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 2.74>
+ST_4 : Operation 110 [1/1] (0.00ns)   --->   "%p_Result_1_11 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_44, i32 12)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 110 'bitconcatenate' 'p_Result_1_11' <Predicate = (tmp_12)> <Delay = 0.00>
+ST_4 : Operation 111 [1/1] (0.68ns)   --->   "%out_data_V_2_11 = select i1 %tmp_12, i1024 %p_Result_1_11, i1024 %out_data_V_2_10" [g_rg_t.cc:32]   --->   Operation 111 'select' 'out_data_V_2_11' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 112 [1/1] (0.00ns)   --->   "%tmp_45 = trunc i1024 %out_data_V_2_11 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 112 'trunc' 'tmp_45' <Predicate = (tmp_42)> <Delay = 0.00>
+ST_4 : Operation 113 [1/1] (0.00ns)   --->   "%p_Result_1_12 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_45, i32 13)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 113 'bitconcatenate' 'p_Result_1_12' <Predicate = (tmp_42)> <Delay = 0.00>
+ST_4 : Operation 114 [1/1] (0.68ns)   --->   "%out_data_V_2_12 = select i1 %tmp_42, i1024 %p_Result_1_12, i1024 %out_data_V_2_11" [g_rg_t.cc:32]   --->   Operation 114 'select' 'out_data_V_2_12' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 115 [1/1] (0.00ns)   --->   "%tmp_46 = trunc i1024 %out_data_V_2_12 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 115 'trunc' 'tmp_46' <Predicate = (tmp_14)> <Delay = 0.00>
+ST_4 : Operation 116 [1/1] (0.00ns)   --->   "%p_Result_1_13 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_46, i32 14)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 116 'bitconcatenate' 'p_Result_1_13' <Predicate = (tmp_14)> <Delay = 0.00>
+ST_4 : Operation 117 [1/1] (0.68ns)   --->   "%out_data_V_2_13 = select i1 %tmp_14, i1024 %p_Result_1_13, i1024 %out_data_V_2_12" [g_rg_t.cc:32]   --->   Operation 117 'select' 'out_data_V_2_13' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 118 [1/1] (0.00ns)   --->   "%tmp_47 = trunc i1024 %out_data_V_2_13 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 118 'trunc' 'tmp_47' <Predicate = (tmp_15)> <Delay = 0.00>
+ST_4 : Operation 119 [1/1] (0.00ns)   --->   "%p_Result_1_14 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_47, i32 15)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 119 'bitconcatenate' 'p_Result_1_14' <Predicate = (tmp_15)> <Delay = 0.00>
+ST_4 : Operation 120 [1/1] (0.68ns)   --->   "%out_data_V_2_14 = select i1 %tmp_15, i1024 %p_Result_1_14, i1024 %out_data_V_2_13" [g_rg_t.cc:32]   --->   Operation 120 'select' 'out_data_V_2_14' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 121 [1/1] (0.00ns)   --->   "%tmp_48 = trunc i1024 %out_data_V_2_14 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 121 'trunc' 'tmp_48' <Predicate = (tmp_16)> <Delay = 0.00>
+
+State 5 <SV = 4> <Delay = 2.74>
+ST_5 : Operation 122 [1/1] (0.00ns)   --->   "%p_Result_1_15 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_48, i32 16)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 122 'bitconcatenate' 'p_Result_1_15' <Predicate = (tmp_16)> <Delay = 0.00>
+ST_5 : Operation 123 [1/1] (0.68ns)   --->   "%out_data_V_2_15 = select i1 %tmp_16, i1024 %p_Result_1_15, i1024 %out_data_V_2_14" [g_rg_t.cc:32]   --->   Operation 123 'select' 'out_data_V_2_15' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 124 [1/1] (0.00ns)   --->   "%tmp_49 = trunc i1024 %out_data_V_2_15 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 124 'trunc' 'tmp_49' <Predicate = (tmp_17)> <Delay = 0.00>
+ST_5 : Operation 125 [1/1] (0.00ns)   --->   "%p_Result_1_16 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_49, i32 17)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 125 'bitconcatenate' 'p_Result_1_16' <Predicate = (tmp_17)> <Delay = 0.00>
+ST_5 : Operation 126 [1/1] (0.68ns)   --->   "%out_data_V_2_16 = select i1 %tmp_17, i1024 %p_Result_1_16, i1024 %out_data_V_2_15" [g_rg_t.cc:32]   --->   Operation 126 'select' 'out_data_V_2_16' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 127 [1/1] (0.00ns)   --->   "%tmp_50 = trunc i1024 %out_data_V_2_16 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 127 'trunc' 'tmp_50' <Predicate = (tmp_18)> <Delay = 0.00>
+ST_5 : Operation 128 [1/1] (0.00ns)   --->   "%p_Result_1_17 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_50, i32 18)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 128 'bitconcatenate' 'p_Result_1_17' <Predicate = (tmp_18)> <Delay = 0.00>
+ST_5 : Operation 129 [1/1] (0.68ns)   --->   "%out_data_V_2_17 = select i1 %tmp_18, i1024 %p_Result_1_17, i1024 %out_data_V_2_16" [g_rg_t.cc:32]   --->   Operation 129 'select' 'out_data_V_2_17' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 130 [1/1] (0.00ns)   --->   "%tmp_51 = trunc i1024 %out_data_V_2_17 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 130 'trunc' 'tmp_51' <Predicate = (tmp_19)> <Delay = 0.00>
+ST_5 : Operation 131 [1/1] (0.00ns)   --->   "%p_Result_1_18 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_51, i32 19)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 131 'bitconcatenate' 'p_Result_1_18' <Predicate = (tmp_19)> <Delay = 0.00>
+ST_5 : Operation 132 [1/1] (0.68ns)   --->   "%out_data_V_2_18 = select i1 %tmp_19, i1024 %p_Result_1_18, i1024 %out_data_V_2_17" [g_rg_t.cc:32]   --->   Operation 132 'select' 'out_data_V_2_18' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 133 [1/1] (0.00ns)   --->   "%tmp_52 = trunc i1024 %out_data_V_2_18 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 133 'trunc' 'tmp_52' <Predicate = (tmp_20)> <Delay = 0.00>
+
+State 6 <SV = 5> <Delay = 2.74>
+ST_6 : Operation 134 [1/1] (0.00ns)   --->   "%p_Result_1_19 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_52, i32 20)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 134 'bitconcatenate' 'p_Result_1_19' <Predicate = (tmp_20)> <Delay = 0.00>
+ST_6 : Operation 135 [1/1] (0.68ns)   --->   "%out_data_V_2_19 = select i1 %tmp_20, i1024 %p_Result_1_19, i1024 %out_data_V_2_18" [g_rg_t.cc:32]   --->   Operation 135 'select' 'out_data_V_2_19' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 136 [1/1] (0.00ns)   --->   "%tmp_53 = trunc i1024 %out_data_V_2_19 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 136 'trunc' 'tmp_53' <Predicate = (tmp_21)> <Delay = 0.00>
+ST_6 : Operation 137 [1/1] (0.00ns)   --->   "%p_Result_1_20 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_53, i32 21)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 137 'bitconcatenate' 'p_Result_1_20' <Predicate = (tmp_21)> <Delay = 0.00>
+ST_6 : Operation 138 [1/1] (0.68ns)   --->   "%out_data_V_2_20 = select i1 %tmp_21, i1024 %p_Result_1_20, i1024 %out_data_V_2_19" [g_rg_t.cc:32]   --->   Operation 138 'select' 'out_data_V_2_20' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 139 [1/1] (0.00ns)   --->   "%tmp_54 = trunc i1024 %out_data_V_2_20 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 139 'trunc' 'tmp_54' <Predicate = (tmp_22)> <Delay = 0.00>
+ST_6 : Operation 140 [1/1] (0.00ns)   --->   "%p_Result_1_21 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_54, i32 22)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 140 'bitconcatenate' 'p_Result_1_21' <Predicate = (tmp_22)> <Delay = 0.00>
+ST_6 : Operation 141 [1/1] (0.68ns)   --->   "%out_data_V_2_21 = select i1 %tmp_22, i1024 %p_Result_1_21, i1024 %out_data_V_2_20" [g_rg_t.cc:32]   --->   Operation 141 'select' 'out_data_V_2_21' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 142 [1/1] (0.00ns)   --->   "%tmp_55 = trunc i1024 %out_data_V_2_21 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 142 'trunc' 'tmp_55' <Predicate = (tmp_23)> <Delay = 0.00>
+ST_6 : Operation 143 [1/1] (0.00ns)   --->   "%p_Result_1_22 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_55, i32 23)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 143 'bitconcatenate' 'p_Result_1_22' <Predicate = (tmp_23)> <Delay = 0.00>
+ST_6 : Operation 144 [1/1] (0.68ns)   --->   "%out_data_V_2_22 = select i1 %tmp_23, i1024 %p_Result_1_22, i1024 %out_data_V_2_21" [g_rg_t.cc:32]   --->   Operation 144 'select' 'out_data_V_2_22' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 145 [1/1] (0.00ns)   --->   "%tmp_56 = trunc i1024 %out_data_V_2_22 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 145 'trunc' 'tmp_56' <Predicate = (tmp_24)> <Delay = 0.00>
+
+State 7 <SV = 6> <Delay = 2.74>
+ST_7 : Operation 146 [1/1] (0.00ns)   --->   "%p_Result_1_23 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_56, i32 24)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 146 'bitconcatenate' 'p_Result_1_23' <Predicate = (tmp_24)> <Delay = 0.00>
+ST_7 : Operation 147 [1/1] (0.68ns)   --->   "%out_data_V_2_23 = select i1 %tmp_24, i1024 %p_Result_1_23, i1024 %out_data_V_2_22" [g_rg_t.cc:32]   --->   Operation 147 'select' 'out_data_V_2_23' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 148 [1/1] (0.00ns)   --->   "%tmp_57 = trunc i1024 %out_data_V_2_23 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 148 'trunc' 'tmp_57' <Predicate = (tmp_25)> <Delay = 0.00>
+ST_7 : Operation 149 [1/1] (0.00ns)   --->   "%p_Result_1_24 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_57, i32 25)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 149 'bitconcatenate' 'p_Result_1_24' <Predicate = (tmp_25)> <Delay = 0.00>
+ST_7 : Operation 150 [1/1] (0.68ns)   --->   "%out_data_V_2_24 = select i1 %tmp_25, i1024 %p_Result_1_24, i1024 %out_data_V_2_23" [g_rg_t.cc:32]   --->   Operation 150 'select' 'out_data_V_2_24' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 151 [1/1] (0.00ns)   --->   "%tmp_58 = trunc i1024 %out_data_V_2_24 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 151 'trunc' 'tmp_58' <Predicate = (tmp_26)> <Delay = 0.00>
+ST_7 : Operation 152 [1/1] (0.00ns)   --->   "%p_Result_1_25 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_58, i32 26)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 152 'bitconcatenate' 'p_Result_1_25' <Predicate = (tmp_26)> <Delay = 0.00>
+ST_7 : Operation 153 [1/1] (0.68ns)   --->   "%out_data_V_2_25 = select i1 %tmp_26, i1024 %p_Result_1_25, i1024 %out_data_V_2_24" [g_rg_t.cc:32]   --->   Operation 153 'select' 'out_data_V_2_25' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 154 [1/1] (0.00ns)   --->   "%tmp_59 = trunc i1024 %out_data_V_2_25 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 154 'trunc' 'tmp_59' <Predicate = (tmp_27)> <Delay = 0.00>
+ST_7 : Operation 155 [1/1] (0.00ns)   --->   "%p_Result_1_26 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_59, i32 27)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 155 'bitconcatenate' 'p_Result_1_26' <Predicate = (tmp_27)> <Delay = 0.00>
+ST_7 : Operation 156 [1/1] (0.68ns)   --->   "%out_data_V_2_26 = select i1 %tmp_27, i1024 %p_Result_1_26, i1024 %out_data_V_2_25" [g_rg_t.cc:32]   --->   Operation 156 'select' 'out_data_V_2_26' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 157 [1/1] (0.00ns)   --->   "%tmp_60 = trunc i1024 %out_data_V_2_26 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 157 'trunc' 'tmp_60' <Predicate = (tmp_28)> <Delay = 0.00>
+
+State 8 <SV = 7> <Delay = 2.74>
+ST_8 : Operation 158 [1/1] (0.00ns)   --->   "%p_Result_1_27 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_60, i32 28)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 158 'bitconcatenate' 'p_Result_1_27' <Predicate = (tmp_28)> <Delay = 0.00>
+ST_8 : Operation 159 [1/1] (0.68ns)   --->   "%out_data_V_2_27 = select i1 %tmp_28, i1024 %p_Result_1_27, i1024 %out_data_V_2_26" [g_rg_t.cc:32]   --->   Operation 159 'select' 'out_data_V_2_27' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_8 : Operation 160 [1/1] (0.00ns)   --->   "%tmp_61 = trunc i1024 %out_data_V_2_27 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 160 'trunc' 'tmp_61' <Predicate = (tmp_29)> <Delay = 0.00>
+ST_8 : Operation 161 [1/1] (0.00ns)   --->   "%p_Result_1_28 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_61, i32 29)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 161 'bitconcatenate' 'p_Result_1_28' <Predicate = (tmp_29)> <Delay = 0.00>
+ST_8 : Operation 162 [1/1] (0.68ns)   --->   "%out_data_V_2_28 = select i1 %tmp_29, i1024 %p_Result_1_28, i1024 %out_data_V_2_27" [g_rg_t.cc:32]   --->   Operation 162 'select' 'out_data_V_2_28' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_8 : Operation 163 [1/1] (0.00ns)   --->   "%tmp_62 = trunc i1024 %out_data_V_2_28 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 163 'trunc' 'tmp_62' <Predicate = (tmp_30)> <Delay = 0.00>
+ST_8 : Operation 164 [1/1] (0.00ns)   --->   "%p_Result_1_29 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_62, i32 30)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 164 'bitconcatenate' 'p_Result_1_29' <Predicate = (tmp_30)> <Delay = 0.00>
+ST_8 : Operation 165 [1/1] (0.68ns)   --->   "%out_data_V_2_29 = select i1 %tmp_30, i1024 %p_Result_1_29, i1024 %out_data_V_2_28" [g_rg_t.cc:32]   --->   Operation 165 'select' 'out_data_V_2_29' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_8 : Operation 166 [1/1] (0.00ns)   --->   "%tmp_63 = trunc i1024 %out_data_V_2_29 to i992" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 166 'trunc' 'tmp_63' <Predicate = (tmp_31)> <Delay = 0.00>
+ST_8 : Operation 167 [1/1] (0.00ns)   --->   "%p_Result_1_30 = call i1024 @_ssdm_op_BitConcatenate.i1024.i992.i32(i992 %tmp_63, i32 31)" [../hlslib/include/hlslib/DataPack.h:95->g_rg_t.cc:37]   --->   Operation 167 'bitconcatenate' 'p_Result_1_30' <Predicate = (tmp_31)> <Delay = 0.00>
+ST_8 : Operation 168 [1/1] (0.68ns)   --->   "%out_data_V_2_30 = select i1 %tmp_31, i1024 %p_Result_1_30, i1024 %out_data_V_2_29" [g_rg_t.cc:32]   --->   Operation 168 'select' 'out_data_V_2_30' <Predicate = true> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_8 : Operation 169 [1/1] (0.00ns)   --->   "ret i1024 %out_data_V_2_30" [g_rg_t.cc:40]   --->   Operation 169 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.417ns.
+
+ <State 1>: 2.71ns
+The critical path consists of the following:
+	wire read on port 'cnt_data_V' [2]  (0 ns)
+	'icmp' operation ('tmp', g_rg_t.cc:32) [4]  (0.986 ns)
+	'select' operation ('p_cast_cast', g_rg_t.cc:32) [5]  (0 ns)
+	'select' operation ('out_data_V_2_1', g_rg_t.cc:32) [11]  (0.354 ns)
+	'select' operation ('out_data_V_2_2', g_rg_t.cc:32) [16]  (0.686 ns)
+	'select' operation ('out_data_V_2_3', g_rg_t.cc:32) [21]  (0.686 ns)
+
+ <State 2>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_4', g_rg_t.cc:32) [26]  (0.686 ns)
+	'select' operation ('out_data_V_2_5', g_rg_t.cc:32) [31]  (0.686 ns)
+	'select' operation ('out_data_V_2_6', g_rg_t.cc:32) [36]  (0.686 ns)
+	'select' operation ('out_data_V_2_7', g_rg_t.cc:32) [41]  (0.686 ns)
+
+ <State 3>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_8', g_rg_t.cc:32) [46]  (0.686 ns)
+	'select' operation ('out_data_V_2_9', g_rg_t.cc:32) [51]  (0.686 ns)
+	'select' operation ('out_data_V_2_s', g_rg_t.cc:32) [56]  (0.686 ns)
+	'select' operation ('out_data_V_2_10', g_rg_t.cc:32) [61]  (0.686 ns)
+
+ <State 4>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_11', g_rg_t.cc:32) [66]  (0.686 ns)
+	'select' operation ('out_data_V_2_12', g_rg_t.cc:32) [71]  (0.686 ns)
+	'select' operation ('out_data_V_2_13', g_rg_t.cc:32) [76]  (0.686 ns)
+	'select' operation ('out_data_V_2_14', g_rg_t.cc:32) [81]  (0.686 ns)
+
+ <State 5>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_15', g_rg_t.cc:32) [86]  (0.686 ns)
+	'select' operation ('out_data_V_2_16', g_rg_t.cc:32) [91]  (0.686 ns)
+	'select' operation ('out_data_V_2_17', g_rg_t.cc:32) [96]  (0.686 ns)
+	'select' operation ('out_data_V_2_18', g_rg_t.cc:32) [101]  (0.686 ns)
+
+ <State 6>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_19', g_rg_t.cc:32) [106]  (0.686 ns)
+	'select' operation ('out_data_V_2_20', g_rg_t.cc:32) [111]  (0.686 ns)
+	'select' operation ('out_data_V_2_21', g_rg_t.cc:32) [116]  (0.686 ns)
+	'select' operation ('out_data_V_2_22', g_rg_t.cc:32) [121]  (0.686 ns)
+
+ <State 7>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_23', g_rg_t.cc:32) [126]  (0.686 ns)
+	'select' operation ('out_data_V_2_24', g_rg_t.cc:32) [131]  (0.686 ns)
+	'select' operation ('out_data_V_2_25', g_rg_t.cc:32) [136]  (0.686 ns)
+	'select' operation ('out_data_V_2_26', g_rg_t.cc:32) [141]  (0.686 ns)
+
+ <State 8>: 2.74ns
+The critical path consists of the following:
+	'select' operation ('out_data_V_2_27', g_rg_t.cc:32) [146]  (0.686 ns)
+	'select' operation ('out_data_V_2_28', g_rg_t.cc:32) [151]  (0.686 ns)
+	'select' operation ('out_data_V_2_29', g_rg_t.cc:32) [156]  (0.686 ns)
+	'select' operation ('out_data_V_2_30', g_rg_t.cc:32) [161]  (0.686 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

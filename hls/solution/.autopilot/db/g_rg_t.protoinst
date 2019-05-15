@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"g_rg_t": {
+			"proto_instances": {
+			}
+		}
+	}
+}
