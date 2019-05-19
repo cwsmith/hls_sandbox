@@ -7,16 +7,12 @@
 using hlslib::Stream;
 #define MAX_ADJ 16
 #define MAX_NUM 8
-#define ADJ_NUM 128
 using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
 
 void readItems(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
   readAdj0: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
-    int item=-2;
-    if (i<MAX_ADJ*num){
-     item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
-    }
+    int item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
     i_out.Push(item);
   }
 }
@@ -25,7 +21,7 @@ void storeItems(int num, Adj_t &cnt, Stream<int> &i_in){
   readAdj1: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
     int item=i_in.Pop();
-    if (item!=-1 and item!=-2){
+    if (item!=-1){
       cnt.Set(item, (cnt.Get(item))+1);
     }
   }
@@ -77,7 +73,7 @@ void g_rg_t(int N,Adj_t* rg, Adj_t* g, Adj_t* out, Adj_t* adjs){
     Adj_t adj_out;
     adj_out.Fill(-1);
     int numadjs=0;
-    init_adjs:for (int a=0;a<128;a++){
+    init_adjs:for (int a=0;a<8;a++){
       #pragma HLS UNROLL
       adjs[a].Fill(-1);
     }
@@ -162,7 +158,7 @@ int main() {
     output_g[i].Fill(-1);
   }
   
-  Adj_t adjs[128];
+  Adj_t adjs[8];
   g_rg_t(N,rg,g,output_g,adjs);
   
   //print output graph
