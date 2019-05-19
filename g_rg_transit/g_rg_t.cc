@@ -10,7 +10,7 @@ using hlslib::Stream;
 using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
 
 void readItems(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
-  readAdj0: for(int i=0; i<MAX_ADJ*num; i++) {
+  readAdj0: for(int i=0; i<MAX_ADJ*MAX_NUM; i++) {
     #pragma HLS PIPELINE
     int item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
     i_out.Push(item);
@@ -18,7 +18,7 @@ void readItems(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
 }
 
 void storeItems(int num, Adj_t &cnt, Stream<int> &i_in){
-  readAdj1: for(int i=0; i<MAX_ADJ*num; i++) {
+  readAdj1: for(int i=0; i<MAX_ADJ*MAX_NUM; i++) {
     #pragma HLS PIPELINE
     int item=i_in.Pop();
     if (item!=-1){

@@ -6,7 +6,7 @@
 
 source /opt/Xilinx/Vivado/2018.2/scripts/vivado_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Sat May 18 23:30:07 EDT 2019
+INFO: [HLS 200-10] For user 'mengy' on host 'HLS-VirtualBox' (Linux_x86_64 version 4.10.0-28-generic) on Sat May 18 23:33:47 EDT 2019
 INFO: [HLS 200-10] On os Ubuntu 16.04.3 LTS
 INFO: [HLS 200-10] In directory '/home/mengy/smith-hls-sandbox/hls_sandbox/g_rg_transit'
 INFO: [HLS 200-10] Opening project '/home/mengy/smith-hls-sandbox/hls_sandbox/g_rg_transit/hls'.
@@ -15,8 +15,8 @@ INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.33333ns.
 INFO: [HLS 200-10] Setting target device to 'xcku5p-sfvb784-3-e'
 INFO: [HLS 200-10] Adding design file 'g_rg_t.cc' to the project
 INFO: [HLS 200-10] Analyzing design file 'g_rg_t.cc' ... 
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.773 ; gain = 0.086 ; free physical = 349 ; free virtual = 1071
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 365.773 ; gain = 0.086 ; free physical = 349 ; free virtual = 1071
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 341 ; free virtual = 1070
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 365.770 ; gain = 0.086 ; free physical = 341 ; free virtual = 1070
 INFO: [HLS 200-10] Starting code transformations ...
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 16>::Set' into 'g_rg_t' (g_rg_t.cc:101).
 INFO: [XFORM 203-603] Inlining function 'hlslib::DataPack<int, 16>::Set' into 'hlslib::DataPack<int, 16>::Fill' (../hlslib/include/hlslib/DataPack.h:103).
@@ -40,94 +40,288 @@ INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::WriteBlocking'
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Push' into 'readItems' (g_rg_t.cc:16).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::ReadBlocking' into 'hlslib::Stream<int, 1u>::Pop' (../hlslib/include/hlslib/Stream.h:263).
 INFO: [XFORM 203-603] Inlining function 'hlslib::Stream<int, 1u>::Pop' into 'storeItems' (g_rg_t.cc:23).
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.953 ; gain = 0.266 ; free physical = 344 ; free virtual = 1066
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.949 ; gain = 0.266 ; free physical = 336 ; free virtual = 1066
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO: [XFORM 203-602] Inlining function 'std::numeric_limits<int>::max' into 'readItems' (../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) automatically.
 INFO: [XFORM 203-602] Inlining function 'storeItems' into 'unite' (g_rg_t.cc:56) automatically.
 INFO: [XFORM 203-602] Inlining function 'writeResult' into 'unite' (g_rg_t.cc:58) automatically.
 WARNING: [SYNCHK 200-23] ../hlslib/include/hlslib/DataPack.h:95: variable-indexed range selection may cause suboptimal QoR.
 INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.957 ; gain = 0.270 ; free physical = 340 ; free virtual = 1062
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 365.953 ; gain = 0.270 ; free physical = 331 ; free virtual = 1061
 INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'writeResult' (g_rg_t.cc:30).
 WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'write' (g_rg_t.cc:31) because its parent loop or function is pipelined.
 INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'unite' (g_rg_t.cc:43).
 INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'storeItems' (g_rg_t.cc:20).
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'readAdj1' (g_rg_t.cc:21) because its parent loop or function is pipelined.
 INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'readItems' (g_rg_t.cc:12).
+WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'readAdj0' (g_rg_t.cc:13) because its parent loop or function is pipelined.
 INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'transit_loop_rg' (g_rg_t.cc:69) in function 'g_rg_t' for pipelining.
 INFO: [XFORM 203-501] Unrolling loop 'write' (g_rg_t.cc:31) in function 'writeResult' completely.
 INFO: [XFORM 203-501] Unrolling loop 'ShiftOut' (g_rg_t.cc:35) in function 'writeResult' completely.
 INFO: [XFORM 203-501] Unrolling loop 'DataPack_Fill' (../hlslib/include/hlslib/DataPack.h:101) in function 'unite' completely.
-WARNING: [XFORM 203-503] Cannot unroll loop 'readAdj1' (g_rg_t.cc:21) in function 'storeItems': cannot completely unroll a loop with a variable trip count.
-WARNING: [XFORM 203-503] Cannot unroll loop 'readAdj0' (g_rg_t.cc:13) in function 'readItems': cannot completely unroll a loop with a variable trip count.
+INFO: [XFORM 203-501] Unrolling loop 'readAdj1' (g_rg_t.cc:21) in function 'storeItems' completely.
+INFO: [XFORM 203-501] Unrolling loop 'readAdj0' (g_rg_t.cc:13) in function 'readItems' completely.
 INFO: [XFORM 203-501] Unrolling loop 'DataPack_Fill' (../hlslib/include/hlslib/DataPack.h:101) in function 'g_rg_t' completely.
 INFO: [XFORM 203-501] Unrolling loop 'init_adjs' (g_rg_t.cc:76) in function 'g_rg_t' completely.
 INFO: [XFORM 203-501] Unrolling loop 'count_adjs' (g_rg_t.cc:80) in function 'g_rg_t' completely.
 INFO: [XFORM 203-501] Unrolling loop 'shift_build_adjs' (g_rg_t.cc:87) in function 'g_rg_t' completely.
 WARNING: [XFORM 203-503] Cannot unroll loop 'build_loop' (g_rg_t.cc:90) in function 'g_rg_t' completely: variable loop bound.
 INFO: [XFORM 203-501] Unrolling loop 'remove_self' (g_rg_t.cc:99) in function 'g_rg_t' completely.
-INFO: [XFORM 203-602] Inlining function 'storeItems' into 'unite' (g_rg_t.cc:56) automatically.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../hlslib/include/hlslib/DataPack.h:72:5) to (g_rg_t.cc:42:1) in function 'writeResult'... converting 31 basic blocks.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (g_rg_t.cc:21:42) to (g_rg_t.cc:21:36) in function 'unite'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (g_rg_t.cc:28:1) in function 'storeItems'... converting 257 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (g_rg_t.cc:98:5) to (g_rg_t.cc:69:36) in function 'g_rg_t'... converting 33 basic blocks.
 INFO: [XFORM 203-602] Inlining function 'writeResult' into 'unite' (g_rg_t.cc:58) automatically.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 493.688 ; gain = 128.000 ; free physical = 314 ; free virtual = 1035
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:10 ; elapsed = 00:01:11 . Memory (MB): peak = 568.688 ; gain = 203.004 ; free physical = 253 ; free virtual = 984
 WARNING: [XFORM 203-542] Cannot flatten a loop nest 'transit_loop_rg' (g_rg_t.cc:69:41) in function 'g_rg_t' : 
 
 more than one sub loop.
 INFO: [XFORM 203-811] Inferring bus burst write of length 8 on port 'gmem' (../hlslib/include/hlslib/DataPack.h:95:5).
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 493.688 ; gain = 128.000 ; free physical = 291 ; free virtual = 1012
+INFO: [XFORM 203-811] Inferring bus burst read of length 8 on port 'adjs.data_.V' (../hlslib/include/hlslib/DataPack.h:81:16).
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:29 ; elapsed = 00:01:30 . Memory (MB): peak = 576.688 ; gain = 211.004 ; free physical = 237 ; free virtual = 968
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'g_rg_t' ...
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'readItems' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
-WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Function contains subloop(s) not being unrolled.
+INFO: [SCHED 204-61] Pipelining function 'readItems'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 67, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 98, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 114, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 122, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 126, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 127, distance = 1, offset = 1)
+   between fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16) and fifo write on port 'i_out_stream_V' (../hlslib/include/hlslib/Stream.h:322->../hlslib/include/hlslib/Stream.h:359->../hlslib/include/hlslib/Stream.h:371->g_rg_t.cc:16).
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 128, Depth = 136.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 40.89 seconds; current allocated memory: 116.596 MB.
-INFO: [HLS 200-434] Only 0 loops out of a total 1 loops have been pipelined in this design.
+INFO: [HLS 200-111]  Elapsed time: 99.19 seconds; current allocated memory: 146.623 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 116.889 MB.
+INFO: [HLS 200-111]  Elapsed time: 1.24 seconds; current allocated memory: 147.702 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'storeItems' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'storeItems'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 67, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 98, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 114, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 122, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 126, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 127, distance = 1, offset = 1)
+   between fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23) and fifo read on port 'i_in_stream_V' (../hlslib/include/hlslib/Stream.h:223->../hlslib/include/hlslib/Stream.h:263->g_rg_t.cc:23).
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 128, Depth = 256.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 66.74 seconds; current allocated memory: 161.083 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 6.19 seconds; current allocated memory: 169.132 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'unite' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
-WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Function contains subloop(s) not being unrolled.
+INFO: [SCHED 204-61] Pipelining function 'unite'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 128, distance = 1, offset = 1)
+   between 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems' and 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 129 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 130 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 131 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 132 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 133 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 134 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 135 is infeasible due to multiple pipeline iteration latency = 136 and incompatible II = 128 of 'call' operation (g_rg_t.cc:55) to 'readItems'.
+WARNING: [SCHED 204-62] II = 136 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 137 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 138 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 139 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 140 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 141 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 142 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 143 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 144 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 145 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 146 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 147 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 148 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 149 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 150 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 151 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 152 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 153 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 154 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 155 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 156 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 157 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 158 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 159 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 160 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 161 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 162 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 163 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 164 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 165 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 166 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 167 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 168 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 169 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 170 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 171 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 172 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 173 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 174 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 175 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 176 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 177 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 178 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 179 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 180 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 181 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 182 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 183 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 184 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 185 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 186 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 187 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 188 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 189 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 190 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 191 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 192 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 193 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 194 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 195 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 196 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 197 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 198 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 199 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 200 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 201 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 202 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 203 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 204 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 205 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 206 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 207 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 208 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 209 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 210 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 211 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 212 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 213 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 214 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 215 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 216 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 217 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 218 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 219 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 220 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 221 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 222 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 223 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 224 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 225 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 226 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 227 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 228 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 229 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 230 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 231 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 232 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 233 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 234 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 235 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 236 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 237 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 238 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 239 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 240 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 241 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 242 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 243 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 244 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 245 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 246 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 247 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 248 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 249 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 250 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 251 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 252 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 253 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 254 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-62] II = 255 is infeasible due to multiple pipeline iteration latency = 256 and incompatible II = 128 of 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 256, distance = 1, offset = 1)
+   between 'call' operation ('count.data_.V', g_rg_t.cc:56) to 'storeItems' and 'call' operation (g_rg_t.cc:55) to 'readItems'.
+INFO: [SCHED 204-61] Unable to satisfy pipeline directive: Unable to pipeline the region.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.21 seconds; current allocated memory: 117.315 MB.
+INFO: [HLS 200-111]  Elapsed time: 6.1 seconds; current allocated memory: 172.799 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 117.868 MB.
+INFO: [HLS 200-111]  Elapsed time: 2.43 seconds; current allocated memory: 175.310 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'g_rg_t' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 WARNING: [SCHED 204-65] Unable to satisfy pipeline directive: Loop contains subloop(s) not being unrolled or flattened.
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 2.68 seconds; current allocated memory: 122.595 MB.
+INFO: [HLS 200-111]  Elapsed time: 5.94 seconds; current allocated memory: 181.042 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 17 loops have been pipelined in this design.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 4.28 seconds; current allocated memory: 127.854 MB.
+INFO: [HLS 200-111]  Elapsed time: 5.63 seconds; current allocated memory: 186.699 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'readItems' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'readItems'.
-INFO: [HLS 200-111]  Elapsed time: 1.8 seconds; current allocated memory: 128.726 MB.
+INFO: [HLS 200-111]  Elapsed time: 5.62 seconds; current allocated memory: 193.079 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'storeItems' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'storeItems'.
+INFO: [HLS 200-111]  Elapsed time: 2.86 seconds; current allocated memory: 212.709 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'unite' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'unite'.
-INFO: [HLS 200-111]  Elapsed time: 1.01 seconds; current allocated memory: 130.686 MB.
+INFO: [HLS 200-111]  Elapsed time: 18.81 seconds; current allocated memory: 255.439 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'g_rg_t' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -141,10 +335,10 @@ INFO: [RTGEN 206-500] Setting interface mode on function 'g_rg_t' to 'ap_ctrl_hs
 INFO: [RTGEN 206-100] Bundling port 'rg_data_V', 'g_data_V', 'out_data_V' and 'adjs_data_V' to AXI-Lite port AXILiteS.
 INFO: [RTGEN 206-100] Bundling port 'N' to AXI-Lite port control.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'g_rg_t'.
-INFO: [HLS 200-111]  Elapsed time: 3.33 seconds; current allocated memory: 142.543 MB.
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:57 ; elapsed = 00:01:01 . Memory (MB): peak = 557.688 ; gain = 192.000 ; free physical = 241 ; free virtual = 957
+INFO: [HLS 200-111]  Elapsed time: 7.69 seconds; current allocated memory: 268.786 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:03:49 ; elapsed = 00:04:01 . Memory (MB): peak = 656.695 ; gain = 291.012 ; free physical = 111 ; free virtual = 842
 INFO: [SYSC 207-301] Generating SystemC RTL for g_rg_t.
 INFO: [VHDL 208-304] Generating VHDL RTL for g_rg_t.
 INFO: [VLOG 209-307] Generating Verilog RTL for g_rg_t.
-INFO: [HLS 200-112] Total elapsed time: 60.94 seconds; peak allocated memory: 142.543 MB.
-INFO: [Common 17-206] Exiting vivado_hls at Sat May 18 23:31:08 2019...
+INFO: [HLS 200-112] Total elapsed time: 240.97 seconds; peak allocated memory: 268.786 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Sat May 18 23:37:47 2019...
