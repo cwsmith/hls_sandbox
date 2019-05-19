@@ -5,13 +5,18 @@
 #include "hlslib/DataPack.h"
 #include "hlslib/Simulation.h"
 using hlslib::Stream;
-#define MAX_ADJ 32
+#define MAX_ADJ 16
+#define MAX_NUM 8
+#define ADJ_NUM 128
 using Adj_t=hlslib::DataPack<int,MAX_ADJ>;
 
 void readItems(int num,Adj_t* adjs, Adj_t &cnt,  Stream<int> &i_out){
   readAdj0: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
-    int item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
+    int item=-2;
+    if (i<MAX_ADJ*num){
+     item=adjs[i/MAX_ADJ].Get(i%MAX_ADJ);
+    }
     i_out.Push(item);
   }
 }
@@ -20,7 +25,7 @@ void storeItems(int num, Adj_t &cnt, Stream<int> &i_in){
   readAdj1: for(int i=0; i<MAX_ADJ*num; i++) {
     #pragma HLS PIPELINE
     int item=i_in.Pop();
-    if (item!=-1){
+    if (item!=-1 and item!=-2){
       cnt.Set(item, (cnt.Get(item))+1);
     }
   }
@@ -30,6 +35,7 @@ void writeResult(Adj_t cnt, Adj_t& out){
   write: for (int i=0; i<MAX_ADJ;i++){
     #pragma HLS PIPELINE
     if (cnt.Get(i)>0){
+        printf("i:%d ", i);
         ShiftOut: for (int j=MAX_ADJ-1;j>0;j--){
           #pragma HLS UNROLL
           out.Set(j,out.Get(j-1));
@@ -85,7 +91,7 @@ void g_rg_t(int N,Adj_t* rg, Adj_t* g, Adj_t* out, Adj_t* adjs){
     shift_build_adjs:for (int j=0; j<MAX_ADJ; j++){
       #pragma HLS UNROLL
       if (g_adj.Get(j)!=-1){
-        for (int b=numadjs-1;b>0;b--){
+        build_loop:for (int b=numadjs;b>0;b--){
           #pragma HLS UNROLL
           adjs[b]=adjs[b-1];
         }
@@ -94,6 +100,10 @@ void g_rg_t(int N,Adj_t* rg, Adj_t* g, Adj_t* out, Adj_t* adjs){
       else continue;
     }
     unite(numadjs,adjs,adj_out);
+    remove_self: for (int a=0;a<MAX_ADJ;a++){
+      #pragma HLS UNROLL
+      if (i==adj_out.Get(a)) adj_out.Set(a,-1);
+    }
     out[i]=adj_out;
 
   }
